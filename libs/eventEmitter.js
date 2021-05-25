@@ -1,0 +1,17 @@
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+
+const EVENTS = {
+    RAW_MESSAGE: 'RAW_MESSAGE',     // событие пришло из телеграма
+    MESSAGE: 'MESSAGE',             // мы первично его проверили, можно на него отвечать
+    COMMANDS: {                     // разрешенные команды
+        ASSOCIATION: 'ASSOCIATION', // ассоциации
+    },
+    RESPONSE: 'RESPONSE',           // ответ на запрос пользователя
+};
+
+module.exports = {
+    emitter,
+    EVENTS,
+};
