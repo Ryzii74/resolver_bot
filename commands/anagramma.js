@@ -4,6 +4,7 @@ const path = require('path');
 const words = fs.readFileSync(path.join(__dirname, '../config/words.txt')).toString().split('\n');
 
 module.exports = async (text) => {
+    const wordLength = text.length;
     text = text.replace(/[*?]/g, '');
 
     const letters = [];
@@ -22,7 +23,7 @@ module.exports = async (text) => {
 
     const lettersLength = letters.length;
     return words.filter((word) => {
-        if (word.length !== text.length) return false;
+        if (word.length !== wordLength) return false;
         for (let i = 0; i < lettersLength; i++) {
             const letter = letters[i];
             if ((word.match(letter.test) || []).length < letter.count) return false;
