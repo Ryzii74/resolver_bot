@@ -13,6 +13,10 @@ module.exports = async (text) => {
     }
 
     const repeats = getRepeats(associations);
+    if (!repeats.length) {
+        return 'Нет результатов';
+    }
+
     return repeats.join('\t');
 };
 
