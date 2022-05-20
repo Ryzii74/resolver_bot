@@ -5,6 +5,7 @@ const words = fs.readFileSync(path.join(__dirname, '../config/words.txt')).toStr
 
 module.exports = async (text) => {
     const wordLength = text.length;
+    let isAnyLettersCount = text.includes('*');
     text = text.replace(/[*?]/g, '');
 
     const letters = [];
@@ -22,13 +23,21 @@ module.exports = async (text) => {
     }
 
     const lettersLength = letters.length;
-    return words.filter((word) => {
-        if (word.length !== wordLength) return false;
+    const correctWords = words.filter((word) => {
+        if (isAnyLettersCount) {
+            if (word.length < wordLength) return false;
+        } else {
+            if (word.length !== wordLength) return false;
+        }
+
         for (let i = 0; i < lettersLength; i++) {
             const letter = letters[i];
             if ((word.match(letter.test) || []).length < letter.count) return false;
         }
 
         return true;
-    }).join('\n') || "Слов не найдено";
+    });
+    if (correctWords.length > 50) return "Слишком много слов найдено";
+
+    return correctWords.join('\n') || "Слов не найдено";
 };
