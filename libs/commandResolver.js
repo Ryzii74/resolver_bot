@@ -10,7 +10,7 @@ files.forEach(file => {
    const commandName = file.replace('.js', '');
    commands[commandName] = require(path.join(commandsDir, commandName));
    emitter.on(commandName.toUpperCase(), async data => {
-       data.customData.response = await commands[commandName](data.customData.text);
+       data.customData.response = await commands[commandName](data.customData);
        emitter.emit(EVENTS.RESPONSE, data);
    });
 });

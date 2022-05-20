@@ -1,4 +1,5 @@
-require('./libs/rawMessageParser');
+require('./libs/dictionaryArray');
+require('./libs/dictionaryObject');
 require('./libs/commandParser');
 require('./libs/commandResolver');
 

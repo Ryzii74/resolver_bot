@@ -1,10 +1,11 @@
 const {emitter, EVENTS} = require('./eventEmitter');
 
 emitter.on(EVENTS.MESSAGE, (data) => {
-    const text = data.text.toLowerCase();
-    const words = text.split(' ');
+    const text = data.text.toLowerCase().trim();
+    const [firstWord, ...words] = text.split(' ');
+    const command = firstWord.toLowerCase();
 
-    if (words.length === 1) {
+    if (words.length === 0) {
         emitter.emit(EVENTS.COMMANDS.ANAGRAMMA, {
             ...data,
             customData: {
@@ -12,11 +13,18 @@ emitter.on(EVENTS.MESSAGE, (data) => {
             },
         });
     } else {
-        if (words[0].toLowerCase() === 'маска') {
+        if (command === 'маска') {
             emitter.emit(EVENTS.COMMANDS.MASK, {
                 ...data,
                 customData: {
-                    text: words[1],
+                    text: words[0],
+                },
+            });
+        } else if (command === 'член') {
+            emitter.emit(EVENTS.COMMANDS.RASCHLENENKA, {
+                ...data,
+                customData: {
+                    words,
                 },
             });
         } else {

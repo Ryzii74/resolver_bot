@@ -1,15 +1,19 @@
 const axios = require('axios');
 const qs = require('qs');
 
-module.exports = async (text) => {
+module.exports = async ({text}) => {
     const words = text.split(' ');
     if (words.length !== 2) return 'Нужно указать 2 слова через пробел';
 
     const associations = [];
     for (let i = 0; i < words.length; i++) {
         const word = words[i];
-        const wordAssociations = await getWordAssociations(word);
-        associations.push(wordAssociations);
+        try {
+            const wordAssociations = await getWordAssociations(word);
+            associations.push(wordAssociations);
+        } catch {
+            return 'Ошибка получения данных от сервера!';
+        }
     }
 
     const repeats = getRepeats(associations);

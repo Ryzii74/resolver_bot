@@ -1,9 +1,6 @@
-const fs = require('fs');
-const path = require('path');
+const dictionaryArray = require('../libs/dictionaryArray');
 
-const words = fs.readFileSync(path.join(__dirname, '../config/words.txt')).toString().split('\n');
-
-module.exports = async (text) => {
+module.exports = async ({text}) => {
     const wordLength = text.length;
     let isAnyLettersCount = text.includes('*');
     text = text.replace(/[*?]/g, '');
@@ -23,7 +20,7 @@ module.exports = async (text) => {
     }
 
     const lettersLength = letters.length;
-    const correctWords = words.filter((word) => {
+    const correctWords = dictionaryArray.filter((word) => {
         if (isAnyLettersCount) {
             if (word.length < wordLength) return false;
         } else {
