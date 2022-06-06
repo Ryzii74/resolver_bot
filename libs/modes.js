@@ -9,6 +9,14 @@ const modes = {
   phrase: require('../commands/frazeologism'),
 };
 
+const MODE_NAMES = {
+  anagramma: 'Анаграмма',
+  association: 'Ассоциации',
+  dick: 'Расчлененка',
+  mask: 'Маска',
+  phrase: 'Фразеологизмы',
+};
+
 module.exports = {
   changeModeForUser: (userId, mode) => {
     if (!modes[mode]) {
@@ -16,7 +24,7 @@ module.exports = {
     }
 
     userModes[userId] = mode;
-    return `Установлен режим "${mode}"`;
+    return `Установлен режим "${MODE_NAMES[mode] || mode}"`;
   },
 
   runMode: (userId, text) => {
