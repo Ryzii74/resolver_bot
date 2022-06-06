@@ -1,7 +1,7 @@
 const axios = require('axios');
 const qs = require('qs');
 
-module.exports = async ({text}) => {
+module.exports = async (text) => {
     const words = text.split(' ');
     if (words.length !== 2) return 'Нужно указать 2 слова через пробел';
 

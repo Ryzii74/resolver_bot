@@ -1,6 +1,6 @@
 const dictionaryArray = require('../libs/dictionaryArray');
 
-module.exports = async ({text}) => {
+module.exports = async (text) => {
     const wordLength = text.length;
     let isAnyLettersCount = text.includes('*');
     text = text.replace(/[*?]/g, '');

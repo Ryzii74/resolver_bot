@@ -1,7 +1,7 @@
 const dictionaryObject = require('../libs/dictionaryObject');
 
-module.exports = function ({words}) {
-    const baseData = words.map(el => {
+module.exports = function (text) {
+    const baseData = text.split(' ').map(el => {
         const count = Number(el.slice(-1));
         const word = el.slice(0, -1);
         return {

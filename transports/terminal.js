@@ -8,6 +8,9 @@ rl.prompt();
 rl.on('line', msg => {
   emitter.emit(EVENTS.MESSAGE, {
     text: msg,
+    from: {
+      id: 'terminal',
+    },
   });
 });
 
