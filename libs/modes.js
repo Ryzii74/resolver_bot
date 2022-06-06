@@ -2,12 +2,11 @@ const userModes = {};
 const defaultMode = 'маска';
 
 const modes = {
-  анаграмма: require('../commands/anagramma'),
-  ассоциации: require('../commands/association'),
-  ассоциация: require('../commands/association'),
-  фразеологизм: require('../commands/frazeologism'),
-  маска: require('../commands/mask'),
-  расчлененка: require('../commands/raschlenenka'),
+  anagramma: require('../commands/anagramma'),
+  association: require('../commands/association'),
+  dick: require('../commands/raschlenenka'),
+  mask: require('../commands/mask'),
+  phrase: require('../commands/frazeologism'),
 };
 
 module.exports = {
