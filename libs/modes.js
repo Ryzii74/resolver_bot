@@ -1,5 +1,5 @@
 const userModes = {};
-const defaultMode = 'маска';
+const defaultMode = 'mask';
 
 const modes = {
   anagramma: require('../commands/anagramma'),
