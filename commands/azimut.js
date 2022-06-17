@@ -1,7 +1,7 @@
 module.exports = (text) => {
     const [lat, lon, ang, dist] = text.split(' ');
     const {lat: lat2, lon: lon2} = ellipsoid(toRad(lat), toRad(lon), toRad(ang), dist);
-    return `${lat2} ${lon2}`;
+    return `${lat2.toFixed(6)} ${lon2.toFixed(6)}`;
 };
 
 function ellipsoid(lat, lon, ang, dist) {
