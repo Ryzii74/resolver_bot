@@ -4,6 +4,7 @@ const defaultMode = 'mask';
 const modes = {
   anagramma: require('../commands/anagramma'),
   association: require('../commands/association'),
+  azimut: require('../commands/azimut'),
   dick: require('../commands/raschlenenka'),
   mask: require('../commands/mask'),
   phrase: require('../commands/frazeologism'),
@@ -12,6 +13,7 @@ const modes = {
 const MODE_NAMES = {
   anagramma: 'Анаграмма',
   association: 'Ассоциации',
+  azimut: 'Азимут',
   dick: 'Расчлененка',
   mask: 'Маска',
   phrase: 'Фразеологизмы',
