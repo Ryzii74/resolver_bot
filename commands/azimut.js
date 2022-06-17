@@ -1,5 +1,17 @@
-module.exports = (text) => {
-    const [lat, lon, ang, dist] = text.split(' ');
+const {get: getUserLocation} = require('../libs/userLocations');
+
+module.exports = (text, userId) => {
+    const args = text.split(' ');
+    let [lat, lon, ang, dist] = args;
+    if (args.length === 2) {
+        const userLocation = getUserLocation(userId);
+        if (!userLocation)  return 'Бот не знает ваших координат - отправьте локацию!';
+        lat = userLocation.latitude;
+        lon = userLocation.longitude;
+        ang = args[0];
+        dist = args[1];
+    }
+
     const {lat: lat2, lon: lon2} = ellipsoid(toRad(lat), toRad(lon), toRad(ang), dist);
     return `${lat2.toFixed(6)} ${lon2.toFixed(6)}`;
 };

@@ -35,6 +35,6 @@ module.exports = {
 
   runMode: (userId, text) => {
     const mode = userModes[userId] || defaultMode;
-    return modes[mode](text);
+    return modes[mode](text, userId);
   },
 };

@@ -1,5 +1,6 @@
 const {emitter, EVENTS} = require('./eventEmitter');
 const {changeModeForUser, getModeForUser, runMode} = require('./modes');
+const {set: setUserLocation} = require('./userLocations');
 
 emitter.on(EVENTS.MESSAGE, async (data) => {
     const text = data.text.toLowerCase().trim();
@@ -11,6 +12,12 @@ emitter.on(EVENTS.MESSAGE, async (data) => {
     }
 
     sendResponse(data, await runMode(userId, text));
+});
+
+emitter.on(EVENTS.LOCATION, async (data) => {
+    const {latitude, longitude} = data.location;
+    setUserLocation(data.from.id, data.location);
+    sendResponse(data, `Текущиее координаты сохранено: ${latitude} ${longitude}`);
 });
 
 function sendResponse(data, text) {
