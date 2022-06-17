@@ -22,9 +22,6 @@ emitter.on(EVENTS.RESPONSE, (msg) => {
 emitter.on(EVENTS.RESPONSE_COORDS, (msg) => {
   const [lat, lon] = msg.customData.response.split(' ');
   if (!isNaN(lat) && !isNaN(lon)) {
-    bot.sendLocation(msg.chat.id, {
-      latitude: lat,
-      longitude: lon,
-    });
+    bot.sendLocation(msg.chat.id, lat, lon);
   }
 });
