@@ -1,5 +1,5 @@
 const {emitter, EVENTS} = require('./eventEmitter');
-const {changeModeForUser, runMode} = require('./modes');
+const {changeModeForUser, getModeForUser, runMode} = require('./modes');
 
 emitter.on(EVENTS.MESSAGE, async (data) => {
     const text = data.text.toLowerCase().trim();
@@ -16,5 +16,8 @@ emitter.on(EVENTS.MESSAGE, async (data) => {
 function sendResponse(data, text) {
     data.customData = data.customData || {};
     data.customData.response = text;
+    if (getModeForUser(data.from.id) === 'azimut') {
+        emitter.emit(EVENTS.RESPONSE_COORDS, data);
+    }
     emitter.emit(EVENTS.RESPONSE, data);
 }

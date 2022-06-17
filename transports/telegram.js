@@ -18,3 +18,13 @@ bot.on('message', (msg) => {
 emitter.on(EVENTS.RESPONSE, (msg) => {
   bot.sendMessage(msg.chat.id, msg.customData.response);
 });
+
+emitter.on(EVENTS.RESPONSE_COORDS, (msg) => {
+  const [lat, lon] = msg.customData.response.split(' ');
+  if (!isNaN(lat) && !isNaN(lon)) {
+    bot.sendLocation(msg.chat.id, {
+      latitude: lat,
+      longitude: lon,
+    });
+  }
+});

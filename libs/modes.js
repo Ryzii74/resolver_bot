@@ -29,6 +29,10 @@ module.exports = {
     return `Установлен режим "${MODE_NAMES[mode] || mode}"`;
   },
 
+  getModeForUser: (userId) => {
+    return userModes[userId];
+  },
+
   runMode: (userId, text) => {
     const mode = userModes[userId] || defaultMode;
     return modes[mode](text);
