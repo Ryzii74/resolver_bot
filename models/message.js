@@ -39,7 +39,7 @@ class Message {
   }
 
   addTextResponse(text) {
-    text && this.addTextResponse(text);
+    text && this.addResponse(RESPONSE_TYPES.TEXT, text);
   }
 }
 
