@@ -35,7 +35,5 @@ module.exports = async (msg) => {
 
         return true;
     });
-    if (correctWords.length > 100) return "Слишком много слов найдено";
-
     msg.addTextResponse(correctWords.join('\n') || "Слов не найдено");
 };
