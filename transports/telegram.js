@@ -23,7 +23,7 @@ bot.on('message', (data) => {
   }
 });
 
-emitter.on(EVENTS.RESPONSE, (msg) => {
+emitter.on(EVENTS.RESPONSE, async (msg) => {
   for (let type in RESPONSE_TYPES) {
     const responseType = RESPONSE_TYPES[type];
 
@@ -32,7 +32,9 @@ emitter.on(EVENTS.RESPONSE, (msg) => {
 
     switch (responseType) {
       case RESPONSE_TYPES.TEXT:
-        response.forEach(text => bot.sendMessage(msg.userId, text));
+        for (const text of response) {
+          await bot.sendMessage(msg.userId, text);
+        }
         break;
       case RESPONSE_TYPES.LOCATION:
         response.forEach(location => {
