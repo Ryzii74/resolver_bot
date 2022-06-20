@@ -39,7 +39,7 @@ emitter.on(EVENTS.RESPONSE, async (msg) => {
       case RESPONSE_TYPES.LOCATION:
         response.forEach(location => {
           sendTextMessage(msg.userId,`${location.lat}, ${location.lon}`);
-          bot.sendLocation(msg.userId, location.lat, location.lon)
+          bot.sendLocation(msg.userId, location.lat, location.lon);
         });
         break;
     }

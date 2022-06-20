@@ -3,7 +3,7 @@ const phrases = require('../libs/phrasesArray');
 module.exports = async (msg) => {
     // стемминг???
     const {text} = msg;
-    const directPhrases = phrases.filter(phrase => RegExp(`\\b${text}\\b`).test(phrase));
+    const directPhrases = phrases.filter(phrase =>  new RegExp(`(^|\\s)${text}(\\s|$)`).test(phrase));
     const allPhrases = phrases.filter(phrase => !directPhrases.includes(phrase) && phrase.includes(text));
 
     if (!directPhrases.length && !allPhrases.length) {
