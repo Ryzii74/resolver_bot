@@ -33,15 +33,24 @@ emitter.on(EVENTS.RESPONSE, async (msg) => {
     switch (responseType) {
       case RESPONSE_TYPES.TEXT:
         for (const text of response) {
-          await bot.sendMessage(msg.userId, text);
+          await sendTextMessage(msg.userId, text);
         }
         break;
       case RESPONSE_TYPES.LOCATION:
         response.forEach(location => {
-          bot.sendMessage(msg.userId,`\`${location.lat}, ${location.lon}\``);
-          bot.sendLocation(msg.userId, location.lat, location.lon)
+          sendTextMessage(msg.userId,`\`${location.lat}, ${location.lon}\``);
+          sendTextMessage(msg.userId, location.lat, location.lon)
         });
         break;
     }
   }
 });
+
+async function sendTextMessage(userId, text, isRepeated) {
+  try {
+    await bot.sendMessage(userId, text);
+  } catch (err) {
+    console.log(err.code, err.response.body);
+    if (!isRepeated) await sendTextMessage(userId, err.response.body.description, true);
+  }
+}
