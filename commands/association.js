@@ -18,7 +18,7 @@ module.exports = async (msg) => {
     }
 
     const repeats = getRepeats(associations);
-    msg.addTextResponse(repeats.join('\t') || "Нет результатов");
+    msg.addTextResponse(repeats.join('\n') || "Нет результатов");
 };
 
 
@@ -43,7 +43,7 @@ async function getWordAssociations(word) {
     return data.associations.map(el => el.name);
 }
 
-function getRepeats(associations, callback) {
+function getRepeats(associations) {
     const repeats = [];
 
     associations[0].forEach(word => {
