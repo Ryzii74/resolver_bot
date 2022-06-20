@@ -1,7 +1,8 @@
 const axios = require('axios');
 const qs = require('qs');
 
-module.exports = async (text) => {
+module.exports = async (msg) => {
+    const {text} = msg;
     const words = text.split(' ');
     if (words.length !== 2) return 'Нужно указать 2 слова через пробел';
 
@@ -17,11 +18,7 @@ module.exports = async (text) => {
     }
 
     const repeats = getRepeats(associations);
-    if (!repeats.length) {
-        return 'Нет результатов';
-    }
-
-    return repeats.join('\t');
+    msg.addTextResponse(repeats.join('\t') || "Нет результатов");
 };
 
 

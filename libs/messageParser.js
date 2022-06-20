@@ -1,30 +1,25 @@
 const {emitter, EVENTS} = require('./eventEmitter');
-const {changeModeForUser, getModeForUser, runMode} = require('./modes');
+const {changeModeForUser, runMode} = require('./modes');
 const {set: setUserLocation} = require('./userLocations');
 
-emitter.on(EVENTS.MESSAGE, async (data) => {
-    const text = data.text.toLowerCase().trim();
-    const userId = data.from.id;
-
-    if (text.startsWith('/')) {
-        const result = changeModeForUser(userId, text.replace('/', ''));
-        return sendResponse(data, result);
+emitter.on(EVENTS.MESSAGE, async (msg) => {
+    if (msg.isCommand()) {
+        const result = changeModeForUser(msg.userId, msg.command);
+        msg.addTextResponse(result);
+        return sendResponse(msg);
     }
 
-    sendResponse(data, await runMode(userId, text));
+    await runMode(msg);
+    sendResponse(msg);
 });
 
-emitter.on(EVENTS.LOCATION, async (data) => {
-    const {latitude, longitude} = data.location;
-    setUserLocation(data.from.id, data.location);
-    sendResponse(data, `Текущиее координаты сохранено: ${latitude} ${longitude}`);
+emitter.on(EVENTS.LOCATION, async (msg) => {
+    const {location} = msg;
+    setUserLocation(msg.userId, location);
+    msg.addTextResponse(`Сохранены координаты ${location.latitude} ${location.longitude}`)
+    sendResponse(msg);
 });
 
-function sendResponse(data, text) {
-    data.customData = data.customData || {};
-    data.customData.response = text;
-    if (getModeForUser(data.from.id) === 'azimut') {
-        emitter.emit(EVENTS.RESPONSE_COORDS, data);
-    }
-    emitter.emit(EVENTS.RESPONSE, data);
+function sendResponse(msg) {
+    emitter.emit(EVENTS.RESPONSE, msg);
 }

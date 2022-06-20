@@ -33,8 +33,8 @@ module.exports = {
     return userModes[userId];
   },
 
-  runMode: (userId, text) => {
-    const mode = userModes[userId] || defaultMode;
-    return modes[mode](text, userId);
+  runMode: (msg) => {
+    const mode = userModes[msg.userId] || defaultMode;
+    return modes[mode](msg);
   },
 };

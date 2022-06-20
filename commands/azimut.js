@@ -1,6 +1,8 @@
 const {get: getUserLocation} = require('../libs/userLocations');
+const {RESPONSE_TYPES} = require("../models/message");
 
-module.exports = (text, userId) => {
+module.exports = (msg) => {
+    const {text, userId} = msg;
     const args = text.split(' ');
     let [lat, lon, ang, dist] = args;
     if (args.length === 2) {
@@ -13,7 +15,10 @@ module.exports = (text, userId) => {
     }
 
     const {lat: lat2, lon: lon2} = ellipsoid(toRad(lat), toRad(lon), toRad(ang), dist);
-    return `${lat2.toFixed(6)} ${lon2.toFixed(6)}`;
+    msg.addResponse(RESPONSE_TYPES.LOCATION, {
+        lat: lat2.toFixed(6),
+        lon: lon2.toFixed(6),
+    });
 };
 
 function ellipsoid(lat, lon, ang, dist) {

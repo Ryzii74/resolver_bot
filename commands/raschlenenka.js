@@ -1,6 +1,7 @@
 const dictionaryObject = require('../libs/dictionaryObject');
 
-module.exports = function (text) {
+module.exports = function (msg) {
+    const {text} = msg;
     const baseData = text.split(' ').map(el => {
         const count = Number(el.slice(-1));
         const word = el.slice(0, -1);
@@ -38,7 +39,13 @@ module.exports = function (text) {
 
     const correctWords = wordsToFind.filter(word => dictionaryObject[word]);
     const correctWords2 = findTwoWords(wordsToFind);
-    return [...correctWords, ...correctWords2].join('\n') || "Слов не найдено";
+    if (!correctWords.length && !correctWords2.length) {
+        msg.addTextResponse("Слов не найдено!");
+        return;
+    }
+
+    msg.addTextResponse(correctWords.join('\n'));
+    msg.addTextResponse(correctWords2.join('\n'));
 };
 
 function findTwoWords(words) {

@@ -1,6 +1,7 @@
 const dictionaryArray = require('../libs/dictionaryArray');
 
-module.exports = async (text) => {
+module.exports = async (msg) => {
+    let {text} = msg;
     const wordLength = text.length;
     let isAnyLettersCount = text.includes('*');
     text = text.replace(/[*?]/g, '');
@@ -34,7 +35,7 @@ module.exports = async (text) => {
 
         return true;
     });
-    if (correctWords.length > 50) return "Слишком много слов найдено";
+    if (correctWords.length > 100) return "Слишком много слов найдено";
 
-    return correctWords.join('\n') || "Слов не найдено";
+    msg.addTextResponse(correctWords.join('\n') || "Слов не найдено");
 };
