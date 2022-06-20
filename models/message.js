@@ -9,6 +9,10 @@ class Message {
     this.response = {};
   }
 
+  get username() {
+    return this._data.from.username;
+  }
+
   get userId() {
     return this._data.from.id;
   }
