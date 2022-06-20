@@ -28,7 +28,7 @@ emitter.on(EVENTS.RESPONSE, (msg) => {
     const responseType = RESPONSE_TYPES[type];
 
     const response = msg.response[responseType];
-    if (!response && !response.length) continue;
+    if (!response || !response.length) continue;
 
     switch (responseType) {
       case RESPONSE_TYPES.TEXT:
