@@ -4,7 +4,6 @@ const qs = require('qs');
 module.exports = async (msg) => {
     const {text} = msg;
     const words = text.split(' ');
-    if (words.length !== 2) return 'Нужно указать 2 слова через пробел';
 
     const associations = [];
     for (let i = 0; i < words.length; i++) {
@@ -15,6 +14,11 @@ module.exports = async (msg) => {
         } catch {
             return 'Ошибка получения данных от сервера!';
         }
+    }
+
+    if (words.length === 1) {
+        msg.addTextResponse(associations.join('\n'));
+        return;
     }
 
     const repeats = getRepeats(associations);
