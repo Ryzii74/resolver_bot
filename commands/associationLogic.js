@@ -1,4 +1,5 @@
 const getWordAssociations = require('../libs/association');
+const {isAnagramma, isMetagramma, isLogogrif} = require('../libs/tasks');
 
 module.exports = async (msg) => {
     const {text} = msg;
@@ -30,7 +31,8 @@ function getRepeats(associations) {
     associations[0].forEach(word => {
         let isFound = false;
         for (var i = 0; i < associations[1].length; i++) {
-            if (isEqual(associations[1][i], word)) {
+            const word2 = associations[1][i];
+            if (isAnagramma(word, word2) || isMetagramma(word, word2) || isLogogrif(word, word2)) {
                 isFound = true;
                 break;
             }
@@ -40,20 +42,4 @@ function getRepeats(associations) {
     });
 
     return repeats;
-}
-
-function isEqual(word1, word2) {
-    const letters1 = getLetters(word1);
-    const letters2 = getLetters(word2);
-    return Math.abs(letters1.length - letters2.length) <= 1
-        && (letters1.every(el => letters2.includes(el))
-        || letters2.every(el => letters1.includes(el)));
-}
-
-function getLetters(word) {
-    return word
-      .split('')
-      .filter((item, pos, self) => {
-        return self.indexOf(item) === pos;
-      });
 }
