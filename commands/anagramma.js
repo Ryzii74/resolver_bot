@@ -2,9 +2,10 @@ const dictionaryArray = require('../libs/dictionaryArray');
 
 module.exports = async (msg) => {
     let {text} = msg;
-    const wordLength = text.length;
     let isAnyLettersCount = text.includes('*');
-    text = text.replace(/[*?]/g, '');
+    let minusCount = (text.match(/-/g) || []).length;
+    const wordLength = text.length - minusCount * 2 - Number(isAnyLettersCount);
+    text = text.replace(/[*?-]/g, '');
 
     const letters = [];
     for (var i = 0; i < text.length; i++) {
@@ -28,9 +29,12 @@ module.exports = async (msg) => {
             if (word.length !== wordLength) return false;
         }
 
+        let lettersOmit = 0;
         for (let i = 0; i < lettersLength; i++) {
             const letter = letters[i];
-            if ((word.match(letter.test) || []).length < letter.count) return false;
+            const lettersFoundInWord = (word.match(letter.test) || []).length;
+            lettersOmit += Math.abs(letter.count - lettersFoundInWord);
+            if (lettersOmit > minusCount) return false;
         }
 
         return true;
