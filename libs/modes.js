@@ -10,6 +10,8 @@ const modes = {
   mask: require('../commands/mask'),
   phrase: require('../commands/frazeologism'),
   meta: require('../commands/metagramma'),
+  logo: require('../commands/logogrif'),
+  metalogo: require('../commands/metalogo'),
 };
 
 const MODE_NAMES = {
@@ -21,6 +23,8 @@ const MODE_NAMES = {
   mask: 'Маска',
   phrase: 'Фразеологизмы',
   meta: 'Метаграммы',
+  logo: 'Логогрифы',
+  metalogo: 'Метаграммы/Логогрифы',
 };
 
 module.exports = {
