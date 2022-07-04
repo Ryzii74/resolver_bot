@@ -9,6 +9,7 @@ const modes = {
   dick: require('../commands/raschlenenka'),
   mask: require('../commands/mask'),
   phrase: require('../commands/frazeologism'),
+  meta: require('../commands/metagramma'),
 };
 
 const MODE_NAMES = {
@@ -19,6 +20,7 @@ const MODE_NAMES = {
   dick: 'Расчлененка',
   mask: 'Маска',
   phrase: 'Фразеологизмы',
+  meta: 'Метаграммы',
 };
 
 module.exports = {
