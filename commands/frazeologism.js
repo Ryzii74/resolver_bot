@@ -8,12 +8,12 @@ module.exports = async (msg) => {
     const allPhrases = phrases.filter(phrase => !directPhrases.includes(phrase) && phrase.includes(text));
     const wikiPhrases = wikislovar.filter(phrase => phrase.includes(text));
 
-    if (!directPhrases.length && !allPhrases.length) {
+    if (!wikiPhrases.length && !directPhrases.length && !allPhrases.length) {
         msg.addTextResponse("Ничего не найдено!");
         return;
     }
 
-    msg.addTextResponse(['ВИКИСЛОВАРЬ', ...wikiPhrases].join('\n'));
-    msg.addTextResponse(['ПОЛНЫЕ СОВПАДЕНИЯ СЛОВ', ...directPhrases].join('\n'));
-    msg.addTextResponse(['ЧАСТИЧНЫЕ СОВПАДЕНИЯ СЛОВ', ...allPhrases].join('\n'));
+    wikiPhrases.length && msg.addTextResponse(['ВИКИСЛОВАРЬ', ...wikiPhrases].join('\n'));
+    directPhrases.length && msg.addTextResponse(['ПОЛНЫЕ СОВПАДЕНИЯ СЛОВ', ...directPhrases].join('\n'));
+    allPhrases.length && msg.addTextResponse(['ЧАСТИЧНЫЕ СОВПАДЕНИЯ СЛОВ', ...allPhrases].join('\n'));
 };
