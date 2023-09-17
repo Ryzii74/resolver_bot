@@ -10,7 +10,9 @@ for (const file of files) {
 
     fs.writeFileSync(
       path.join(__dirname, `../config/phrases.txt`),
-      text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~?-]/g,""),
+      text.toLowerCase()
+          .replace(/[.,\/#!$%\^&\*;:{}=\-_`~?-]/g,"")
+          .replace(/ё/g, "е"),
       {
         encoding: 'utf8',
         flag: 'a+',
