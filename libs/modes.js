@@ -1,48 +1,49 @@
 const userModes = {};
-const defaultMode = 'anagramma';
 
-const modes = {
-  anagramma: require('../commands/anagramma'),
-  association: require('../commands/association'),
-  associationlogic: require('../commands/associationLogic'),
-  azimut: require('../commands/azimut'),
-  dick: require('../commands/raschlenenka'),
-  mask: require('../commands/mask'),
-  phrase: require('../commands/frazeologism'),
-  meta: require('../commands/metagramma'),
-  logo: require('../commands/logogrif'),
-  metalogo: require('../commands/metalogo'),
-  brukva: require('../commands/brukva'),
-  matrix: require('../commands/matrix'),
-  subword: require('../commands/subword'),
-  longword: require('../commands/longword'),
+const MODES = {
+  anagramma: { exec: require('../commands/anagramma'), name: 'Анаграмма' },
+  association: { exec: require('../commands/association'), name: 'Ассоциации' },
+  associationlogic: { exec: require('../commands/associationLogic'), name: 'Ассоциации + Логика' },
+  azimut: { exec: require('../commands/azimut'), name: 'Азимут' },
+  dick: { exec: require('../commands/raschlenenka'), name: 'Расчлененка' },
+  mask: { exec: require('../commands/mask'), name: 'Маска' },
+  phrase: { exec: require('../commands/frazeologism'), name: 'Фразеологизмы' },
+  meta: { exec: require('../commands/metagramma'), name: 'Метаграммы' },
+  logo: { exec: require('../commands/logogrif'), name: 'Логогрифы' },
+  metalogo: { exec: require('../commands/metalogo'), name: 'Метаграммы/Логогрифы' },
+  brukva: { exec: require('../commands/brukva'), name: 'Брюква' },
+  matrix: { exec: require('../commands/matrix'), name: 'Матрицы' },
+  subword: { exec: require('../commands/subword'), name: 'Подслова' },
+  longword: { exec: require('../commands/longword'), name: 'Надслова' },
 };
+const defaultMode = MODES.anagramma;
 
-const MODE_NAMES = {
-  anagramma: 'Анаграмма',
-  association: 'Ассоциации',
-  associationlogic: 'Ассоциации + Логика',
-  azimut: 'Азимут',
-  dick: 'Расчлененка',
-  mask: 'Маска',
-  phrase: 'Фразеологизмы',
-  meta: 'Метаграммы',
-  logo: 'Логогрифы',
-  metalogo: 'Метаграммы/Логогрифы',
-  brukva: 'Брюква',
-  matrix: 'Матрицы',
-  subword: 'Подслова',
-  longword: 'Надслова',
+const ALIASES = {
+  anagramma: MODES.anagramma,
+  ass: MODES.association,
+  association: MODES.association,
+  associationlogic: MODES.associationlogic,
+  azimut: MODES.azimut,
+  dick: MODES.dick,
+  mask: MODES.mask,
+  phrase: MODES.phrase,
+  meta: MODES.meta,
+  logo: MODES.logo,
+  metalogo: MODES.metalogo,
+  brukva: MODES.brukva,
+  matrix: MODES.matrix,
+  subword: MODES.subword,
+  longword: MODES.longword,
 };
 
 module.exports = {
-  changeModeForUser: (userId, mode) => {
-    if (!modes[mode]) {
-      return `Неизвестный режим: ${mode}`;
+  changeModeForUser: (userId, alias) => {
+    if (!ALIASES[alias]) {
+      return `Неизвестный режим: ${alias}`;
     }
 
-    userModes[userId] = mode;
-    return `Установлен режим "${MODE_NAMES[mode] || mode}"`;
+    userModes[userId] = ALIASES[alias];
+    return `Установлен режим "${userModes[userId].name}"`;
   },
 
   getModeForUser: (userId) => {
@@ -52,7 +53,7 @@ module.exports = {
   runMode: async (msg) => {
     const mode = userModes[msg.userId] || defaultMode;
     try {
-      return await modes[mode](msg);
+      return await mode.exec(msg);
     } catch (err) {
       console.log(err);
       msg.addTextResponse( `Ошибка: ${err.message}`);
