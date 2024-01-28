@@ -9,7 +9,7 @@ for (const file of files) {
     if (wordsCount < 2) return;
 
     fs.writeFileSync(
-      path.join(__dirname, `../config/phrases.txt`),
+      path.join(__dirname, `../data/phrases.txt`),
       text.toLowerCase()
           .replace(/[.,\/#!$%\^&\*;:{}=\-_`~?-]/g,"")
           .replace(/ё/g, "е"),

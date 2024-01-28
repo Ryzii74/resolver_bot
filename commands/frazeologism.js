@@ -1,5 +1,5 @@
 const phrases = require('../actions/sources/phrasesArray');
-const wikislovar = require('../config/wikislovar.json');
+const wikislovar = require('../data/wikislovar.json');
 
 module.exports = async (msg) => {
     // стемминг???
