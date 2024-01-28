@@ -46,12 +46,8 @@ module.exports = {
     return `Установлен режим "${userModes[userId].name}"`;
   },
 
-  getModeForUser: (userId) => {
-    return userModes[userId];
-  },
-
   runMode: async (msg) => {
-    const mode = userModes[msg.userId] || defaultMode;
+    const mode = getModeForUser(msg.userId);
     try {
       return await mode.exec(msg);
     } catch (err) {
@@ -60,3 +56,7 @@ module.exports = {
     }
   },
 };
+
+function getModeForUser(userId) {
+  return userModes[userId] || defaultMode
+}
