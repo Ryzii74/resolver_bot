@@ -1,5 +1,5 @@
-const getWordAssociations = require('../libs/association');
-const {isAnagramma, isMetagramma, isLogogrif} = require('../libs/tasks');
+const getWordAssociations = require('../actions/sources/association');
+//const {isAnagramma, isMetagramma, isLogogrif, isBrukva} = require('../libs/tasks');
 
 module.exports = async (msg) => {
     const {text} = msg;
@@ -32,7 +32,7 @@ function getRepeats(associations) {
         let isFound = false;
         for (var i = 0; i < associations[1].length; i++) {
             const word2 = associations[1][i];
-            if (isAnagramma(word, word2) || isMetagramma(word, word2) || isLogogrif(word, word2)) {
+            if (isAnagramma(word, word2) || isMetagramma(word, word2) || isLogogrif(word, word2) || isBrukva(word, word2)) {
                 isFound = true;
                 break;
             }

@@ -1,4 +1,4 @@
-const dictionaryArray = require('../libs/dictionaryArray');
+const dictionaryArray = require('../actions/sources/dictionaryArray')();
 
 module.exports = async (msg) => {
     let {text} = msg;

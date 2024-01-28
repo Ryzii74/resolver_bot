@@ -10,6 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
-    "node-telegram-bot-api": "^0.51.0"
+    "natural": "^6.8.0",
+    "node-telegram-bot-api": "^0.51.0",
+    "url-exist": "^3.0.1",
+    "url-exists": "^1.0.3"
   }
 }

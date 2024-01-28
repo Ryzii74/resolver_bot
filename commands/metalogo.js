@@ -1,8 +1,5 @@
-const dictionaryArray = require('../libs/dictionaryArray');
-const {isLogogrif, isMetagramma} = require('../libs/tasks');
+const severalWordsCommand = require('../actions/commands/severalWords');
+const metagramma = require('../actions/tasks/metagramma');
+const logogrif = require('../actions/tasks/logogrif');
 
-module.exports = async (msg) => {
-    let {text} = msg;
-    const correctWords = dictionaryArray.filter(word => word !== text && (isLogogrif(text, word) || isMetagramma(text, word)));
-    msg.addTextResponse(correctWords.join('\n') || "Слов не найдено");
-};
+module.exports = severalWordsCommand([metagramma, logogrif]);

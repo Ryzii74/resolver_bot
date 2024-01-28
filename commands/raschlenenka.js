@@ -1,4 +1,4 @@
-const dictionaryObject = require('../libs/dictionaryObject');
+const dictionaryObject = require('../actions/sources/dictionaryObject');
 
 module.exports = function (msg) {
     const {text} = msg;

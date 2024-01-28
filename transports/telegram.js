@@ -1,8 +1,8 @@
 const TelegramBot = require("node-telegram-bot-api");
 const config = require("../config");
-const {emitter, EVENTS} = require("../libs/eventEmitter");
+const {emitter, EVENTS} = require("./utils/eventEmitter");
 const bot = new TelegramBot(config.bot.token, {polling: true});
-const {Message, RESPONSE_TYPES} = require('../models/message');
+const {Message, RESPONSE_TYPES} = require('./utils/message');
 
 bot.on('message', (data) => {
   const msg = new Message(data);

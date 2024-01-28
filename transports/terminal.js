@@ -1,6 +1,6 @@
-const {emitter, EVENTS} = require("../libs/eventEmitter");
+const {emitter, EVENTS} = require("./utils/eventEmitter");
 const readline = require('readline');
-const {Message, RESPONSE_TYPES} = require("../models/message");
+const {Message, RESPONSE_TYPES} = require("./utils/message");
 
 const rl = readline.createInterface(process.stdin, process.stdout);
 rl.prompt();

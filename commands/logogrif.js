@@ -1,8 +1,4 @@
-const dictionaryArray = require('../libs/dictionaryArray');
-const {isLogogrif} = require('../libs/tasks');
+const severalWordsCommand = require('../actions/commands/severalWords');
+const task = require('../actions/tasks/logogrif');
 
-module.exports = async (msg) => {
-    let {text} = msg;
-    const correctWords = dictionaryArray.filter(word => word !== text && isLogogrif(text, word));
-    msg.addTextResponse(correctWords.join('\n') || "Слов не найдено");
-};
+module.exports = severalWordsCommand(task);

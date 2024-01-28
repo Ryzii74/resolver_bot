@@ -1,5 +1,5 @@
 const {get: getUserLocation} = require('../libs/userLocations');
-const {RESPONSE_TYPES} = require("../models/message");
+const {RESPONSE_TYPES} = require("../transports/utils/message");
 
 module.exports = (msg) => {
     const {text, userId} = msg;

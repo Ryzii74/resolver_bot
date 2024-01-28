@@ -12,6 +12,10 @@ const modes = {
   meta: require('../commands/metagramma'),
   logo: require('../commands/logogrif'),
   metalogo: require('../commands/metalogo'),
+  brukva: require('../commands/brukva'),
+  matrix: require('../commands/matrix'),
+  subword: require('../commands/subword'),
+  longword: require('../commands/longword'),
 };
 
 const MODE_NAMES = {
@@ -25,6 +29,10 @@ const MODE_NAMES = {
   meta: 'Метаграммы',
   logo: 'Логогрифы',
   metalogo: 'Метаграммы/Логогрифы',
+  brukva: 'Брюква',
+  matrix: 'Матрицы',
+  subword: 'Подслова',
+  longword: 'Надслова',
 };
 
 module.exports = {
@@ -41,8 +49,13 @@ module.exports = {
     return userModes[userId];
   },
 
-  runMode: (msg) => {
+  runMode: async (msg) => {
     const mode = userModes[msg.userId] || defaultMode;
-    return modes[mode](msg);
+    try {
+      return await modes[mode](msg);
+    } catch (err) {
+      console.log(err);
+      msg.addTextResponse( `Ошибка: ${err.message}`);
+    }
   },
 };
