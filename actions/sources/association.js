@@ -23,6 +23,9 @@ module.exports = (word) => {
     if (data.error) {
       throw new Error(`${data.error.message} (${word})`);
     }
+    if (!data.associations?.length) {
+      throw new Error(`Ассоциации не найдены (${word})`);
+    }
 
     return data.associations.map(el => el.name.replaceAll('ё', 'е'));
   };
