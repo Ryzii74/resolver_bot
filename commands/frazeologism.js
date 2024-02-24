@@ -1,4 +1,4 @@
-const phrases = require('../actions/sources/phrasesArray');
+const phrases = require('../actions/sources/phrasesArray')();
 const wikislovar = require('../data/wikislovar.json');
 
 module.exports = async (msg) => {
