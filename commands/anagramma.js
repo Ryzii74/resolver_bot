@@ -1,7 +1,8 @@
-const dictionaryArray = require('../actions/sources/dictionaryArray')();
+const dictionary = require('../libs/dictionary');
 
 module.exports = async (msg) => {
     let {text} = msg;
+    const wordsArray = dictionary.getArray(text);
     let isAnyLettersCount = text.includes('*');
     let minusCount = (text.match(/-/g) || []).length;
     const wordLength = text.length - minusCount * 2 - Number(isAnyLettersCount);
@@ -22,7 +23,7 @@ module.exports = async (msg) => {
     }
 
     const lettersLength = letters.length;
-    const correctWords = dictionaryArray.filter((word) => {
+    const correctWords = wordsArray.filter((word) => {
         if (isAnyLettersCount) {
             if (word.length < wordLength) return false;
         } else {
@@ -39,5 +40,5 @@ module.exports = async (msg) => {
 
         return true;
     });
-    msg.addTextResponse(correctWords.join('\n') || "Слов не найдено");
+    msg.addTextResponse(correctWords.join('\n') || 'Слов не найдено');
 };
