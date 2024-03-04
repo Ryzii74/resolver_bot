@@ -22,7 +22,7 @@ module.exports = async (msg) => {
     }
 
     const repeats = getRepeats(associations);
-    msg.addTextResponse(repeats.join('\n') || "Нет результатов");
+    msg.addAnswersResponse(repeats);
 };
 
 function getRepeats(associations) {

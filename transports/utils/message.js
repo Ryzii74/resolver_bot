@@ -47,7 +47,7 @@ class Message {
   }
 
   addAnswersResponse(answers, joiner = '\n') {
-    this.addTextResponse(answers.length ? answers.join(joiner) : "Нет результатов");
+    this.addTextResponse(answers.length ? answers.map(answer => `\`${answer}\``).join(joiner) : "Нет результатов");
   }
 }
 

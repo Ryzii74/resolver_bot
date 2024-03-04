@@ -40,5 +40,5 @@ module.exports = async (msg) => {
 
         return true;
     });
-    msg.addTextResponse(correctWords.join('\n') || 'Слов не найдено');
+    msg.addAnswersResponse(correctWords);
 };

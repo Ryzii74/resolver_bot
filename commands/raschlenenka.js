@@ -45,8 +45,8 @@ module.exports = function (msg) {
         return;
     }
 
-    msg.addTextResponse(correctWords.join('\n'));
-    msg.addTextResponse(correctWords2.join('\n'));
+    msg.addAnswersResponse(correctWords);
+    msg.addAnswersResponse(correctWords2);
 };
 
 function findTwoWords(dictionaryObject, words) {
