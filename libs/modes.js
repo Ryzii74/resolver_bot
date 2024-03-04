@@ -1,4 +1,5 @@
 const userModes = {};
+const userDisableAutos = {};
 
 const MODES = {
   anagramma: { exec: require('../commands/anagramma'), name: 'Анаграмма' },
@@ -61,6 +62,10 @@ module.exports = {
   },
 
   autoDetectMode: (msg) => {
+    if (userDisableAutos[msg.userId]) {
+      return null;
+    }
+
     const {text} = msg;
     const symbols = text.split('');
     const specialSymbols = ['?', '*', ' '];
@@ -74,6 +79,15 @@ module.exports = {
 
     return null;
   },
+
+  switchAutoForUser(userId) {
+    userDisableAutos[userId] = !userDisableAutos[userId];
+    if (!!userDisableAutos[userId]) {
+      return 'Автоматическое определение команд выключено!';
+    } else {
+      return 'Автоматическое определение команд включено!';
+    }
+  }
 };
 
 function getModeForUser(userId) {
