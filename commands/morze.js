@@ -93,6 +93,8 @@ module.exports = async (msg) => {
 };
 
 function translate(text, dictionary, symbols) {
+    return translateBySymbols(text, symbols);
+
     if (text.includes(' ')) {
         return translateBySymbols(text, symbols);
     } else {
@@ -103,9 +105,41 @@ function translate(text, dictionary, symbols) {
 function translateBySymbols(text, symbols) {
     const translation = text
         .split(' ')
-        .map(word => symbols[word] || '?')
+        .map(word => translateGroup(word, symbols) || '?')
         .join('');
     return [translation];
+}
+
+function translateGroup(word, symbols) {
+    if (symbols[word]) {
+        return symbols[word];
+    }
+
+    const questionMarksCount = (word.match(/\?/g) || []).length;
+    console.log(questionMarksCount)
+    if (!questionMarksCount) {
+        return null;
+    }
+
+    const letters = [];
+    for (let i = 0; i < 2**questionMarksCount; i++) {
+        const newWordArray = word.split('');
+        for (let j = 0; j < questionMarksCount; j++) {
+            const questionMarkIndex = newWordArray.findIndex(el => el === '?');
+            const power = 2**j;
+            newWordArray[questionMarkIndex] = (i & power) === power ? '.' : '-';
+        }
+
+        const newWord = newWordArray.join('');
+        if (symbols[newWord]) {
+            letters.push(symbols[newWord]);
+        }
+    }
+    if (letters.length) {
+        return `[${letters.join('')}]`;
+    }
+
+    return null;
 }
 
 function translateFullText(text, dictionary, symbols) {
