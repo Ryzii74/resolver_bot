@@ -48,7 +48,7 @@ class Message {
 
   addAnswersResponse(answers, joiner = '\n', header) {
     let response = [];
-    response.push(`*${header}*`);
+    header && response.push(`*${header}*`);
     if (answers.length) {
       response = [...response, ...answers.map(answer => `\`${answer}\``)];
     } else {
