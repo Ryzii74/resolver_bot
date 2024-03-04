@@ -16,6 +16,7 @@ const MODES = {
   matrix: { exec: require('../commands/matrix'), name: 'Матрицы' },
   subword: { exec: require('../commands/subword'), name: 'Подслова' },
   longword: { exec: require('../commands/longword'), name: 'Надслова' },
+  alphabet: { exec: require('../commands/alphabet'), name: 'Цифры по алфавиту' },
 };
 const defaultMode = MODES.anagramma;
 
@@ -36,6 +37,7 @@ const ALIASES = {
   matrix: MODES.matrix,
   subword: MODES.subword,
   longword: MODES.longword,
+  alf: MODES.alphabet,
 };
 
 module.exports = {
@@ -61,8 +63,13 @@ module.exports = {
   autoDetectMode: (msg) => {
     const {text} = msg;
     const symbols = text.split('');
-    if (symbols.every(symbol => ['.', '-', ' ', '?', '*'].includes(symbol))) {
+    const specialSymbols = ['?', '*', ' '];
+    if (symbols.every(symbol => ['.', '-', ...specialSymbols].includes(symbol))) {
       return MODES.morze;
+    }
+
+    if (symbols.every(symbol => ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ...specialSymbols].includes(symbol))) {
+      return MODES.alphabet;
     }
 
     return null;
