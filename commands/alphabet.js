@@ -12,6 +12,6 @@ module.exports = function (msg) {
 
     const enTranslationCycle = words.map(word => lettersEn[(Number(word) - 1) % lettersEn.length] || '?').join('');
     const ruTranslationCycle = words.map(word => lettersRu[(Number(word) - 1) % lettersRu.length] || '?').join('');
-    msg.addTextResponse(`EN цикл: \`${enTranslationCycle}\``);
-    msg.addTextResponse(`RU цикл: \`${ruTranslationCycle}\``);
+    if (enTranslationCycle !== enTranslation) msg.addTextResponse(`EN цикл: \`${enTranslationCycle}\``);
+    if (ruTranslationCycle !== ruTranslation) msg.addTextResponse(`RU цикл: \`${ruTranslationCycle}\``);
 };
