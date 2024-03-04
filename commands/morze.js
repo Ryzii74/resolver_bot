@@ -88,8 +88,8 @@ module.exports = async (msg) => {
     const enTranslation = translate(text, dictionaryArrayEn, letters.en);
     const ruTranslation = translate(text, dictionaryArray, letters.ru);
 
-    msg.addAnswersResponse(['АНГЛИЙСКИЙ', ...enTranslation]);
-    msg.addAnswersResponse(['РУССКИЙ', ...ruTranslation]);
+    msg.addAnswersResponse(enTranslation, '\n', 'АНГЛИЙСКИЙ');
+    msg.addAnswersResponse(ruTranslation, '\n', 'РУССКИЙ');
 };
 
 function translate(text, dictionary, symbols) {

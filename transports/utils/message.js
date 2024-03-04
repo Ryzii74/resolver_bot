@@ -46,8 +46,16 @@ class Message {
     text && this.addResponse(RESPONSE_TYPES.TEXT, text);
   }
 
-  addAnswersResponse(answers, joiner = '\n') {
-    this.addTextResponse(answers.length ? answers.map(answer => `\`${answer}\``).join(joiner) : "Нет результатов");
+  addAnswersResponse(answers, joiner = '\n', header) {
+    let response = [];
+    response.push(`*${header}*`);
+    if (answers.length) {
+      response = [...response, ...answers.map(answer => `\`${answer}\``)];
+    } else {
+      response.push("Нет результатов");
+    }
+
+    this.addTextResponse(response.join(joiner));
   }
 }
 

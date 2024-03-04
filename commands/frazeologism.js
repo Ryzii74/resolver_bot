@@ -13,7 +13,7 @@ module.exports = async (msg) => {
         return;
     }
 
-    allPhrases.length && msg.addAnswersResponse(['ЧАСТИЧНЫЕ СОВПАДЕНИЯ СЛОВ', ...allPhrases]);
-    directPhrases.length && msg.addAnswersResponse(['ПОЛНЫЕ СОВПАДЕНИЯ СЛОВ', ...directPhrases]);
-    wikiPhrases.length && msg.addAnswersResponse(['ВИКИСЛОВАРЬ', ...wikiPhrases]);
+    allPhrases.length && msg.addAnswersResponse(allPhrases, '\n', 'ЧАСТИЧНЫЕ СОВПАДЕНИЯ СЛОВ');
+    directPhrases.length && msg.addAnswersResponse(directPhrases, '\n', 'ПОЛНЫЕ СОВПАДЕНИЯ СЛОВ');
+    wikiPhrases.length && msg.addAnswersResponse(wikiPhrases, '\n', 'ВИКИСЛОВАРЬ');
 };
