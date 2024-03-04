@@ -48,14 +48,24 @@ module.exports = {
     return `Установлен режим "${userModes[userId].name}"`;
   },
 
-  runMode: async (msg) => {
-    const mode = getModeForUser(msg.userId);
+  runMode: async (msg, parsedMode) => {
+    const mode = parsedMode || getModeForUser(msg.userId);
     try {
       return await mode.exec(msg);
     } catch (err) {
       console.log(err);
       msg.addTextResponse( `Ошибка: ${err.message}`);
     }
+  },
+
+  autoDetectMode: (msg) => {
+    const {text} = msg;
+    const symbols = text.split('');
+    if (symbols.every(symbol => ['.', '-', ' ', '?'].includes(symbol))) {
+      return MODES.morze;
+    }
+
+    return null;
   },
 };
 

@@ -1,5 +1,5 @@
 const {emitter, EVENTS} = require('./eventEmitter');
-const {changeModeForUser, runMode} = require('../../libs/modes');
+const {changeModeForUser, runMode, autoDetectMode} = require('../../libs/modes');
 const {set: setUserLocation} = require('../../libs/userLocations');
 
 emitter.on(EVENTS.MESSAGE, async (msg) => {
@@ -9,7 +9,8 @@ emitter.on(EVENTS.MESSAGE, async (msg) => {
         return sendResponse(msg);
     }
 
-    await runMode(msg);
+    const parsedMode = autoDetectMode(msg);
+    await runMode(msg, parsedMode);
     sendResponse(msg);
 });
 
