@@ -116,7 +116,6 @@ function translateGroup(word, symbols) {
     }
 
     const questionMarksCount = (word.match(/\?/g) || []).length;
-    console.log(questionMarksCount)
     if (!questionMarksCount) {
         return null;
     }

@@ -61,7 +61,7 @@ module.exports = {
   autoDetectMode: (msg) => {
     const {text} = msg;
     const symbols = text.split('');
-    if (symbols.every(symbol => ['.', '-', ' ', '?'].includes(symbol))) {
+    if (symbols.every(symbol => ['.', '-', ' ', '?', '*'].includes(symbol))) {
       return MODES.morze;
     }
 
