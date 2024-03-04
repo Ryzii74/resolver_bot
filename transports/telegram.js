@@ -13,7 +13,7 @@ bot.on('message', (data) => {
   }
 
   if (msg.text) {
-    console.log(`Входящее сообщение от ${msg.username}: ${msg.text}`);
+    console.log(`Входящее сообщение от ${msg.username}(${msg.userId}): ${msg.text}`);
     emitter.emit(EVENTS.MESSAGE, msg);
   }
 
