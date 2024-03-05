@@ -18,6 +18,10 @@ const MODES = {
   subword: { exec: require('../commands/subword'), name: 'Подслова' },
   longword: { exec: require('../commands/longword'), name: 'Надслова' },
   alphabet: { exec: require('../commands/alphabet'), name: 'Цифры по алфавиту' },
+  bacon: { exec: require('../commands/bacon'), name: 'Бэкон' },
+  bodo: { exec: require('../commands/bodo'), name: 'Бодо' },
+  binary: { exec: require('../commands/binary'), name: 'Двоичка' },
+  tm: { exec: require('../commands/mendeleev'), name: 'Таблица Менделеева' },
 };
 const defaultMode = MODES.anagramma;
 
@@ -39,6 +43,10 @@ const ALIASES = {
   subword: MODES.subword,
   longword: MODES.longword,
   alf: MODES.alphabet,
+  bacon: MODES.bacon,
+  bodo: MODES.bodo,
+  binary: MODES.binary,
+  tm: MODES.tm,
 };
 
 module.exports = {
@@ -53,8 +61,9 @@ module.exports = {
 
   runMode: async (msg, parsedMode) => {
     const mode = parsedMode || getModeForUser(msg.userId);
+    const modes = Array.isArray(mode) ? mode : [mode];
     try {
-      return await mode.exec(msg);
+      return await Promise.all(modes.map(mode => mode.exec(msg)));
     } catch (err) {
       console.log(err);
       msg.addTextResponse( `Ошибка: ${err.message}`);
@@ -73,8 +82,12 @@ module.exports = {
       return MODES.morze;
     }
 
+    if (symbols.every(symbol => ['1', '0', ...specialSymbols].includes(symbol))) {
+      return [MODES.bacon, MODES.bodo, MODES.binary];
+    }
+
     if (symbols.every(symbol => ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ...specialSymbols].includes(symbol))) {
-      return MODES.alphabet;
+      return [MODES.alphabet, MODES.tm];
     }
 
     return null;
