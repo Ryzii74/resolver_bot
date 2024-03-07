@@ -22,6 +22,7 @@ const MODES = {
   bodo: { exec: require('../commands/bodo'), name: 'Бодо' },
   binary: { exec: require('../commands/binary'), name: 'Двоичка' },
   tm: { exec: require('../commands/mendeleev'), name: 'Таблица Менделеева' },
+  rebus: { exec: require('../commands/rebus'), name: 'Ребусы' },
 };
 const defaultMode = MODES.anagramma;
 
@@ -47,6 +48,7 @@ const ALIASES = {
   bodo: MODES.bodo,
   binary: MODES.binary,
   tm: MODES.tm,
+  rebus: MODES.rebus,
 };
 
 module.exports = {
