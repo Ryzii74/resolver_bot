@@ -19,8 +19,8 @@ module.exports = async (msg) => {
            correctWordsShort.push(wordPrepared);
        }
     });
-    correctWordsLong.sort((a,b) => a.length - b.length);
-    correctWordsShort.sort((a,b) => a.length - b.length);
+    correctWordsLong.sort((a,b) => b.length - a.length);
+    correctWordsShort.sort((a,b) => b.length - a.length);
     msg.addAnswersResponse(correctWordsLong, '\n', 'ДЛИННЫЕ');
     msg.addAnswersResponse(correctWordsShort, '\n', 'КОРОТКИЕ');
 };
