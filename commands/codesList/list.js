@@ -1,10 +1,14 @@
 class CodeList {
-    constructor(data) {
+    constructor(data, done) {
         this.data = data || [];
+        this.done = done || [];
     }
 
     getData() {
-        return this.data;
+        return {
+            data: this.data,
+            done: this.done,
+        };
     }
 
     setCell(line, cell, text) {
@@ -12,8 +16,19 @@ class CodeList {
         this.data[line - 1][cell - 1] = text;
     }
 
+    setDone(line, done) {
+        this.done[line - 1] = done;
+    }
+
     show() {
-        return this.data.map((line, index) => `${index + 1}. ${line.join(' ')}`).join('\n');
+        return this.data.map((line, index) => {
+            const done = this.done[index];
+            let row = `${index + 1}. ${line.join(' ')}`;
+            if (done) {
+                row = `~${row}~`;
+            }
+            return row;
+        }).join('\n');
     }
 
     getColumn(columnNumber) {

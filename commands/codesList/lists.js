@@ -1,14 +1,14 @@
-const List = require('./list');
+const CodeList = require('./list');
 
-class Lists {
+class CodeLists {
     constructor(lists) {
-        const data = lists || [[]];
-        this.lists = data.map(list => new List(list));
+        const data = lists || { data: [], done: [] };
+        this.lists = data.map(list => new CodeList(list.data, list.done));
         this.current = data.length;
     }
 
     add() {
-       this.lists.push(new List());
+       this.lists.push(new CodeList());
        this.current = this.lists.length;
     }
 
@@ -46,6 +46,11 @@ class Lists {
         const list = this.lists[this.current - 1];
         list.setCell(line, cell, text);
     }
+
+    setDone(line, done) {
+        const list = this.lists[this.current - 1];
+        list.setDone(line, done);
+    }
 }
 
-module.exports = Lists;
+module.exports = CodeLists;

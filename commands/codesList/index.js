@@ -9,10 +9,13 @@ const help = `*КОМАНДЫ*
 очистить - удалить все списки
 выбери 1 - выбрать список № 1
 покажи 1 - показать список № 1
-столбец 2 - выбрать все данные из столбец № 2
 
-1 дом 32 - добавить строку с номером 1 и 2 ячейками дом и 32
+*РАБОТА С ТЕКУЩИМ ЛИСТОМ*
+1 1 дом - сохранить в 1ую строку 1ую ячейку слово "дом"
 3 = 2 - установить 3ью строку на 2ое место
+столбец 2 - выбрать все данные из столбец № 2
++ 2 - установить строку № 2 как готовую
+- 2 - установить строку № 2 как неготовую
 `;
 
 module.exports = async (msg) => {
@@ -57,6 +60,30 @@ module.exports = async (msg) => {
         case "покажи": {
             const listNumber = Number(text.split(' ')[1]) || lists.current;
             const data = lists.show(listNumber);
+            msg.addTextResponse(data);
+            break;
+        }
+        case "+": {
+            const lineNumber = Number(text.split(' ')[1]);
+            if (Number.isNaN(lineNumber)) {
+                msg.addTextResponse("Неверный номер строки");
+                return;
+            }
+            lists.setDone(lineNumber, true);
+
+            const data = lists.show();
+            msg.addTextResponse(data);
+            break;
+        }
+        case "-": {
+            const lineNumber = Number(text.split(' ')[1]);
+            if (Number.isNaN(lineNumber)) {
+                msg.addTextResponse("Неверный номер строки");
+                return;
+            }
+            lists.setDone(lineNumber, false);
+
+            const data = lists.show();
             msg.addTextResponse(data);
             break;
         }
