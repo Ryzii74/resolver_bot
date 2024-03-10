@@ -52,6 +52,7 @@ async function sendTextMessage(userId, text, isRepeated) {
         .replaceAll('!', '\\!')
         .replaceAll('.', '\\.')
         .replaceAll('-', "\\'");
+    console.log(`Отправка сообщения пользователю ${userId}: ${preparedText}`)
     await bot.sendMessage(userId, preparedText, { parse_mode: 'MarkdownV2' });
   } catch (err) {
     console.log(err.code, err.response.body);
