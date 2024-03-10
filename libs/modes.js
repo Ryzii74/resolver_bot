@@ -23,8 +23,9 @@ const MODES = {
   binary: { exec: require('../commands/binary'), name: 'Двоичка' },
   tm: { exec: require('../commands/mendeleev'), name: 'Таблица Менделеева' },
   rebus: { exec: require('../commands/rebus'), name: 'Ребусы' },
+  list: { exec: require('../commands/codesList'), name: 'Список кодов' },
 };
-const defaultMode = MODES.anagramma;
+const defaultMode = MODES.list;
 
 const ALIASES = {
   anagramma: MODES.anagramma,
@@ -49,6 +50,7 @@ const ALIASES = {
   binary: MODES.binary,
   tm: MODES.tm,
   rebus: MODES.rebus,
+  list: MODES.list,
 };
 
 module.exports = {
