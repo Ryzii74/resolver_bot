@@ -1,3 +1,7 @@
+if (process.loadEnvFile) {
+    process.loadEnvFile();
+}
+
 require('./actions/sources');
 require('./transports');
 
