@@ -98,9 +98,9 @@ module.exports = {
   switchAutoForUser(userId) {
     userDisableAutos[userId] = !userDisableAutos[userId];
     if (!!userDisableAutos[userId]) {
-      return 'Автоматическое определение команд выключено\\!';
+      return 'Автоматическое определение команд выключено!';
     } else {
-      return 'Автоматическое определение команд включено\\!';
+      return 'Автоматическое определение команд включено!';
     }
   }
 };
