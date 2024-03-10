@@ -2,7 +2,7 @@ const CodeList = require('./list');
 
 class CodeLists {
     constructor(lists) {
-        const data = lists || { data: [], done: [] };
+        const data = lists || [{ data: [], done: [] }];
         this.lists = data.map(list => new CodeList(list.data, list.done));
         this.current = data.length;
     }
