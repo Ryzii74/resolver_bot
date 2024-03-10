@@ -48,7 +48,9 @@ emitter.on(EVENTS.RESPONSE, async (msg) => {
 
 async function sendTextMessage(userId, text, isRepeated) {
   try {
-    const preparedText = text.replaceAll('!', '\\!');
+    const preparedText = text
+        .replaceAll('!', '\\!')
+        .replaceAll('.', '\\.');
     await bot.sendMessage(userId, preparedText, { parse_mode: 'MarkdownV2' });
   } catch (err) {
     console.log(err.code, err.response.body);
