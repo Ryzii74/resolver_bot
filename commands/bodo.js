@@ -66,7 +66,7 @@ const bodoDigits = {
 
 module.exports = function (msg) {
     const {text} = msg;
-    const words = text.split(' ');
+    const words = text.split(' ').map(word => word.length >= 5 ? word : word.padStart(5, '0'));
     const backwardWords = words.map(word => word.replaceAll('1', '2').replaceAll('0', '1').replaceAll('2', '0'));
     const phrase1 = words.map(word => bodo[word] || '?').join('');
     const phrase2 = backwardWords.map(word => bodo[word] || '?').join('');
