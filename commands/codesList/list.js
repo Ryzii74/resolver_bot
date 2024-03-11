@@ -41,8 +41,7 @@ class CodeList {
         const formattedData = this.getLines().map((line, index) => {
             return [index + 1, ...line, ...Array(maxLength - line.length).fill('')];
         });
-        console.log(formattedData);
-        return table(formattedData);
+        return '```\n' + table(formattedData) + '\n```';
     }
 
     getColumn(columnNumber) {

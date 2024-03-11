@@ -1868,7 +1868,7 @@
     ],
     "cpk-hex": "668f8f",
     "image": {
-      "title": "12 Grams Polycrystalline Germanium, 2*3 cm",
+      "title": "12 Grams Polycrystalline Germanium, 2\\*3 cm",
       "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Polycrystalline-germanium.jpg",
       "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/germanium.php"
     },
@@ -2671,7 +2671,7 @@
     "bohr_model_image": "https://storage.googleapis.com/search-ar-edu/periodic-table/element_047_silver/element_047_silver_srp_th.png",
     "bohr_model_3d": "https://storage.googleapis.com/search-ar-edu/periodic-table/element_047_silver/element_047_silver.glb",
     "spectral_img": null,
-    "summary": "Silver is a chemical element with symbol Ag (Greek:άργυρος árguros, Latin:argentum, both from the Indo-European root *h₂erǵ- for \"grey\" or \"shining\") and atomic number 47. A soft, white, lustrous transition metal, it possesses the highest electrical conductivity, thermal conductivity and reflectivity of any metal. The metal occurs naturally in its pure, free form (native silver), as an alloy with gold and other metals, and in minerals such as argentite and chlorargyrite.",
+    "summary": "Silver is a chemical element with symbol Ag (Greek:άργυρος árguros, Latin:argentum, both from the Indo-European root \\*h₂erǵ- for \"grey\" or \"shining\") and atomic number 47. A soft, white, lustrous transition metal, it possesses the highest electrical conductivity, thermal conductivity and reflectivity of any metal. The metal occurs naturally in its pure, free form (native silver), as an alloy with gold and other metals, and in minerals such as argentite and chlorargyrite.",
     "symbol": "Ag",
     "xpos": 11,
     "ypos": 5,
@@ -5592,7 +5592,7 @@
       2
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d3",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d3 7s2",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d3 7s2",
     "electron_affinity": null,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -5639,7 +5639,7 @@
       2
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d4",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d4 7s2",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d4 7s2",
     "electron_affinity": null,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -5686,7 +5686,7 @@
       2
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d5",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d5 7s2",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d5 7s2",
     "electron_affinity": null,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -5733,7 +5733,7 @@
       2
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d6",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d6 7s2",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d6 7s2",
     "electron_affinity": null,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -5780,7 +5780,7 @@
       2
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d7",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d7 7s2",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d7 7s2",
     "electron_affinity": null,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -5827,7 +5827,7 @@
       2
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d8",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d9 7s1",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d9 7s1",
     "electron_affinity": null,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -5874,7 +5874,7 @@
       2
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d9",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d10 7s1",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d10 7s1",
     "electron_affinity": 151,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -5921,7 +5921,7 @@
       2
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d10 7s2",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d10 7s2",
     "electron_affinity": null,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -5968,7 +5968,7 @@
       3
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p1",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d10 7s2 7p1",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d10 7s2 7p1",
     "electron_affinity": 66.6,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -6015,7 +6015,7 @@
       4
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p2",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d10 7s2 7p2",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d10 7s2 7p2",
     "electron_affinity": null,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -6062,7 +6062,7 @@
       5
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p3",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d10 7s2 7p3",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d10 7s2 7p3",
     "electron_affinity": 35.3,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -6109,7 +6109,7 @@
       6
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p4",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d10 7s2 7p4",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d10 7s2 7p4",
     "electron_affinity": 74.9,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -6156,7 +6156,7 @@
       7
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p5",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d10 7s2 7p5",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d10 7s2 7p5",
     "electron_affinity": 165.9,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -6203,7 +6203,7 @@
       8
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p6",
-    "electron_configuration_semantic": "*[Rn] 5f14 6d10 7s2 7p6",
+    "electron_configuration_semantic": "\\*[Rn] 5f14 6d10 7s2 7p6",
     "electron_affinity": 5.40318,
     "electronegativity_pauling": null,
     "ionization_energies": [],
@@ -6251,7 +6251,7 @@
       1
     ],
     "electron_configuration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p6 8s1",
-    "electron_configuration_semantic": "*[Uuo] 8s1",
+    "electron_configuration_semantic": "\\*[Uuo] 8s1",
     "electron_affinity": 63.87,
     "electronegativity_pauling": null,
     "ionization_energies": [],

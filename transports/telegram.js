@@ -48,7 +48,7 @@ emitter.on(EVENTS.RESPONSE, async (msg) => {
 
 async function sendTextMessage(userId, text, isRepeated) {
   try {
-    const preparedText = text.replaceAll(/[!#\.\-\+\=_\*\[\]\(\)~\{\}\!>#\|`]/g, '\\$&');
+    const preparedText = text.replaceAll(/[!#\.\-\+\=_\[\]\(\)~\{\}\!>#\|]/g, '\\$&');
     console.log(`Отправка сообщения пользователю ${userId}: ${preparedText}`)
     await bot.sendMessage(userId, preparedText, { parse_mode: 'MarkdownV2' });
   } catch (err) {
