@@ -1,6 +1,7 @@
 const Lists = require('./lists');
 const repository = require('./repository');
 const getIp = require('../../server/utils/getIp');
+const config = require('../../config');
 
 let listsByUsers = {};
 
@@ -36,7 +37,7 @@ module.exports = async (msg) => {
             break;
         case "веб": {
             const ip = await getIp();
-            msg.addTextResponse(`http://${ip}/list/${userId}/${lists.current}`);
+            msg.addTextResponse(`http://${ip}:${config.port}/list/${userId}/${lists.current}`);
         }
         case "новый":
             lists.add();

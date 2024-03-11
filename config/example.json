@@ -4,5 +4,8 @@
     "accepted_users_list": [ // user ids allowed to chat with bot
       123
     ]
+  },
+  "server": {
+    "port": 8080
   }
 }

@@ -3,5 +3,7 @@ node_modules
 
 package-lock.json
 
+config/index.json
+
 data/index.json
 data/lists.json
