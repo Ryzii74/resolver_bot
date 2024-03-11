@@ -37,7 +37,7 @@ module.exports = async (msg) => {
             break;
         case "веб": {
             const ip = await getIp();
-            msg.addTextResponse(`http://${ip}:${config.port}/list/${userId}/${lists.current}`);
+            msg.addTextResponse(`http://${ip}:${config.server.port}/list/${userId}/${lists.current}`);
         }
         case "новый":
             lists.add();
