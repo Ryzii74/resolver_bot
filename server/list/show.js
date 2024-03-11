@@ -6,7 +6,7 @@ module.exports = (userId, listNumber) => {
         return "Пользователь не найден";
     }
 
-    const list = lists.getList(listNumber);
+    const list = lists.show(listNumber);
     if (!list) {
         return "Список не найден";
     }
