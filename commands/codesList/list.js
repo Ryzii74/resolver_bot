@@ -39,7 +39,7 @@ class CodeList {
     show() {
         const maxLength = this.getLines().reduce((max, line) => Math.max(max, line.length), 0);
         const formattedData = this.getLines().map((line, index) => {
-            return [index + 1, ...line, ...Array(maxLength - line.length).fill('')];
+            return [`${index + 1}${this.done[index] ? '+' : ''}`, ...line, ...Array(maxLength - line.length).fill('')];
         });
         return '```\n' + table(formattedData) + '\n```';
     }
