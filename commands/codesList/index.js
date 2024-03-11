@@ -1,5 +1,6 @@
 const Lists = require('./lists');
 const repository = require('./repository');
+const getIp = require('../../server/utils/getIp');
 
 let listsByUsers = {};
 
@@ -11,11 +12,13 @@ const help = `*КОМАНДЫ*
 покажи 1 - показать список № 1
 
 *РАБОТА С ТЕКУЩИМ ЛИСТОМ*
+веб - вернет url для просмотра списка
+покажи - показать текущий список
+столбец 2 - выбрать все данные из столбец № 2
 1 дом#56 - сохранить в 1ую строку значения "дом" и "56"
 3 = 2 - установить 3ью строку на 2ое место
-столбец 2 - выбрать все данные из столбец № 2
-+ 2 - установить строку № 2 как готовую
-- 2 - установить строку № 2 как неготовую
++ 2 - пометить строку № 2 как готовую
+- 2 - пометить строку № 2 как неготовую
 `;
 
 module.exports = async (msg) => {
@@ -31,6 +34,10 @@ module.exports = async (msg) => {
         case "список":
             msg.addTextResponse(lists.getState());
             break;
+        case "веб": {
+            const ip = await getIp();
+            msg.addTextResponse(`http://${ip}/list/${userId}/${lists.current}`);
+        }
         case "новый":
             lists.add();
             msg.addTextResponse("Новый список добавлен!");
@@ -136,3 +143,7 @@ module.exports.Init = async () => {
         listsByUsers[userId] = new Lists(lists[userId]);
     });
 }
+
+module.exports.getLists = (userId) => {
+    return listsByUsers[userId];
+};

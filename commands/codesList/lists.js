@@ -24,6 +24,11 @@ class CodeLists {
         return this.lists.map(list => list.getData());
     }
 
+    getList(listNumber) {
+        const list = this.lists[listNumber - 1];
+        return list && list.getData();
+    }
+
     moveLine(line, to) {
         return this.currentList.moveLine(line, to);
     }
