@@ -11,7 +11,7 @@ const help = `*КОМАНДЫ*
 покажи 1 - показать список № 1
 
 *РАБОТА С ТЕКУЩИМ ЛИСТОМ*
-1 1 дом - сохранить в 1ую строку 1ую ячейку слово "дом"
+1 дом#56 - сохранить в 1ую строку значения "дом" и "56"
 3 = 2 - установить 3ью строку на 2ое место
 столбец 2 - выбрать все данные из столбец № 2
 + 2 - установить строку № 2 как готовую
@@ -110,12 +110,12 @@ module.exports = async (msg) => {
                     msg.addTextResponse("Строка перемещена!");
                     break;
                 default:
-                    const cell = Number(command);
+                    const cell = Number(words[1]);
                     if (Number.isNaN(cell)) {
-                        msg.addTextResponse("Неверный формат ячейки");
-                        return;
+                        lists.setLine(line, words.slice(1).join(' '));
+                    } else {
+                        lists.setCell(line, cell, words.slice(2).join(' '));
                     }
-                    lists.setCell(line, cell, words.slice(2).join(' '));
 
                     const data = lists.show();
                     msg.addTextResponse(data);

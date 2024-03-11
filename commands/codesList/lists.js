@@ -47,6 +47,11 @@ class CodeLists {
         list.setCell(line, cell, text);
     }
 
+    setLine(line, text) {
+        const list = this.lists[this.current - 1];
+        list.setLine(line, text);
+    }
+
     setDone(line, done) {
         const list = this.lists[this.current - 1];
         list.setDone(line, done);
