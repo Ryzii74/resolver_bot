@@ -7,6 +7,10 @@ class CodeLists {
         this.current = data.length;
     }
 
+    get currentList() {
+        return this.lists[this.current - 1];
+    }
+
     add() {
        this.lists.push(new CodeList());
        this.current = this.lists.length;
@@ -20,8 +24,8 @@ class CodeLists {
         return this.lists.map(list => list.getData());
     }
 
-    moveLine() {
-        // TODO
+    moveLine(line, to) {
+        return this.currentList.moveLine(line, to);
     }
 
     show(listNumber) {
@@ -38,23 +42,19 @@ class CodeLists {
     }
 
     getColumn(columnNumber) {
-        const list = this.lists[this.current - 1];
-        return list.getColumn(columnNumber);
+        return this.currentList.getColumn(columnNumber);
     }
 
     setCell(line, cell, text) {
-        const list = this.lists[this.current - 1];
-        list.setCell(line, cell, text);
+        this.currentList.setCell(line, cell, text);
     }
 
     setLine(line, text) {
-        const list = this.lists[this.current - 1];
-        list.setLine(line, text);
+        this.currentList.setLine(line, text);
     }
 
     setDone(line, done) {
-        const list = this.lists[this.current - 1];
-        list.setDone(line, done);
+        this.currentList.setDone(line, done);
     }
 }
 

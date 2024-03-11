@@ -100,15 +100,18 @@ module.exports = async (msg) => {
 
             const command = words[1];
             switch (command) {
-                case "=":
+                case "=": {
                     const to = Number(words[2]);
                     if (Number.isNaN(to)) {
                         msg.addTextResponse("Неверный формат строки");
                         return;
                     }
                     lists.moveLine(line, to);
-                    msg.addTextResponse("Строка перемещена!");
+
+                    const data = lists.show();
+                    msg.addTextResponse(data);
                     break;
+                }
                 default:
                     const cell = Number(words[1]);
                     if (Number.isNaN(cell)) {

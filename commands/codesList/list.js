@@ -47,6 +47,12 @@ class CodeList {
     getColumn(columnNumber) {
         return this.getLines().map((line) => line[columnNumber - 1] || '?').join(' ');
     }
+
+    moveLine(line, to) {
+        const element = this.data[line - 1];
+        this.data.splice(line - 1, 1);
+        this.data.splice(to - 1, 0, element);
+    }
 }
 
 module.exports = CodeList;
