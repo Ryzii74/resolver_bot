@@ -33,7 +33,7 @@ class CodeList {
     }
 
     getLines() {
-        return this.data.map(line => (line || []).map(el => el || ''));
+        return [...this.data].map(line => (line || []).map(el => el || ''));
     }
 
     show() {
