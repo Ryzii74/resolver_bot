@@ -18,7 +18,7 @@ class Message {
   }
 
   get text() {
-    return this._data.text.toLowerCase().trim();
+    return (this._data.text || '').toLowerCase().trim();
   }
 
   get command() {
