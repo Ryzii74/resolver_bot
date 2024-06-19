@@ -24,6 +24,7 @@ const MODES = {
   tm: { exec: require('../commands/mendeleev'), name: 'Таблица Менделеева' },
   rebus: { exec: require('../commands/rebus'), name: 'Ребусы' },
   list: { exec: require('../commands/codesList'), name: 'Список кодов' },
+  noize: { exec: require('../commands/noize'), name: 'Noize MC' },
 };
 const defaultMode = MODES.list;
 
@@ -51,6 +52,7 @@ const ALIASES = {
   tm: MODES.tm,
   rebus: MODES.rebus,
   list: MODES.list,
+  noize: MODES.noize,
 };
 
 module.exports = {
