@@ -7,7 +7,11 @@ module.exports = (msg) => {
     let [lat, lon, ang, dist] = args;
     if (args.length === 2) {
         const userLocation = getUserLocation(userId);
-        if (!userLocation)  return 'Бот не знает ваших координат - отправьте локацию!';
+        if (!userLocation)  {
+            msg.addTextResponse('Бот не знает ваших координат - отправьте локацию!');
+            return;
+        }
+
         lat = userLocation.latitude;
         lon = userLocation.longitude;
         ang = args[0];
