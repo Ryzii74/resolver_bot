@@ -6,6 +6,9 @@ const songsPrepared = songs.map(song => ({
 	textPrepared: song.text
 		.replaceAll('\n\n', ' ')
 		.replaceAll('\n', ' ')
+		.split(' ')
+		.map(word => word.toLowerCase())
+		.join(' ')
 }));
 
 module.exports = async (msg) => {
