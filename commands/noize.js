@@ -22,7 +22,7 @@ module.exports = async (msg) => {
 
 	const songsByText = songsPrepared.filter(song => song.textPrepared.includes(text));
 	if (songsByText.length) {
-		const regExp = new RegExp(text, 'i');
+		const regExp = new RegExp(text, 'gi');
 		songsByText.forEach(songByText => {
 			const songBlocks = songByText.text.split('\n\n');
 			const blocksWithText = songBlocks.filter(block =>
