@@ -22,10 +22,10 @@ module.exports = async (msg) => {
 
 	const songsByText = songsPrepared.filter(song => song.textPrepared.includes(text));
 	if (songsByText.length) {
-		const alreadySent = [];
 		songsByText.forEach(songByText => {
 			const songBlocks = songByText.text.split('\n\n');
 			const blocksWithText = songBlocks.filter(block => block.includes(text));
+			const alreadySent = [];
 			blocksWithText.forEach(block => {
 				if (alreadySent.includes(block)) {
 					return;
