@@ -24,7 +24,14 @@ module.exports = async (msg) => {
 	if (songsByText.length) {
 		songsByText.forEach(songByText => {
 			const songBlocks = songByText.text.split('\n\n');
-			const blocksWithText = songBlocks.filter(block => block.includes(text));
+			const blocksWithText = songBlocks.filter(block =>
+				block
+					.replaceAll('\n', ' ')
+					.split(' ')
+					.map(word => word.toLowerCase())
+					.join(' ')
+					.includes(text)
+			);
 			const alreadySent = [];
 			blocksWithText.forEach(block => {
 				if (alreadySent.includes(block)) {
