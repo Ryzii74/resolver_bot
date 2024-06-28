@@ -14,7 +14,14 @@ module.exports = async (msg) => {
 	const songByName = songsPrepared.find(song => song.name.toLowerCase() === text.toLowerCase());
 	if (songByName) {
 		msg.addTextResponse(songByName.text);
+		return;
 	}
 
-	msg.addAnswersResponse(['Тестовый ответ'], '\n', 'ВИКИСЛОВАРЬ');
+	const songsByText = songsPrepared.filter(song => song.textPrepared.includes(songsByText));
+	if (songsByText.length) {
+		msg.addAnswersResponse(songsByText.map(el => el.name), '\n', 'Песни');
+		return;
+	}
+
+	msg.addTextResponse('Ничего не найдено!');
 };
