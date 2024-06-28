@@ -4,13 +4,13 @@ const {emitter, EVENTS} = require("./utils/eventEmitter");
 const bot = new TelegramBot(config.bot.token, {polling: true});
 const {Message, RESPONSE_TYPES} = require('./utils/message');
 
-function isUserAllower(msg) {
+function isUserAllowed(msg) {
   return config.bot.accepted_users_list.includes(msg.userId);
 }
 
 bot.on('message', (data) => {
   const msg = new Message(data);
-  if (!isUserAllower(msg)) {
+  if (!isUserAllowed(msg)) {
     console.log('Попытка связи от неразрешенного пользователя');
     console.log(data);
     return;
@@ -28,9 +28,8 @@ bot.on('message', (data) => {
 });
 
 bot.on('edited_message', (data) => {
-  console.log('edited_message', data);
   const msg = new Message(data);
-  if (!isUserAllower(msg)) {
+  if (!isUserAllowed(msg)) {
     console.log('Попытка связи от неразрешенного пользователя');
     console.log(data);
     return;
