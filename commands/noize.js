@@ -32,7 +32,7 @@ module.exports = async (msg) => {
 				}
 
 				msg.addTextResponse(`*${songByText.name}*\n${block}`);
-				alreadySent.push(block);
+				alreadySent.push(block.replace(text, `*${text.toUpperCase()}*`));
 			});
 		})
 		return;
