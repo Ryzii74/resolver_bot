@@ -17,7 +17,7 @@ module.exports = async (msg) => {
 		return;
 	}
 
-	const songsByText = songsPrepared.filter(song => song.textPrepared.includes(songsByText));
+	const songsByText = songsPrepared.filter(song => song.textPrepared.includes(text));
 	if (songsByText.length) {
 		msg.addAnswersResponse(songsByText.map(el => el.name), '\n', 'Песни');
 		return;
