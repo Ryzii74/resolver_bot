@@ -26,7 +26,7 @@ const MODES = {
   list: { exec: require('../commands/codesList'), name: 'Список кодов' },
   noize: { exec: require('../commands/noize'), name: 'Noize MC' },
 };
-const defaultMode = MODES.list;
+const defaultMode = MODES.noize;
 
 const ALIASES = {
   anagramma: MODES.anagramma,
