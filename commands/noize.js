@@ -13,7 +13,7 @@ module.exports = async (msg) => {
 
 	const songByName = songsPrepared.find(song => song.name.toLowerCase() === text.toLowerCase());
 	if (songByName) {
-		msg.addAnswersResponse(songByName.text.split('\n'), '\n', songByName.name);
+		msg.addTextResponse(songByName.text);
 	}
 
 	msg.addAnswersResponse(['Тестовый ответ'], '\n', 'ВИКИСЛОВАРЬ');
