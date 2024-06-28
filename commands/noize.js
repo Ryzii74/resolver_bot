@@ -38,7 +38,7 @@ module.exports = async (msg) => {
 					return;
 				}
 
-				msg.addTextResponse(`*${songByText.name}*\n${block.replace(text, `*${text.toUpperCase()}*`)}`);
+				msg.addTextResponse(`\`${songByText.name}\`\n${block.replace(text, `*${text.toUpperCase()}*`)}`);
 				alreadySent.push(block);
 			});
 		})
