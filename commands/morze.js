@@ -93,8 +93,6 @@ module.exports = async (msg) => {
 };
 
 function translate(text, dictionary, symbols) {
-    return translateBySymbols(text, dictionary, symbols);
-
     if (text.includes(' ')) {
         return translateBySymbols(text, dictionary, symbols);
     } else {
@@ -107,7 +105,8 @@ function translateBySymbols(text, dictionary, symbols) {
         .split(' ')
         .map(word => translateGroup(word, symbols) || '?')
         .join('');
-    const regExp = new RegExp(`^${translation}$`);
+
+    const regExp = new RegExp(`^${translation.replaceAll('?', '\\S?')}$`);
     const resultWords = dictionary.filter(word => regExp.test(word));
     return [translation, ...resultWords];
 }
@@ -143,6 +142,35 @@ function translateGroup(word, symbols) {
     return null;
 }
 
+const MAX_WORD_LENGTH = 5;
 function translateFullText(text, dictionary, symbols) {
-    return [];
+    const oneSymbol = translateGroup(text, symbols);
+    if (oneSymbol) {
+        return [oneSymbol];
+    }
+
+    const response = [];
+    const length = text.length;
+    for (let i = 0; i < 2 ** length; i++) {
+        let textWithSpaces = '';
+        for (let j = 0; j < length; j++) {
+            textWithSpaces += text[j];
+            const power = 2**j;
+            if ((i & power) === power) {
+                textWithSpaces += ' ';
+            }
+        }
+        if (textWithSpaces.split(' ').some(word => word.length > MAX_WORD_LENGTH)) {
+            continue;
+        }
+
+        const result = textWithSpaces
+            .split(' ')
+            .map(word => translateGroup(word, symbols) || '?')
+            .join('');
+        if (dictionary.some(word => word === result)) {
+            response.push(result);
+        }
+    }
+    return response;
 }
