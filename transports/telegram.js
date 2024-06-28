@@ -4,9 +4,13 @@ const {emitter, EVENTS} = require("./utils/eventEmitter");
 const bot = new TelegramBot(config.bot.token, {polling: true});
 const {Message, RESPONSE_TYPES} = require('./utils/message');
 
+function isUserAllower(msg) {
+  return config.bot.accepted_users_list.includes(msg.userId);
+}
+
 bot.on('message', (data) => {
   const msg = new Message(data);
-  if (!config.bot.accepted_users_list.includes(msg.userId)) {
+  if (!isUserAllower(msg)) {
     console.log('Попытка связи от неразрешенного пользователя');
     console.log(data);
     return;
@@ -20,6 +24,21 @@ bot.on('message', (data) => {
   if (msg.location) {
     console.log(`Входящие координаты от ${msg.username}: ${msg.location.latitude} ${msg.location.longitude}`);
     emitter.emit(EVENTS.LOCATION, msg);
+  }
+});
+
+bot.on('edited_message', (data) => {
+  console.log('edited_message', data);
+  const msg = new Message(data);
+  if (!isUserAllower(msg)) {
+    console.log('Попытка связи от неразрешенного пользователя');
+    console.log(data);
+    return;
+  }
+
+  if (msg.text) {
+    console.log(`Входящее сообщение от ${msg.username}(${msg.userId}): ${msg.text}`);
+    emitter.emit(EVENTS.MESSAGE, msg);
   }
 });
 
