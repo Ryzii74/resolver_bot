@@ -22,7 +22,13 @@ module.exports = async (msg) => {
 
 	const songsByText = songsPrepared.filter(song => song.textPrepared.includes(text));
 	if (songsByText.length) {
-		msg.addAnswersResponse(songsByText.map(el => el.name), '\n', 'Песни');
+		songsByText.forEach(songByText => {
+			const songBlocks = songByText.text.split('\n\n');
+			const blocksWithText = songBlocks.filter(block => block.includes(text));
+			blocksWithText.forEach(block => {
+				msg.addAnswersResponse(blocksWithText, '\n', songByText.name);
+			});
+		})
 		return;
 	}
 
