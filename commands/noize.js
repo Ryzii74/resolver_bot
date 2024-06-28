@@ -26,10 +26,7 @@ module.exports = async (msg) => {
 			const songBlocks = songByText.text.split('\n\n');
 			const blocksWithText = songBlocks.filter(block => block.includes(text));
 			blocksWithText.forEach(block => {
-				msg.addTextResponse([
-					`*${songByText.name}*`,
-					block,
-				]);
+				msg.addTextResponse(`*${songByText.name}*\n${block}`);
 			});
 		})
 		return;
