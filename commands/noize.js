@@ -8,7 +8,7 @@ const songsPrepared = songs.map(song => ({
 		.replaceAll('\n', ' ')
 		.split(' ')
 		.map(word => word.toLowerCase())
-		.join(' ')
+		.join(' '),
 }));
 
 module.exports = async (msg) => {
@@ -42,7 +42,7 @@ module.exports = async (msg) => {
 				msg.addTextResponse(`\`${songByText.name}\`\n${block.replace(regExp, `*${text.toUpperCase()}*`)}`);
 				alreadySent.push(block);
 			});
-		})
+		});
 		return;
 	}
 
