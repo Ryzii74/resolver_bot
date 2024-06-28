@@ -93,21 +93,23 @@ module.exports = async (msg) => {
 };
 
 function translate(text, dictionary, symbols) {
-    return translateBySymbols(text, symbols);
+    return translateBySymbols(text, dictionary, symbols);
 
     if (text.includes(' ')) {
-        return translateBySymbols(text, symbols);
+        return translateBySymbols(text, dictionary, symbols);
     } else {
         return translateFullText(text, dictionary, symbols);
     }
 }
 
-function translateBySymbols(text, symbols) {
+function translateBySymbols(text, dictionary, symbols) {
     const translation = text
         .split(' ')
         .map(word => translateGroup(word, symbols) || '?')
         .join('');
-    return [translation];
+    const regExp = new RegExp(`^${translation}$`);
+    const resultWords = dictionary.filter(word => regExp.test(word));
+    return [translation, ...resultWords];
 }
 
 function translateGroup(word, symbols) {
