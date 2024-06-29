@@ -14,6 +14,12 @@ const songsPrepared = songs.map(song => ({
 module.exports = async (msg) => {
 	const {text} = msg;
 
+	if (text === 'все') {
+		const list = songsPrepared.map(((el, index) => `${index + 1}. \`${el.name}\``));
+		msg.addTextResponse(list.join('\n'));
+		return;
+	}
+
 	const songByName = songsPrepared.find(song => song.name.toLowerCase() === text.toLowerCase());
 	if (songByName) {
 		msg.addTextResponse(songByName.text);
