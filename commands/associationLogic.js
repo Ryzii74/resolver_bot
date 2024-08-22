@@ -1,5 +1,9 @@
 const getWordAssociations = require('../actions/sources/association');
-//const {isAnagramma, isMetagramma, isLogogrif, isBrukva} = require('../libs/tasks');
+const isAnagramma = require('../actions/tasks/anagramma');
+const isMetagramma = require('../actions/tasks/metagramma');
+const isLogogrif = require('../actions/tasks/logogrif');
+const isBrukva = require('../actions/tasks/brukva');
+const isPlusogramma = require('../actions/tasks/plus');
 
 module.exports = async (msg) => {
     const {text} = msg;
@@ -13,7 +17,7 @@ module.exports = async (msg) => {
     for (let i = 0; i < words.length; i++) {
         const word = words[i];
         try {
-            associations[i] = await getWordAssociations(word);
+            associations[i] = await getWordAssociations(word)();
         } catch (err) {
             console.error('associationLogic', err);
             msg.addTextResponse( 'Ошибка получения данных от сервера!');
@@ -32,7 +36,7 @@ function getRepeats(associations) {
         let isFound = false;
         for (var i = 0; i < associations[1].length; i++) {
             const word2 = associations[1][i];
-            if (isAnagramma(word, word2) || isMetagramma(word, word2) || isLogogrif(word, word2) || isBrukva(word, word2)) {
+            if (isAnagramma(word, word2) || isMetagramma(word, word2) || isLogogrif(word, word2) || isBrukva(word, word2) || isPlusogramma(word, word2)) {
                 isFound = true;
                 break;
             }

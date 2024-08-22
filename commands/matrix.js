@@ -6,7 +6,6 @@ module.exports = async (msg) => {
     let {text} = msg;
     const words = text.split(' ');
     const subwordLength = getSubwordLength(words[words.length - 1]);
-    console.log(subwordLength)
     const correctWords = dictionaryArray.filter(word => {
         const matches = {0: [], 1: []};
         for (let i = 0; i < 2; i++) {
