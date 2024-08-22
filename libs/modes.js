@@ -25,6 +25,7 @@ const MODES = {
   rebus: { exec: require('../commands/rebus'), name: 'Ребусы' },
   list: { exec: require('../commands/codesList'), name: 'Список кодов' },
   noize: { exec: require('../commands/noize'), name: 'Noize MC' },
+  plus: { exec: require('../commands/plus'), name: 'Плюсограмма' },
 };
 const defaultMode = MODES.noize;
 
@@ -53,6 +54,7 @@ const ALIASES = {
   rebus: MODES.rebus,
   list: MODES.list,
   noize: MODES.noize,
+  plus: MODES.plus,
 };
 
 module.exports = {
