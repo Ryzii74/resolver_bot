@@ -47,7 +47,7 @@ class Message {
   }
 
   addAnswersResponse(answers, joiner = '\n', header) {
-    this.addTextResponse(`${header ? `*${header}*\n` : ''}${(answers.map(answer => `\`${answer}\``) || ["Нет результатов"]).join(joiner)}`);
+    this.addTextResponse(`${header ? `*${header}*\n` : ''}${(answers.length ? answers.map(answer => `\`${answer}\``) : ["Нет результатов"]).join(joiner)}`);
   }
 }
 
