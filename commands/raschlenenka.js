@@ -41,7 +41,7 @@ module.exports = function (msg) {
     const correctWords = wordsToFind.filter(word => dictionaryObject[word]);
     const correctWords2 = findTwoWords(dictionaryObject, wordsToFind);
     if (!correctWords.length && !correctWords2.length) {
-        msg.addTextResponse("Слов не найдено!");
+        msg.addTextResponse("Нет результатов");
         return;
     }
 
