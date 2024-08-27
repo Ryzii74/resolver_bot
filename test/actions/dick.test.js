@@ -6,8 +6,13 @@ require('../toBeEmptyResponse');
 function checkResult(res, wordsArray, severalWordsArray) {
     expect(res).toHaveLength(2);
 
-    expect(res[0]).toEqual(wordsArray);
-    expect(res[1]).toEqual(severalWordsArray);
+    const [wordsHeader, ...words] = res[0];
+    expect(wordsHeader).toBe('*ЦЕЛЫЕ СЛОВА*')
+    expect(words).toEqual(wordsArray);
+
+    const [severalWordsHeader, ...severalWords] = res[1];
+    expect(severalWordsHeader).toBe('*НЕСКОЛЬКО СЛОВ*')
+    expect(severalWords).toEqual(severalWordsArray);
 }
 
 
