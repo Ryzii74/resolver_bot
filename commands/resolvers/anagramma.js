@@ -33,8 +33,10 @@ module.exports = (text) => {
         for (let i = 0; i < lettersLength; i++) {
             const letter = letters[i];
             const lettersFoundInWord = (word.match(letter.test) || []).length;
-            lettersOmit += Math.abs(letter.count - lettersFoundInWord);
-            if (lettersOmit > minusCount) return false;
+            lettersOmit += lettersFoundInWord > letter.count ? 0 : letter.count - lettersFoundInWord;
+            if (lettersOmit > minusCount) {
+                return false;
+            }
         }
 
         return true;

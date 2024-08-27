@@ -6,7 +6,7 @@ const SPECIAL_COMMANDS = {
     SWITCH_AUTH_MODE: 'auto',
 };
 
-emitter.on(EVENTS.MESSAGE, async (msg) => {
+async function messageProcessor(msg) {
     if (msg.isCommand()) {
         if (msg.command === SPECIAL_COMMANDS.SWITCH_AUTH_MODE) {
             msg.addTextResponse(switchAutoForUser(msg.userId));
@@ -15,13 +15,19 @@ emitter.on(EVENTS.MESSAGE, async (msg) => {
 
         const result = changeModeForUser(msg.userId, msg.command);
         msg.addTextResponse(result);
-        return sendResponse(msg);
+        sendResponse(msg);
+
+        return msg;
     }
 
     const parsedMode = autoDetectMode(msg);
     await runMode(msg, parsedMode);
     sendResponse(msg);
-});
+
+    return msg;
+}
+
+emitter.on(EVENTS.MESSAGE, messageProcessor);
 
 emitter.on(EVENTS.LOCATION, async (msg) => {
     const {location} = msg;
@@ -33,3 +39,5 @@ emitter.on(EVENTS.LOCATION, async (msg) => {
 function sendResponse(msg) {
     emitter.emit(EVENTS.RESPONSE, msg);
 }
+
+module.exports = { messageProcessor };

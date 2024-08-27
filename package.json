@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "local": "TRANSPORT=terminal node index"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@jest/globals": "^29.7.0",
     "axios": "^0.21.1",
     "express": "^4.18.3",
     "natural": "^6.8.0",
@@ -17,5 +18,12 @@
     "table": "^6.8.1",
     "url-exist": "^3.0.1",
     "url-exists": "^1.0.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "globalSetup": "./test/setup.js",
+    "globalTeardown": "./test/teardown.js"
   }
 }
