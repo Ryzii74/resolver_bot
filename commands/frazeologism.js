@@ -20,7 +20,7 @@ module.exports = async (msg) => {
     const dslovPhrases = dslovPrepared.filter(phrase => words.every(word => phrase.includes(word)));
 
     if (!wikiPhrases.length && !directPhrases.length && !allPhrases.length) {
-        msg.addTextResponse("Ничего не найдено!");
+        msg.addTextResponse("Нет результатов");
         return;
     }
 
@@ -28,5 +28,5 @@ module.exports = async (msg) => {
     directPhrases.length && msg.addAnswersResponse(directPhrases, '\n', 'ПОЛНЫЕ СОВПАДЕНИЯ СЛОВ');
     dslovPhrases.length && msg.addAnswersResponse(dslovPhrases, '\n', 'ЕЩЕ КАКИЕ-ТО');
     wikiPhrases.length && msg.addAnswersResponse(wikiPhrases, '\n', 'ВИКИСЛОВАРЬ');
-    pogovorkiPhrases.length && msg.addAnswersResponse(pogovorkiPhrases, '\n', 'Поговорки');
+    pogovorkiPhrases.length && msg.addAnswersResponse(pogovorkiPhrases, '\n', 'ПОГОВОРКИ');
 };

@@ -24,6 +24,7 @@
   },
   "jest": {
     "globalSetup": "./test/setup.js",
-    "globalTeardown": "./test/teardown.js"
+    "globalTeardown": "./test/teardown.js",
+    "verbose": true
   }
 }

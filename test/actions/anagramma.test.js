@@ -7,7 +7,7 @@ describe('anagramma', () => {
         await sendCommand('/anagramma');
     });
 
-    test('анаграмма без результатов', async () => {
+    test('без результатов', async () => {
         const res = await sendCommand('циллк');
         expect(res).toHaveLength(1);
         expect(res[0]).toBeEmptyResponse();

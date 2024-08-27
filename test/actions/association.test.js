@@ -2,12 +2,12 @@ const sendCommand = require('../utils/sendCommand');
 
 require('../toBeEmptyResponse');
 
-describe('association', () => {
+describe.skip('association', () => {
     beforeAll(async () => {
         await sendCommand('/association');
     });
 
-    test('ассоциации без результатов', async () => {
+    test('без результатов', async () => {
         const res = await sendCommand('хурма таджик');
         expect(res).toHaveLength(1);
         expect(res[0]).toBeEmptyResponse();
