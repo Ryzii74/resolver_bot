@@ -2,7 +2,7 @@ const sendCommand = require('../utils/sendCommand');
 
 require('../toBeEmptyResponse');
 
-describe('rebus', () => {
+describe('subword', () => {
     beforeAll(async () => {
         await sendCommand('/subword');
     });
