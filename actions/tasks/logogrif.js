@@ -17,5 +17,5 @@ module.exports = (word1, word2) => {
         }
     }
     if (isBreak && shortWord.length > i - diff) return false;
-    return equal > Math.floor(longWord.length / 2) + 1;
+    return Math.abs(equal - longWord.length) === 1;
 };
