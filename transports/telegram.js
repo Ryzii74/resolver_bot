@@ -55,7 +55,7 @@ emitter.on(EVENTS.RESPONSE, async (msg) => {
           if (text.length > 4000) {
             textToSend = text.slice(0, 4000);
           }
-          await sendTextMessage(msg.userId, text);
+          await sendTextMessage(msg.userId, textToSend);
         }
         break;
       case RESPONSE_TYPES.LOCATION:
