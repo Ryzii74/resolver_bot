@@ -51,6 +51,10 @@ emitter.on(EVENTS.RESPONSE, async (msg) => {
     switch (responseType) {
       case RESPONSE_TYPES.TEXT:
         for (const text of response) {
+          let textToSend = text;
+          if (text.length > 4000) {
+            textToSend = text.slice(0, 4000);
+          }
           await sendTextMessage(msg.userId, text);
         }
         break;
