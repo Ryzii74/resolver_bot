@@ -51,11 +51,7 @@ emitter.on(EVENTS.RESPONSE, async (msg) => {
     switch (responseType) {
       case RESPONSE_TYPES.TEXT:
         for (const text of response) {
-          let textToSend = text;
-          if (text.length > 4000) {
-            textToSend = text.slice(0, 4000);
-          }
-          await sendTextMessage(msg.userId, textToSend);
+          await sendTextMessage(msg.userId, text);
         }
         break;
       case RESPONSE_TYPES.LOCATION:
@@ -70,6 +66,7 @@ emitter.on(EVENTS.RESPONSE, async (msg) => {
 
 async function sendTextMessage(userId, text, isRepeated) {
   try {
+    const answer = prepareAnswer(text);
     const preparedText = text.replaceAll(/[!#\.\-\+\=_\[\]\(\)~\{\}\!>#\|]/g, '\\$&');
     console.log(`Отправка сообщения пользователю ${userId}: ${preparedText}`)
     await bot.sendMessage(userId, preparedText, { parse_mode: 'MarkdownV2' });
@@ -77,4 +74,12 @@ async function sendTextMessage(userId, text, isRepeated) {
     console.log(err.code, err.response.body);
     if (!isRepeated) await sendTextMessage(userId, err.response.body.description, true);
   }
+}
+
+function prepareAnswer(text) {
+  let textToSend = text;
+  if (text.length > 4000) {
+    textToSend = text.slice(0, 4000);
+  }
+  return textToSend;
 }
