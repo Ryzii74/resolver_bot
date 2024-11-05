@@ -1,4 +1,5 @@
 const dictionaryArraySource = require('../sources/dictionaryArray');
+const { getArrayGetter } = require('../../libs/dictionary');
 const bothWordsFormatter = require('../formatters/bothWords');
 const secondWordFormatter = require('../formatters/secondWord');
 const resolverWithOneWordRunner = require("../resolverWithOneWordRunner");
@@ -12,7 +13,7 @@ module.exports = (tasks, responsePreparer) => {
         const words = text.split(' ');
 
         if (words.length === 1) {
-            return await resolverWithOneWordRunner(msg, dictionaryArraySource, tasks, responsePreparer);
+            return await resolverWithOneWordRunner(msg, getArrayGetter(text), tasks, responsePreparer);
         }
 
         const [word1, word2] = words;

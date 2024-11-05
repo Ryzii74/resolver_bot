@@ -12,6 +12,10 @@ function getArray(text) {
     return isEn(text) ? dictionaryArrayEn : dictionaryArray;
 }
 
+function getArrayGetter(text) {
+    return isEn(text) ? () => dictionaryArrayEn : () => dictionaryArray;
+}
+
 function getObject(text) {
     return isEn(text) ? dictionaryObjectEn : dictionaryObject;
 }
@@ -19,4 +23,5 @@ function getObject(text) {
 module.exports = {
   getArray,
   getObject,
+  getArrayGetter,
 };
