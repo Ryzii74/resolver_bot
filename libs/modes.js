@@ -27,6 +27,7 @@ const MODES = {
   noize: { exec: require('../commands/noize'), name: 'Noize MC' },
   plus: { exec: require('../commands/plus'), name: 'Плюсограмма' },
   book: { exec: require('../commands/book'), name: 'Поиск по книгам' },
+  film: { exec: require('../commands/film'), name: 'Поиск по фильмам' },
 };
 const defaultMode = MODES.noize;
 
@@ -57,6 +58,7 @@ const ALIASES = {
   noize: MODES.noize,
   plus: MODES.plus,
   book: MODES.book,
+  film: MODES.film,
 };
 
 module.exports = {
