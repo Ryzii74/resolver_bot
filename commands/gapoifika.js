@@ -25,6 +25,7 @@ function isGapoifika(text, words) {
         .replaceAll(',', '')
         .replaceAll(':', '')
         .replaceAll('.', '')
+        .replaceAll('!', '')
         .split(' ')
         .map(el => `${el[0]}${el[1] || ''}`).join('');
     console.log(preparedName, words);
