@@ -11,6 +11,8 @@ const books = fs.readFileSync(path.join(__dirname, '../../data/books.txt'))
             strToSearch: el
                 .toLowerCase()
                 .replaceAll(',', '')
+                .replaceAll(':', '')
+                .replaceAll('.', '')
                 .replaceAll(' ', '')
         })
     );

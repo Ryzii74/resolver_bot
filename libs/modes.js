@@ -28,6 +28,7 @@ const MODES = {
   plus: { exec: require('../commands/plus'), name: 'Плюсограмма' },
   book: { exec: require('../commands/book'), name: 'Поиск по книгам' },
   film: { exec: require('../commands/film'), name: 'Поиск по фильмам' },
+  gapoifika: { exec: require('../commands/gapoifika'), name: 'ГаПоИФиКа' },
 };
 const defaultMode = MODES.noize;
 
@@ -59,6 +60,7 @@ const ALIASES = {
   plus: MODES.plus,
   book: MODES.book,
   film: MODES.film,
+  gapoifika: MODES.gapoifika,
 };
 
 module.exports = {
