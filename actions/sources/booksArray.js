@@ -10,6 +10,8 @@ const books = fs.readFileSync(path.join(__dirname, '../../data/books.txt'))
             name: el,
             strToSearch: el
                 .toLowerCase()
+                .replaceAll('ё', 'е')
+                .replaceAll(',', '')
                 .replaceAll(',', '')
                 .replaceAll(':', '')
                 .replaceAll('.', '')

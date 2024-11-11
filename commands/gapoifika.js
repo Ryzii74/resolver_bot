@@ -21,6 +21,7 @@ module.exports = async (msg) => {
 function isGapoifika(text, words) {
     const preparedName = words
         .toLowerCase()
+        .replaceAll('ё', 'е')
         .replaceAll(',', '')
         .replaceAll(':', '')
         .replaceAll('.', '')
