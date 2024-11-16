@@ -26,8 +26,9 @@ function isGapoifika(text, words) {
         .replaceAll(':', '')
         .replaceAll('.', '')
         .replaceAll('!', '')
-        .split(' ')
-        .map(el => `${el[0]}${el[1] || ''}`).join('');
-    console.log(preparedName, words);
-    return text === preparedName.toLowerCase();
+        .split(' ');
+    const oneLetter = preparedName.map(el => el[0]).join('');
+    const twoLetters = preparedName.map(el => `${el[0]}${el[1] || ''}`).join('');
+
+    return text === oneLetter.toLowerCase() || text === twoLetters.toLowerCase();
 }
