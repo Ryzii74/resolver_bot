@@ -29,6 +29,8 @@ const MODES = {
   book: { exec: require('../commands/book'), name: 'Поиск по книгам' },
   film: { exec: require('../commands/film'), name: 'Поиск по фильмам' },
   gapoifika: { exec: require('../commands/gapoifika'), name: 'ГаПоИФиКа' },
+  adjectives: { exec: require('../commands/adjectives'), name: 'Прилагательные' },
+  nouns: { exec: require('../commands/nouns'), name: 'Существительные' },
 };
 const defaultMode = MODES.noize;
 
@@ -61,6 +63,8 @@ const ALIASES = {
   book: MODES.book,
   film: MODES.film,
   gapoifika: MODES.gapoifika,
+  adj: MODES.adjectives,
+  noun: MODES.nouns,
 };
 
 module.exports = {
