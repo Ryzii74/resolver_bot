@@ -1,4 +1,8 @@
 const dictionary = require('../libs/dictionary');
+const phrasesObject = require('../actions/sources/phrasesObject');
+const pogovorkiObject = require('../actions/sources/pogovorkiObject');
+const wikislovarObject = require('../actions/sources/wikislovarObject');
+const dslovObject = require('../actions/sources/dslovObject');
 
 module.exports = function (msg) {
     const {text} = msg;
@@ -38,7 +42,14 @@ module.exports = function (msg) {
         if (!wordsToFind.includes(word)) wordsToFind.push(word);
     }
 
-    const correctWords = wordsToFind.filter(word => dictionaryObject[word]);
+    const allDataTogether = {
+        ...dictionaryObject,
+        ...wikislovarObject,
+        ...dslovObject,
+        ...phrasesObject,
+        ...pogovorkiObject,
+    };
+    const correctWords = wordsToFind.filter(word => allDataTogether[word]);
     const correctWords2 = findTwoWords(dictionaryObject, wordsToFind);
     if (!correctWords.length && !correctWords2.length) {
         msg.addTextResponse("Нет результатов");
