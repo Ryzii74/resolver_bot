@@ -3,6 +3,8 @@ const phrasesObject = require('../actions/sources/phrasesObject');
 const pogovorkiObject = require('../actions/sources/pogovorkiObject');
 const wikislovarObject = require('../actions/sources/wikislovarObject');
 const dslovObject = require('../actions/sources/dslovObject');
+const getCombinations = require('../utils/getCombinations');
+const slovoformsObject = require('../actions/sources/slovoformsObject');
 
 module.exports = function (msg) {
     const {text} = msg;
@@ -16,32 +18,16 @@ module.exports = function (msg) {
             options: word.length - count + 1,
         };
     });
+    const combinations = getCombinations(baseData.map(el => el.options));
 
-    let currentDivider = baseData[0].options;
-    baseData[0].devider = currentDivider;
-    baseData[1].devider = currentDivider;
-    for (let i = 2; i < baseData.length; i++) {
-        baseData[i].devider = baseData[i - 2].devider * baseData[i - 1].options;
-    }
-
-    const optionsCount = baseData.reduce((sum, el) => sum * el.options, 1);
     const wordsToFind = [];
-    for (let i = 0; i < optionsCount; i++) {
+    combinations.forEach(combination => {
         let word = '';
-        for (let j = 0; j < baseData.length; j++) {
-            const el = baseData[j];
-            if (j === 0) {
-                const order = i % el.devider;
-                word += el.word.slice(order, order + el.count);
-            } else {
-                const order = Math.floor(i / el.devider) % el.options;
-                word += el.word.slice(order, order + el.count);
-            }
-        }
-
+        combination.forEach((variant, index) => {
+            word += baseData[index].word.slice(variant, baseData[index].count + variant);
+        });
         if (!wordsToFind.includes(word)) wordsToFind.push(word);
-    }
-    console.log(JSON.stringify(wordsToFind))
+    });
 
     const allDataTogether = {
         ...dictionaryObject,
@@ -51,7 +37,7 @@ module.exports = function (msg) {
         ...pogovorkiObject,
     };
     const correctWords = wordsToFind.filter(word => allDataTogether[word]);
-    const correctWords2 = findTwoWords(dictionaryObject, wordsToFind);
+    const correctWords2 = findTwoWords(slovoformsObject, wordsToFind);
     if (!correctWords.length && !correctWords2.length) {
         msg.addTextResponse("Нет результатов");
         return;
@@ -61,13 +47,13 @@ module.exports = function (msg) {
     msg.addAnswersResponse(correctWords2, '\n', 'НЕСКОЛЬКО СЛОВ');
 };
 
-function findTwoWords(dictionaryObject, words) {
+function findTwoWords(slovoformsObject, words) {
     return words
         .map(word => {
            for (let i = 1; i < word.length; i++) {
                const word1 = word.slice(0, i);
                const word2 = word.slice(i);
-               if (dictionaryObject[word1] && dictionaryObject[word2]) {
+               if (slovoformsObject[word1] && slovoformsObject[word2]) {
                    return `${word1} ${word2}`;
                }
            }
