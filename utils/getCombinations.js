@@ -12,7 +12,7 @@ function getCombinations(optionsArray) {
     for (let i = 0; i < optionsSum; i++) {
         const combination = [i % dividers[0]];
         for (let j = 0; j < optionsArray.length - 1; j++) {
-            combination.push(Math.floor(i / dividers[j]) % optionsArray[j]);
+            combination.push(Math.floor(i / dividers[j]) % optionsArray[j + 1]);
         }
         combinations.push(combination);
     }
