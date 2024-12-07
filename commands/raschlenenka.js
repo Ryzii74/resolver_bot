@@ -41,6 +41,7 @@ module.exports = function (msg) {
 
         if (!wordsToFind.includes(word)) wordsToFind.push(word);
     }
+    console.log(JSON.stringify(wordsToFind))
 
     const allDataTogether = {
         ...dictionaryObject,

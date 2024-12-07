@@ -1,13 +1,7 @@
 const phrases = require('../actions/sources/phrasesArray')();
 const pogovorki = require('../actions/sources/pogovorkiArray')();
-const wikislovar = require('../data/wikislovar.json');
-const dslov = require('../data/dslov.json');
-
-const dslovPrepared = dslov.map(row => row.toLowerCase()
-    .replaceAll(',', '')
-    .replaceAll('!', '')
-    .replaceAll('?', '')
-);
+const wikislovar = require('../actions/sources/wikislovarArray')();
+const dslov = require('../actions/sources/dslovArray')();
 
 module.exports = async (msg) => {
     // стемминг???
@@ -17,7 +11,7 @@ module.exports = async (msg) => {
     const allPhrases = phrases.filter(phrase => words.every(word => !directPhrases.includes(phrase) && phrase.includes(word)));
     const wikiPhrases = wikislovar.filter(phrase => words.every(word => phrase.includes(word)));
     const pogovorkiPhrases = pogovorki.filter(phrase => words.every(word => phrase.includes(word)));
-    const dslovPhrases = dslovPrepared.filter(phrase => words.every(word => phrase.includes(word)));
+    const dslovPhrases = dslov.filter(phrase => words.every(word => phrase.includes(word)));
 
     if (!wikiPhrases.length && !directPhrases.length && !allPhrases.length) {
         msg.addTextResponse("Нет результатов");
