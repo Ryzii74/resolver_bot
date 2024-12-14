@@ -1,6 +1,6 @@
 const getLetters = require('./utils/getLetters');
 
-module.exports = (word1, word2) => {
+function metagramma (word1, word2) {
     if (word1.length !== word2.length) return false;
 
     const letters1 = getLetters(word1);
@@ -12,4 +12,8 @@ module.exports = (word1, word2) => {
     }
 
     return equalLettersCount === word1.length - 1;
-};
+}
+
+metagramma.name = 'Метаграмма';
+
+module.exports = metagramma;

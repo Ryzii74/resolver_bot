@@ -19,7 +19,10 @@ class Resolver {
             this.words2.forEach(word2 => {
                 this.tasks.forEach(task => {
                     const result = task(word1, word2);
-                    if (result) answers.push(this.formatter(word1, word2));
+                    if (result) answers.push({
+                        task: task.name,
+                        answer: this.formatter(word1, word2),
+                    });
                 });
             });
         });

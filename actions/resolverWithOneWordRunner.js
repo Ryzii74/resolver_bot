@@ -7,7 +7,7 @@ module.exports = async (msg, source, tasks, responsePreparer) => {
     const resolver = new Resolver(source, wordSource(text), tasks, firstWordFormatter);
     const answers = await resolver.resolve();
     if (!responsePreparer) {
-        return msg.addAnswersResponse(answers);
+        return msg.addAnswersResponse(answers.map(el => el.answer));
     }
 
     const responseArray = responsePreparer(answers);

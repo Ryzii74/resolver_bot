@@ -8,12 +8,12 @@ module.exports = async (msg) => {
     const { text } = msg;
     const resolver = new Resolver(wordSource(text), dictionaryArraySource, task, secondWordFormatter);
     const answersRaw = await resolver.resolve();
-    const answers = answersRaw.filter(Boolean);
+    const answers = answersRaw.filter(el => el && el.answer);
 
     if (!answers.length) {
         msg.addTextResponse("Нет результатов");
         return;
     }
 
-    msg.addAnswersResponse(answers, ' ');
+    msg.addAnswersResponse(answers.map(el => el.answer), ' ');
 };

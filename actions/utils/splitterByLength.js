@@ -1,7 +1,7 @@
 module.exports = (answers) => {
     const answersLengths = {};
-    answers.forEach(answer => {
-        answersLengths[answer.length] = true;
+    answers.forEach(el => {
+        answersLengths[el.answer.length] = true;
     });
 
     if (Object.keys(answersLengths).length === 0) {
@@ -21,7 +21,9 @@ module.exports = (answers) => {
 
     return Object.keys(answersLengths).map(length => ({
         header: length,
-        answers: answers.filter(answer => answer.length === Number(length)),
+        answers: answers
+            .filter(el => el.answer.length === Number(length))
+            .map(el => el.answer),
         joiner: ' ',
     }));
 };

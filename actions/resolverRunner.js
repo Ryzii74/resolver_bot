@@ -4,7 +4,7 @@ module.exports = async (msg, source1, source2, tasks, formatter, responsePrepare
     const resolver = new Resolver(source1, source2, tasks, formatter);
     const answers = await resolver.resolve();
     if (!responsePreparer) {
-        return msg.addAnswersResponse(answers);
+        return msg.addAnswersResponse(answers.map(el => el.answer));
     }
 
     const responseArray = responsePreparer(answers);

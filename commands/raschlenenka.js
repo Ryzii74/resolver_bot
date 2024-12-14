@@ -29,7 +29,6 @@ module.exports = function (msg) {
         if (!wordsToFind.includes(word)) wordsToFind.push(word);
     });
 
-    console.log(wordsToFind.map((el, index) => `${el} ${combinations[index]}`).join('\n'));
     const allDataTogether = {
         ...dictionaryObject,
         ...wikislovarObject,

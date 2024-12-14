@@ -1,4 +1,4 @@
-module.exports = (word1, word2) => {
+function logogrif(word1, word2) {
     const isWord1Longer = word1.length > word2.length;
     let longWord = isWord1Longer ? word1 : word2;
     let shortWord = isWord1Longer ? word2 : word1;
@@ -18,4 +18,8 @@ module.exports = (word1, word2) => {
     }
     if (isBreak && shortWord.length > i - diff) return false;
     return Math.abs(equal - longWord.length) === 1;
-};
+}
+
+logogrif.name = 'Логогриф';
+
+module.exports = logogrif;

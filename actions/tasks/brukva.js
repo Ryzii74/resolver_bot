@@ -1,4 +1,4 @@
-module.exports = (word1, word2) => {
+function brukva(word1, word2) {
     if (Math.abs(word1.length - word2.length) !== 1) {
         return false;
     }
@@ -19,4 +19,8 @@ module.exports = (word1, word2) => {
     }
 
     return diffFound;
-};
+}
+
+brukva.name = 'Брюква';
+
+module.exports = brukva;
