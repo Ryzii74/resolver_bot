@@ -1,4 +1,6 @@
 function logogrif(word1, word2) {
+    if (word1.length === word2.length || Math.abs(word1.length - word2.length) > 2) return;
+
     const isWord1Longer = word1.length > word2.length;
     let longWord = isWord1Longer ? word1 : word2;
     let shortWord = isWord1Longer ? word2 : word1;
