@@ -27,16 +27,16 @@ describe('plusogramma', () => {
 
     test('нашлись только длинные', async () => {
         const res = await sendCommand('дм');
-        checkResult(res, '*3*', ['дом дым мвд мгд мед мед мид']);
+        checkResult(res, '*3*', ['мод мёд мед дым дом дим дем мвд мгд мид']);
     });
 
     test('нашлись только короткие', async () => {
         const res = await sendCommand('ломбард');
-        checkResult(res,'*6*', ['домбра']);
+        checkResult(res,'*6*', ['рабдом домбра']);
     });
 
     test('нашлись и короткие, и длинные', async () => {
         const res = await sendCommand('домбра');
-        checkResult(res,'*5*', ['даром домра морда'], '*7*', ['ломбард']);
+        checkResult(res,'*5*', ['морда домра добра даром'], '*7*', ['ломбард амброид']);
     });
 });

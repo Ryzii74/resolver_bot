@@ -62,7 +62,7 @@ describe('phrase', () => {
         expect(res[1]).toHaveLength(52);
         expect(res[1][0]).toBe('*ПОЛНЫЕ СОВПАДЕНИЯ СЛОВ*');
 
-        expect(res[2]).toHaveLength(4);
+        expect(res[2]).toHaveLength(3);
         expect(res[2][0]).toBe('*ЕЩЕ КАКИЕ-ТО*');
 
         expect(res[3]).toHaveLength(7);

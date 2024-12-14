@@ -23,9 +23,9 @@ describe('metagramma', () => {
         const res = await sendCommand('домна');
         expect(res).toHaveLength(1);
         expect(res[0]).toEqual([
-            'дойна',
-            'домра',
             'донна',
+            'домра',
+            'дойна',
         ]);
     });
 });

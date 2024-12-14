@@ -22,16 +22,16 @@ describe('mask', () => {
     test('маска с ?', async () => {
         const res = await sendCommand('д?м');
         expect(res).toHaveLength(1);
-        expect(res[0]).toEqual(['дом','дым']);
+        expect(res[0]).toEqual(['дым','дом','дим','дем']);
     });
 
     test('маска с *', async () => {
         const res = await sendCommand('день*и');
         expect(res).toHaveLength(1);
         expect(res[0]).toEqual([
-            'деньги',
-            'деньжишки',
             'деньжонки',
+            'деньжищи',
+            'деньги',
         ]);
     });
 
@@ -39,11 +39,11 @@ describe('mask', () => {
         const res = await sendCommand('ден?*и');
         expect(res).toHaveLength(1);
         expect(res[0]).toEqual([
+            'деньжонки',
+            'деньжищи',
+            'деньги',
             'денди',
             'денежки',
-            'деньги',
-            'деньжишки',
-            'деньжонки',
         ]);
     });
 });
