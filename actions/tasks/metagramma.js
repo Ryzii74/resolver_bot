@@ -14,6 +14,4 @@ function metagramma (word1, word2) {
     return equalLettersCount === word1.length - 1;
 }
 
-metagramma.name = 'Метаграмма';
-
 module.exports = metagramma;

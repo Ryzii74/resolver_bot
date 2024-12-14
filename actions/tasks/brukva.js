@@ -21,6 +21,4 @@ function brukva(word1, word2) {
     return diffFound;
 }
 
-brukva.name = 'Брюква';
-
 module.exports = brukva;

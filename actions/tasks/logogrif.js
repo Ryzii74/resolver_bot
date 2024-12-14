@@ -20,6 +20,4 @@ function logogrif(word1, word2) {
     return Math.abs(equal - longWord.length) === 1;
 }
 
-logogrif.name = 'Логогриф';
-
 module.exports = logogrif;

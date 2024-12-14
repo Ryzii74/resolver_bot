@@ -21,8 +21,6 @@ function plusogramma(word1, word2) {
     return true;
 }
 
-plusogramma.name = 'Плюсограмма';
-
 function getSortedLetters(word) {
     return word.split('').sort().join('');
 }
