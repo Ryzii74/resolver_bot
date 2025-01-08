@@ -31,6 +31,7 @@ const MODES = {
   gapoifika: { exec: require('../commands/gapoifika'), name: 'ГаПоИФиКа' },
   adjectives: { exec: require('../commands/adjectives'), name: 'Прилагательные' },
   nouns: { exec: require('../commands/nouns'), name: 'Существительные' },
+  cross: { exec: require('../commands/cross'), name: 'Общая часть' },
 };
 const defaultMode = MODES.noize;
 
@@ -65,6 +66,7 @@ const ALIASES = {
   gapoifika: MODES.gapoifika,
   adj: MODES.adjectives,
   noun: MODES.nouns,
+  cross: MODES.cross,
 };
 
 module.exports = {
