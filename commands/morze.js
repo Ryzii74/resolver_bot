@@ -145,8 +145,8 @@ function translateGroup(word, symbols) {
 
 const MAX_WORD_LENGTH = 5;
 function translateFullText(text, dictionary, symbols) {
-    if (text.length > 15) {
-        return [];
+    if (text.length > 13) {
+        return ['Не проверяю больше 13 символов'];
     }
 
     const oneSymbol = translateGroup(text, symbols);
