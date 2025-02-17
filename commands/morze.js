@@ -1,5 +1,7 @@
 const dictionaryArray = require('../actions/sources/dictionaryArray')();
 const dictionaryArrayEn = require('../actions/sources/dictionaryArrayEn')();
+const dictionaryObject = require('../actions/sources/dictionaryObject');
+const dictionaryObjectEn = require('../actions/sources/dictionaryObjectEn');
 
 const digits = {
     '.----': 1,
@@ -85,19 +87,19 @@ const letters = {
 module.exports = async (msg) => {
     let {text} = msg;
 
-    const enTranslation = translate(text, dictionaryArrayEn, letters.en);
-    const ruTranslation = translate(text, dictionaryArray, letters.ru);
+    const enTranslation = translate(text, dictionaryArrayEn, dictionaryObjectEn, letters.en);
+    const ruTranslation = translate(text, dictionaryArray, dictionaryObject, letters.ru);
 
     msg.addAnswersResponse(enTranslation, '\n', 'АНГЛИЙСКИЙ');
     msg.addAnswersResponse(ruTranslation, '\n', 'РУССКИЙ');
     checkDigits(msg);
 };
 
-function translate(text, dictionary, symbols) {
+function translate(text, dictionaryArray, dictionaryObject, symbols) {
     if (text.includes(' ')) {
-        return translateBySymbols(text, dictionary, symbols);
+        return translateBySymbols(text, dictionaryArray, symbols);
     } else {
-        return translateFullText(text, dictionary, symbols);
+        return translateFullText(text, dictionaryObject, symbols);
     }
 }
 
@@ -145,7 +147,7 @@ function translateGroup(word, symbols) {
 
 const MAX_WORD_LENGTH = 5;
 function translateFullText(text, dictionary, symbols) {
-    if (text.length > 13) {
+    if (text.length > 24) {
         return ['Не проверяю больше 13 символов'];
     }
 
@@ -155,29 +157,28 @@ function translateFullText(text, dictionary, symbols) {
     }
 
     const response = [];
-    const length = text.length;
-    for (let i = 0; i < 2 ** length; i++) {
-        let textWithSpaces = '';
-        for (let j = 0; j < length; j++) {
-            textWithSpaces += text[j];
-            const power = 2**j;
-            if ((i & power) === power) {
-                textWithSpaces += ' ';
+    makeFullTextRecursiveCheck(response, '', text, dictionary, symbols);
+
+    return response;
+}
+
+function makeFullTextRecursiveCheck(response, word, text, dictionary, symbols) {
+    for (let i = 0; i < 5; i++) {
+        const morzeGroup = text.slice(0, i);
+        const symbol = symbols[morzeGroup];
+        if (!!symbol) {
+            const newWord = word + symbol;
+            const newText = text.slice(i);
+
+            if (newText === '') {
+                if (dictionary[newWord] && !response.includes(newWord)) {
+                    response.push(newWord);
+                }
+            } else {
+                makeFullTextRecursiveCheck(response, newWord, newText, dictionary, symbols);
             }
         }
-        if (textWithSpaces.split(' ').some(word => word.length > MAX_WORD_LENGTH)) {
-            continue;
-        }
-
-        const result = textWithSpaces
-            .split(' ')
-            .map(word => translateGroup(word, symbols) || '?')
-            .join('');
-        if (dictionary.some(word => word === result)) {
-            response.push(result);
-        }
     }
-    return response;
 }
 
 function checkDigits(msg) {
