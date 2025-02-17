@@ -90,6 +90,7 @@ module.exports = async (msg) => {
 
     msg.addAnswersResponse(enTranslation, '\n', 'АНГЛИЙСКИЙ');
     msg.addAnswersResponse(ruTranslation, '\n', 'РУССКИЙ');
+    checkDigits(msg);
 };
 
 function translate(text, dictionary, symbols) {
@@ -144,6 +145,10 @@ function translateGroup(word, symbols) {
 
 const MAX_WORD_LENGTH = 5;
 function translateFullText(text, dictionary, symbols) {
+    if (text.length > 15) {
+        return [];
+    }
+
     const oneSymbol = translateGroup(text, symbols);
     if (oneSymbol) {
         return [oneSymbol];
@@ -173,4 +178,24 @@ function translateFullText(text, dictionary, symbols) {
         }
     }
     return response;
+}
+
+function checkDigits(msg) {
+    const {text} = msg;
+    const textWithoutSpaces = text.replace(' ', '');
+    if (textWithoutSpaces.length % 5 !== 0) {
+        return;
+    }
+
+    const digits = [];
+    for (let i = 0; i < textWithoutSpaces.length; i+=5) {
+        digits.push(textWithoutSpaces.slice(i, i+5));
+    }
+
+    const [answer] = translateBySymbols(digits.join(' '), [], digits);
+    if (answer.split('').every(symbol => symbol === '?')) {
+        return;
+    }
+
+    msg.addAnswersResponse([answer], '\n', 'ЦИФРЫ');
 }
