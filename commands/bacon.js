@@ -1,3 +1,5 @@
+const isValidAnswer = require('../utils/isValidAnswer');
+
 const bacon = {
     '00000': 'a',
     '00001': 'b',
@@ -31,6 +33,6 @@ module.exports = function (msg) {
     const phrase2 = words
         .map(word => word.replaceAll('1', '2').replaceAll('0', '1').replaceAll('2', '0'))
         .map(word => bacon[word] || '?').join('');
-    msg.addTextResponse(`Bacon1: \`${phrase1}\``);
-    msg.addTextResponse(`Bacon2: \`${phrase2}\``);
+    isValidAnswer(phrase1) && msg.addTextResponse(`Bacon1: \`${phrase1}\``);
+    isValidAnswer(phrase2) && msg.addTextResponse(`Bacon2: \`${phrase2}\``);
 };

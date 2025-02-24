@@ -1,3 +1,5 @@
+const isValidAnswer = require('../utils/isValidAnswer');
+
 const bodo = {
     '00100': 'A',
     '00110': 'É',
@@ -72,8 +74,8 @@ module.exports = function (msg) {
     const phrase2 = backwardWords.map(word => bodo[word] || '?').join('');
     const digits1 = words.map(word => bodoDigits[word] || '?').join('');
     const digits2 = backwardWords.map(word => bodoDigits[word] || '?').join('');
-    msg.addTextResponse(`Bodo1: \`${phrase1}\``);
-    msg.addTextResponse(`Bodo2: \`${phrase2}\``);
-    msg.addTextResponse(`Bodo digits1: \`${digits1}\``);
-    msg.addTextResponse(`Bodo digits2: \`${digits2}\``);
+    isValidAnswer(phrase1) && msg.addTextResponse(`Bodo1: \`${phrase1}\``);
+    isValidAnswer(phrase2) && msg.addTextResponse(`Bodo2: \`${phrase2}\``);
+    isValidAnswer(digits1) && msg.addTextResponse(`Bodo digits1: \`${digits1}\``);
+    isValidAnswer(digits2) && msg.addTextResponse(`Bodo digits2: \`${digits2}\``);
 };

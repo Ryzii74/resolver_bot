@@ -1,3 +1,5 @@
+const isValidAnswer = require('../utils/isValidAnswer');
+
 const binaryRu = {
     '00001': 'А',
     '00010': 'Б',
@@ -71,8 +73,8 @@ module.exports = function (msg) {
     const phraseRu2 = backwardWords.map(word => binaryRu[word] || '?').join('');
     const phraseEn1 = words.map(word => binaryEn[word] || '?').join('');
     const phraseEn2 = backwardWords.map(word => binaryEn[word] || '?').join('');
-    msg.addTextResponse(`Binary RU1: \`${phraseRu1}\``);
-    msg.addTextResponse(`Binary RU2: \`${phraseRu2}\``);
-    msg.addTextResponse(`Binary EN1: \`${phraseEn1}\``);
-    msg.addTextResponse(`Binary EN2: \`${phraseEn2}\``);
+    isValidAnswer(phraseRu1) && msg.addTextResponse(`Binary RU1: \`${phraseRu1}\``);
+    isValidAnswer(phraseRu2) && msg.addTextResponse(`Binary RU2: \`${phraseRu2}\``);
+    isValidAnswer(phraseEn1) && msg.addTextResponse(`Binary EN1: \`${phraseEn1}\``);
+    isValidAnswer(phraseEn2) && msg.addTextResponse(`Binary EN2: \`${phraseEn2}\``);
 };

@@ -1,3 +1,5 @@
+const isValidAnswer = require('../utils/isValidAnswer');
+
 const brailDigits = {
     '100000': '1',
     '101000': '2',
@@ -102,10 +104,10 @@ module.exports = function (msg) {
         digitsBack += brailDigits[wordBack] || '?';
     });
 
-    msg.addTextResponse(`Brail RU 1: \`${ru}\``);
-    msg.addTextResponse(`Brail RU 2: \`${ruBack}\``);
-    msg.addTextResponse(`Brail EN 1: \`${en}\``);
-    msg.addTextResponse(`Brail EN 2: \`${enBack}\``);
-    msg.addTextResponse(`Brail Digits 1: \`${digits}\``);
-    msg.addTextResponse(`Brail Digits 2: \`${digitsBack}\``);
+    isValidAnswer(ru) && msg.addTextResponse(`Brail RU 1: \`${ru}\``);
+    isValidAnswer(ruBack) && msg.addTextResponse(`Brail RU 2: \`${ruBack}\``);
+    isValidAnswer(en) && msg.addTextResponse(`Brail EN 1: \`${en}\``);
+    isValidAnswer(enBack) && msg.addTextResponse(`Brail EN 2: \`${enBack}\``);
+    isValidAnswer(digits) && msg.addTextResponse(`Brail Digits 1: \`${digits}\``);
+    isValidAnswer(digitsBack) && msg.addTextResponse(`Brail Digits 2: \`${digitsBack}\``);
 };
