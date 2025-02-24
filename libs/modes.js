@@ -34,6 +34,7 @@ const MODES = {
   adjectives: { exec: require('../commands/adjectives'), name: 'Прилагательные' },
   nouns: { exec: require('../commands/nouns'), name: 'Существительные' },
   cross: { exec: require('../commands/cross'), name: 'Общая часть' },
+  brail: { exec: require('../commands/brail'), name: 'Азбука брайля' },
 };
 const defaultMode = MODES.noize;
 
@@ -71,6 +72,7 @@ const ALIASES = {
   adj: MODES.adjectives,
   noun: MODES.nouns,
   cross: MODES.cross,
+  brail: MODES.brail,
 };
 
 module.exports = {
@@ -107,7 +109,7 @@ module.exports = {
     }
 
     if (symbols.every(symbol => ['1', '0', ...specialSymbols].includes(symbol))) {
-      return [MODES.bacon, MODES.bodo, MODES.binary];
+      return [MODES.bacon, MODES.bodo, MODES.binary, MODES.brail];
     }
 
     if (symbols.every(symbol => ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ...specialSymbols].includes(symbol))) {
