@@ -1,5 +1,4 @@
 const dictionary = require("../libs/dictionary");
-const {RESPONSES: {NO_RESULT}} = require("../constants");
 
 module.exports = async (msg) => {
     const {text} = msg;
@@ -43,9 +42,5 @@ module.exports = async (msg) => {
         }
     });
 
-    if (result.length) {
-        msg.addAnswersResponse(result.sort((b, a) => b.length - a.length));
-    } else {
-        msg.addTextResponse(NO_RESULT);
-    }
+    msg.addAnswersResponse(result.sort((b, a) => b.length - a.length));
 };

@@ -48,6 +48,11 @@ class Message {
   }
 
   addAnswersResponse(answers, joiner = '\n', header) {
+    if (!answers.length) {
+      this.addTextResponse(header ? `*${header}*${joiner}${NO_RESULT}` : NO_RESULT);
+      return;
+    }
+
     this.addTextResponse(`${header ? `*${header}*\n` : ''}${(answers.length ? answers.map(answer => `\`${answer}\``) : [NO_RESULT]).join(joiner)}`);
   }
 }
