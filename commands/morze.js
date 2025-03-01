@@ -2,6 +2,7 @@ const dictionaryArray = require('../actions/sources/dictionaryArray')();
 const dictionaryArrayEn = require('../actions/sources/dictionaryArrayEn')();
 const dictionaryObject = require('../actions/sources/dictionaryObject');
 const dictionaryObjectEn = require('../actions/sources/dictionaryObjectEn');
+const {RESPONSES: {TOO_LONG}} = require('../constants');
 
 const digits = {
     '.----': 1,
@@ -148,7 +149,7 @@ function translateGroup(word, symbols) {
 const MAX_WORD_LENGTH = 5;
 function translateFullText(text, dictionary, symbols) {
     if (text.length > 24) {
-        return ['Не проверяю больше 24 символов'];
+        return [TOO_LONG];
     }
 
     const oneSymbol = translateGroup(text, symbols);
