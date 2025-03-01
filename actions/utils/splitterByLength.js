@@ -1,3 +1,5 @@
+const {RESPONSES: {NO_RESULT}} = require("../../constants");
+
 module.exports = (answers) => {
     const answersLengths = {};
     answers.forEach(el => {
@@ -8,12 +10,12 @@ module.exports = (answers) => {
         return [
             {
                 header: 'ПОКОРОЧЕ',
-                answers: ['Нет результатов'],
+                answers: [NO_RESULT],
                 joiner: ' ',
             },
             {
                 header: 'ПОДЛИННЕЕ',
-                answers: ['Нет результатов'],
+                answers: [NO_RESULT],
                 joiner: ' ',
             }
         ]

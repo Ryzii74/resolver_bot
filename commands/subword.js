@@ -3,6 +3,7 @@ const Resolver = require('../actions/resolver');
 const wordSource = require('../actions/sources/word');
 const dictionaryArraySource = require('../actions/sources/dictionaryArray');
 const secondWordFormatter = require('../actions/formatters/secondWord');
+const {RESPONSES: {NO_RESULT}} = require("../constants");
 
 module.exports = async (msg) => {
     const { text } = msg;
@@ -11,7 +12,7 @@ module.exports = async (msg) => {
     const answers = answersRaw.filter(el => el && el.answer);
 
     if (!answers.length) {
-        msg.addTextResponse("Нет результатов");
+        msg.addTextResponse(NO_RESULT);
         return;
     }
 

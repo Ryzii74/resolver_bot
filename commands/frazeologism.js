@@ -1,3 +1,4 @@
+const {RESPONSES: {NO_RESULT}} = require("../constants");
 const phrases = require('../actions/sources/phrasesArray')();
 const pogovorki = require('../actions/sources/pogovorkiArray')();
 const wikislovar = require('../actions/sources/wikislovarArray')();
@@ -14,7 +15,7 @@ module.exports = async (msg) => {
     const dslovPhrases = dslov.filter(phrase => words.every(word => phrase.includes(word)));
 
     if (!wikiPhrases.length && !directPhrases.length && !allPhrases.length) {
-        msg.addTextResponse("Нет результатов");
+        msg.addTextResponse(NO_RESULT);
         return;
     }
 

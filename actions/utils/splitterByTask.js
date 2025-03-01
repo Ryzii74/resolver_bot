@@ -1,3 +1,5 @@
+const {RESPONSES: {NO_RESULT}} = require("../../constants");
+
 module.exports = (answers) => {
     const answersByTask = {};
     answers.forEach(el => {
@@ -8,7 +10,7 @@ module.exports = (answers) => {
     if (Object.keys(answersByTask).length === 0) {
         return [
             {
-                answers: ['Нет результатов'],
+                answers: [NO_RESULT],
                 joiner: ' ',
             },
         ];

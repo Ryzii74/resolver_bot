@@ -2,7 +2,7 @@ const sendCommand = require('../utils/sendCommand');
 
 require('../toBeEmptyResponse');
 
-describe.skip('association', () => {
+describe('association', () => {
     beforeAll(async () => {
         await sendCommand('/association');
     });

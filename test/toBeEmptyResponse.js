@@ -1,7 +1,8 @@
 const { expect } = require('@jest/globals');
+const {RESPONSES: {NO_RESULT}} = require("../constants");
 
 function toBeEmptyResponse(received, expected) {
-    const expectedResult = ['Нет результатов'];
+    const expectedResult = [NO_RESULT];
 
     if (Array.isArray(expectedResult) && received.length === 1 && received[0] === expectedResult[0]) {
         return {

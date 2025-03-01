@@ -48,4 +48,13 @@ describe('mask', () => {
             'денежки',
         ]);
     });
+
+    test('маска с числами', async () => {
+        const res = await sendCommand('к1212');
+        expect(res).toHaveLength(1);
+        expect(res[0]).toEqual([
+            'китит',
+            'кинин',
+        ]);
+    });
 });

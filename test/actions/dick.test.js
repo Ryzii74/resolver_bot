@@ -1,4 +1,5 @@
 const sendCommand = require('../utils/sendCommand');
+const {RESPONSES: {NO_RESULT}} = require("../../constants");
 
 require('../toBeEmptyResponse');
 
@@ -32,7 +33,7 @@ describe('raschlen', () => {
         checkResult(
             res,
             [
-                'Нет результатов',
+                NO_RESULT,
             ],
             [
                 "вап хв",

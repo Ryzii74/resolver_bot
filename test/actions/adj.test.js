@@ -2,24 +2,24 @@ const sendCommand = require('../utils/sendCommand');
 
 require('../toBeEmptyResponse');
 
-describe('association logic', () => {
+describe('adj', () => {
     beforeAll(async () => {
-        await sendCommand('/associationlogic');
+        await sendCommand('/adj');
     });
 
     test('без результатов', async () => {
-        const res = await sendCommand('плов хищение');
+        const res = await sendCommand('фывапро');
         expect(res).toHaveLength(1);
         expect(res[0]).toBeEmptyResponse();
     });
 
     test('нашлись результаты', async () => {
-        const res = await sendCommand('монарх плавание');
+        const res = await sendCommand('цапля');
         expect(res).toHaveLength(1);
-        expect(res[0]).toHaveLength(2);
         expect(res[0]).toEqual([
-            'король корабль',
-            'якоб якорь',
+            "голубая",
+            "серая",
+            "большая",
         ]);
     });
 });

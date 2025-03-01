@@ -1,4 +1,5 @@
 const sendCommand = require('../utils/sendCommand');
+const {RESPONSES: {NO_RESULT}} = require("../../constants");
 
 require('../toBeEmptyResponse');
 
@@ -22,7 +23,7 @@ describe('brukva', () => {
 
     test('без результатов', async () => {
         const res = await sendCommand('фывапро');
-        checkResult(res, '*ПОКОРОЧЕ*', ['Нет результатов'], '*ПОДЛИННЕЕ*', ['Нет результатов']);
+        checkResult(res, '*ПОКОРОЧЕ*', [NO_RESULT], '*ПОДЛИННЕЕ*', [NO_RESULT]);
     });
 
     test('нашлись только длинные', async () => {

@@ -5,6 +5,7 @@ const wikislovarObject = require('../actions/sources/wikislovarObject');
 const dslovObject = require('../actions/sources/dslovObject');
 const getCombinations = require('../utils/getCombinations');
 const slovoformsObject = require('../actions/sources/slovoformsObject');
+const {RESPONSES: {NO_RESULT}} = require("../constants");
 
 module.exports = function (msg) {
     const {text} = msg;
@@ -39,7 +40,7 @@ module.exports = function (msg) {
     const correctWords = wordsToFind.filter(word => allDataTogether[word]);
     const correctWords2 = findTwoWords(slovoformsObject, wordsToFind);
     if (!correctWords.length && !correctWords2.length) {
-        msg.addTextResponse("Нет результатов");
+        msg.addTextResponse(NO_RESULT);
         return;
     }
 

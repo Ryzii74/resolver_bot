@@ -1,3 +1,4 @@
+const {RESPONSES: {NO_RESULT}} = require("../../constants");
 const RESPONSE_TYPES = {
   TEXT: 'text',
   LOCATION: 'location',
@@ -47,7 +48,7 @@ class Message {
   }
 
   addAnswersResponse(answers, joiner = '\n', header) {
-    this.addTextResponse(`${header ? `*${header}*\n` : ''}${(answers.length ? answers.map(answer => `\`${answer}\``) : ["Нет результатов"]).join(joiner)}`);
+    this.addTextResponse(`${header ? `*${header}*\n` : ''}${(answers.length ? answers.map(answer => `\`${answer}\``) : [NO_RESULT]).join(joiner)}`);
   }
 }
 

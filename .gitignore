@@ -8,3 +8,5 @@ config/index.json
 
 data/index.json
 data/lists.json
+
+garbage/*

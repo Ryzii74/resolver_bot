@@ -1,4 +1,6 @@
 const dictionary = require("../libs/dictionary");
+const {RESPONSES: {NO_RESULT}} = require("../constants");
+
 module.exports = function (msg) {
     const {text} = msg;
 
@@ -16,6 +18,6 @@ module.exports = function (msg) {
     if (correctWords.length) {
         msg.addAnswersResponse(correctWords, '\n');
     } else {
-        msg.addTextResponse("Нет результатов");
+        msg.addTextResponse(NO_RESULT);
     }
 };
