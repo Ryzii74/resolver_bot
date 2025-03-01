@@ -38,6 +38,7 @@ const MODES = {
   brail: { exec: require('../commands/brail'), name: 'Азбука брайля' },
   roman: { exec: require('../commands/romeNumerals'), name: 'Римские числа' },
   sborka: { exec: require('../commands/sborka'), name: 'Сборка' },
+  ss: { exec: require('../commands/ss'), name: 'Системы счисления' },
 };
 const defaultMode = MODES.noize;
 
@@ -78,12 +79,14 @@ const ALIASES = {
   brail: MODES.brail,
   roman: MODES.roman,
   sborka: MODES.sborka,
+  ss: MODES.ss,
 };
 
 // не запускаем для них auto проверку
 // они по определению конфликтуют с /auto
 const forceModes = [
     MODES.roman,
+    MODES.ss,
 ];
 
 function isInForceModes(mode) {
