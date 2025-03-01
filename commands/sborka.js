@@ -2,20 +2,21 @@ module.exports = async (msg) => {
     const {text} = msg;
     const {lines, numbers} = getLines(text);
 
-    msg.addAnswersResponse([
+    msg.addTextResponse([
         `Лесенка: \`${getLadder(lines)}\``,
         `Арбуз: \`${getWatermelon(lines)}\``,
         `Арбуз с конца: \`${getWatermelonBack(lines)}\``,
         `Лесенка с конца: \`${getLadderBack(lines)}\``,
-    ]);
+    ].join('\n'));
     if (numbers.length) {
-        msg.addAnswersResponse([
+        msg.addTextResponse([
+            '*С ЧИСЛАМИ*',
             `Номера построчно: \`${getByNumbers(lines, numbers)}\``,
             `По номеру строки арбуз: \`${getByLineNumbersWatermelon(lines, numbers)}\``,
             `По номеру строки арбуз с конца: \`${getByLineNumbersWatermelonBack(lines, numbers)}\``,
             `По номеру строки лесенкой: \`${getByLineNumbersLadder(lines, numbers)}\``,
             `По номеру строки лесенкой наоборот: \`${getByLineNumbersLadderBack(lines, numbers)}\``,
-        ], undefined, 'С ЧИСЛАМИ');
+        ].join('\n'));
     }
 };
 
