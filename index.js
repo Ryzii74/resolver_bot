@@ -4,11 +4,11 @@ if (process.loadEnvFile) {
 
 require('./actions/sources');
 require('./transports');
-require('./server');
+// require('./server');
 
-(async function Init() {
-    await require('./commands/codesList').Init();
-})();
+// (async function Init() {
+//     await require('./commands/codesList').Init();
+// })();
 
 process.on('uncaughtException', (err, origin) => {
     console.error('uncaughtException', origin, err);
