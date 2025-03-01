@@ -77,40 +77,36 @@ function getByNumbers(lines, numbers) {
 }
 
 function getLines(text) {
-    const isSeveralLines = text.includes('\n');
-    if (!isSeveralLines) {
+    const rawLines = text.split('\n');
+    if (rawLines.length === 1) {
         return {
             lines: getLineWords(text),
             numbers: [],
         };
     }
 
-    let lines = prepareLines(text.split('\n'));
-    const lastLineWords = lines[lines.length - 1].split(' ');
+    const lastLine = rawLines[rawLines.length - 1];
+    const lastLineWords = lastLine.trim().split(' ');
     const isLastLineNumbers = lastLineWords.every(word => /[0-9]+/.test(word));
-    if (lines.length === 2 && isLastLineNumbers) {
+    if (rawLines.length === 2 && isLastLineNumbers) {
         return {
-            lines: getLineWords(lines[0]),
-            numbers: lastLineWords.map(Number),
-        };
-    }
-
-    if (isLastLineNumbers) {
-        return {
-            lines: lines.slice(0, lines.length - 1),
+            lines: getLineWords(rawLines[0]),
             numbers: lastLineWords.map(Number),
         };
     }
 
     return {
-        lines,
-        numbers: [],
-    }
+        lines: prepareLines(isLastLineNumbers ? rawLines.slice(0, rawLines.length - 1) : rawLines),
+        numbers: isLastLineNumbers ? lastLineWords.map(Number) : [],
+    };
 }
 
-function prepareLines(line) {
-    return line.map(el => el.trim()).filter(Boolean);
+function prepareLines(lines) {
+    return lines
+        .map(line => line.trim().replace(/[^а-яА-Яa-zA-ZёЁ]/g, ''))
+        .filter(Boolean);
 }
+
 function getLineWords(line) {
     return prepareLines(line.split(' '));
 }

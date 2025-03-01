@@ -4,20 +4,20 @@ const dictionaryObjectEn = require('../actions/sources/dictionaryObjectEn');
 const dictionaryArrayEn = require('../actions/sources/dictionaryArrayEn')();
 const { lettersEn } = require('../data/letters');
 
-function isEn(text) {
-    return text.split('').some(letter => lettersEn.includes(letter));
+function isRu(text) {
+    return text.split('').some(letter => /[а-яА-ЯёЁ]/.test(letter));
 }
 
 function getArray(text) {
-    return isEn(text) ? dictionaryArrayEn : dictionaryArray;
+    return isRu(text) ? dictionaryArray : dictionaryArrayEn;
 }
 
 function getArrayGetter(text) {
-    return isEn(text) ? () => dictionaryArrayEn : () => dictionaryArray;
+    return isRu(text) ? () => dictionaryArray : () => dictionaryArrayEn;
 }
 
 function getObject(text) {
-    return isEn(text) ? dictionaryObjectEn : dictionaryObject;
+    return isRu(text) ? dictionaryObject: dictionaryObjectEn;
 }
 
 module.exports = {
