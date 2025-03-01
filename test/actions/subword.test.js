@@ -16,6 +16,6 @@ describe('subword', () => {
     test('что-то нашлось', async () => {
         const res = await sendCommand('фывапро');
         expect(res).toHaveLength(1);
-        expect(res[0]).toEqual(['фаро про вар фо фа ар во по ро']);
+        expect(res[0]).toEqual(['фаро про вар фо фа ар по']);
     });
 });

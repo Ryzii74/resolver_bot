@@ -30,6 +30,7 @@ describe('mask', () => {
         expect(res).toHaveLength(1);
         expect(res[0]).toEqual([
             'деньжонки',
+            'деньжишки',
             'деньжищи',
             'деньги',
         ]);
@@ -40,6 +41,7 @@ describe('mask', () => {
         expect(res).toHaveLength(1);
         expect(res[0]).toEqual([
             'деньжонки',
+            'деньжишки',
             'деньжищи',
             'деньги',
             'денди',
