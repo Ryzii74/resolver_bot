@@ -1,13 +1,16 @@
+const dictionary = require("../libs/dictionary");
+
 module.exports = async (msg) => {
     const {text} = msg;
     const {lines, numbers} = getLines(text);
+    const wordsObject = dictionary.getObject(text);
 
     msg.addTextResponse([
         `Лесенка: \`${getLadder(lines)}\``,
         `Арбуз: \`${getWatermelon(lines)}\``,
         `Арбуз с конца: \`${getWatermelonBack(lines)}\``,
         `Лесенка с конца: \`${getLadderBack(lines)}\``,
-    ].join('\n'));
+    ].map(highlightWords(wordsObject)).join('\n'));
     if (numbers.length) {
         msg.addTextResponse([
             '*С ЧИСЛАМИ*',
@@ -16,7 +19,7 @@ module.exports = async (msg) => {
             `По номеру строки арбуз с конца: \`${getByLineNumbersWatermelonBack(lines, numbers)}\``,
             `По номеру строки лесенкой: \`${getByLineNumbersLadder(lines, numbers)}\``,
             `По номеру строки лесенкой наоборот: \`${getByLineNumbersLadderBack(lines, numbers)}\``,
-        ].join('\n'));
+        ].map(highlightWords(wordsObject)).join('\n'));
     }
 };
 
@@ -110,4 +113,15 @@ function prepareLines(line) {
 }
 function getLineWords(line) {
     return prepareLines(line.split(' '));
+}
+
+function highlightWords(wordsObject) {
+    return (answer) => {
+        const word = (answer.split(': ')[1] || '').replaceAll('`', '');
+        if (word && wordsObject[word]) {
+            return `${answer.replace(word, word.toUpperCase())} (!!!)`;
+        }
+
+        return answer;
+    };
 }
