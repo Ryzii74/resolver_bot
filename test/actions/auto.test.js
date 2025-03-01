@@ -67,4 +67,12 @@ describe('auto', () => {
             expect(res[9]).toEqual(["Binary EN2: YU??"]);
         });
     });
+
+    describe('римские числа', () => {
+        test('DC', async () => {
+            const res = await sendCommand('DC');
+            expect(res).toHaveLength(1);
+            expect(res[0]).toEqual(["600"]);
+        });
+    });
 });

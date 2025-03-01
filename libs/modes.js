@@ -1,3 +1,4 @@
+const {isRomanNumerals} = require("../commands/romeNumerals");
 const userModes = {};
 const userDisableAutos = {};
 
@@ -35,6 +36,7 @@ const MODES = {
   nouns: { exec: require('../commands/nouns'), name: 'Существительные' },
   cross: { exec: require('../commands/cross'), name: 'Общая часть' },
   brail: { exec: require('../commands/brail'), name: 'Азбука брайля' },
+  roman: { exec: require('../commands/romeNumerals'), name: 'Римские числа' },
 };
 const defaultMode = MODES.noize;
 
@@ -73,7 +75,18 @@ const ALIASES = {
   noun: MODES.nouns,
   cross: MODES.cross,
   brail: MODES.brail,
+  roman: MODES.roman,
 };
+
+// не запускаем для них auto проверку
+// они по определению конфликтуют с /auto
+const forceModes = [
+    MODES.roman,
+];
+
+function isInForceModes(mode) {
+  return forceModes.map(m => m.name).includes(mode.name);
+}
 
 module.exports = {
   changeModeForUser: (userId, alias) => {
@@ -97,7 +110,8 @@ module.exports = {
   },
 
   autoDetectMode: (msg) => {
-    if (userDisableAutos[msg.userId]) {
+    const mode = getModeForUser(msg.userId);
+    if (userDisableAutos[msg.userId] || isInForceModes(mode)) {
       return null;
     }
 
@@ -114,6 +128,10 @@ module.exports = {
 
     if (symbols.every(symbol => ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ...specialSymbols].includes(symbol))) {
       return [MODES.alphabet, MODES.tm];
+    }
+
+    if (isRomanNumerals(text)) {
+      return [MODES.roman];
     }
 
     return null;
