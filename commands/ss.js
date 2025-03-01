@@ -16,11 +16,11 @@ const translators = {
         action: (text) => Number(text).toString(16),
     },
     '16 -> 10': {
-        check: isNumber,
+        check: isHEXNumber,
         action: (text) => parseInt(text, 16),
     },
     '16 -> 2': {
-        check: isNumber,
+        check: isHEXNumber,
         action: (text) => parseInt(text, 16).toString(2),
     },
 };
@@ -45,4 +45,7 @@ function isBinary(text) {
 }
 function isNumber(text) {
     return /^[0-9]+$/.test(text);
+}
+function isHEXNumber(text) {
+    return /^[0-9abcdef]+$/.test(text);
 }
