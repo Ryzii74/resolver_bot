@@ -37,6 +37,7 @@ const MODES = {
   cross: { exec: require('../commands/cross'), name: 'Общая часть' },
   brail: { exec: require('../commands/brail'), name: 'Азбука брайля' },
   roman: { exec: require('../commands/romeNumerals'), name: 'Римские числа' },
+  sborka: { exec: require('../commands/sborka'), name: 'Сборка' },
 };
 const defaultMode = MODES.noize;
 
@@ -76,6 +77,7 @@ const ALIASES = {
   cross: MODES.cross,
   brail: MODES.brail,
   roman: MODES.roman,
+  sborka: MODES.sborka,
 };
 
 // не запускаем для них auto проверку
