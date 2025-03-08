@@ -8,6 +8,16 @@ function isUserAllowed(msg) {
   return config.bot.accepted_users_list.includes(msg.userId);
 }
 
+const userMessages = new Map();
+const baseMessageOptions = {parse_mode: 'MarkdownV2'};
+
+const getPaginationKeyboard = (messages, currentIndex) => ({
+  inline_keyboard: [
+    currentIndex > 0 ? [{ text: "⬅️ Назад", callback_data: "prev" }] : [],
+    currentIndex < messages.length - 1 ? [{ text: "Вперед ➡️", callback_data: "next" }] : []
+  ].filter(row => row.length > 0),
+});
+
 bot.on('message', (data) => {
   const msg = new Message(data);
   if (!isUserAllowed(msg)) {
@@ -41,6 +51,26 @@ bot.on('edited_message', (data) => {
   }
 });
 
+bot.on("callback_query", async (data) => {
+  const userId = data.from.id;
+  const userData = userMessages.get(userId);
+  if (!userData) return;
+
+  let { currentIndex, messages } = userData;
+  if (data.data === "next" && currentIndex < messages.length - 1) {
+    currentIndex++;
+  } else if (data.data === "prev" && currentIndex > 0) {
+    currentIndex--;
+  }
+
+  userMessages.set(userId, { messages, currentIndex });
+  await bot.editMessageText(messages[currentIndex], {
+    chat_id: data.message.chat.id,
+    message_id: data.message.message_id,
+    reply_markup: getPaginationKeyboard(messages, currentIndex),
+  });
+});
+
 emitter.on(EVENTS.RESPONSE, async (msg) => {
   for (let type in RESPONSE_TYPES) {
     const responseType = RESPONSE_TYPES[type];
@@ -66,20 +96,49 @@ emitter.on(EVENTS.RESPONSE, async (msg) => {
 
 async function sendTextMessage(userId, text, isRepeated) {
   try {
-    const answer = prepareAnswer(text);
     const preparedText = text.replaceAll(/[!#\.\-\+\=_\[\]\(\)~\{\}\!>#\|]/g, '\\$&');
-    console.log(`Отправка сообщения пользователю ${userId}: ${preparedText}`)
-    await bot.sendMessage(userId, preparedText, { parse_mode: 'MarkdownV2' });
+    const messages = splitMessage(preparedText);
+
+    if (messages.length === 1) {
+      console.log(`Отправка сообщения пользователю ${userId}: ${preparedText}`)
+      await bot.sendMessage(userId, preparedText, baseMessageOptions);
+      return;
+    }
+
+    userMessages.set(userId, { messages, currentIndex: 0 });
+    await sendPaginatedMessage(userId, 0);
   } catch (err) {
     console.log(err.code, err.response.body);
     if (!isRepeated) await sendTextMessage(userId, err.response.body.description, true);
   }
 }
 
-function prepareAnswer(text) {
-  let textToSend = text;
-  if (text.length > 4000) {
-    textToSend = text.slice(0, 4000);
+async function sendPaginatedMessage(chatId, index) {
+  const userData = userMessages.get(chatId);
+  if (!userData) return;
+
+  const { messages } = userData;
+  const text = messages[index];
+
+  const keyboard = getPaginationKeyboard(messages, index);
+  await bot.sendMessage(chatId, text, { ...baseMessageOptions, reply_markup: keyboard });
+}
+
+function splitMessage(text, limit = 4096) {
+  let messages = [];
+  while (text.length > 0) {
+    let chunk = text.slice(0, limit);
+    let lastSpace = chunk.lastIndexOf("\n");
+    if (lastSpace === -1 || lastSpace < limit - 500) {
+      lastSpace = chunk.lastIndexOf(" ");
+    }
+    if (lastSpace > 0) {
+      messages.push(chunk.slice(0, lastSpace));
+      text = text.slice(lastSpace + 1);
+    } else {
+      messages.push(chunk);
+      text = text.slice(limit);
+    }
   }
-  return textToSend;
+  return messages;
 }
