@@ -11,12 +11,15 @@ function isUserAllowed(msg) {
 const userMessages = new Map();
 const baseMessageOptions = { parse_mode: 'MarkdownV2' };
 
-const getPaginationKeyboard = (messages, currentIndex) => ({
-  inline_keyboard: [
+const getPaginationKeyboard = (messages, currentIndex) => {
+  const buttons = [
     currentIndex > 0 ? [{ text: "⬅️", callback_data: "prev" }] : [],
     currentIndex < messages.length - 1 ? [{ text: "➡️", callback_data: "next" }] : []
-  ].filter(row => row.length > 0).flat(),
-});
+  ].filter(row => row.length > 0).flat();
+  return {
+    inline_keyboard: [buttons],
+  };
+};
 
 bot.on('message', (data) => {
   const msg = new Message(data);
