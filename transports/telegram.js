@@ -161,7 +161,7 @@ function splitMessageByLines(text, limit = 40) {
 
   let messages = [];
   while (lines.length > 0) {
-    let chunk = lines.slice(0, limit);
+    let chunk = lines.slice(0, limit).join('\n');
     messages.push(chunk);
     lines = lines.slice(limit);
   }
