@@ -101,7 +101,7 @@ emitter.on(EVENTS.RESPONSE, async (msg) => {
 async function sendTextMessage(userId, text, isRepeated) {
   try {
     const preparedText = text.replaceAll(/[!#\.\-\+\=_\[\]\(\)~\{\}\!>#\|]/g, '\\$&');
-    const messages = splitMessage(preparedText);
+    const messages = splitMessageByLines(preparedText);
 
     if (messages.length === 1) {
       console.log(`Отправка сообщения пользователю ${userId}: ${preparedText}`)
@@ -138,7 +138,7 @@ function splitMessage(text, limit = 4096) {
   while (text.length > 0) {
     let chunk = text.slice(0, limit);
     let lastSpace = chunk.lastIndexOf("\n");
-    if (lastSpace === -1 || lastSpace < limit - 500) {
+    if (lastSpace === -1 || lastSpace  < limit - 500) {
       lastSpace = chunk.lastIndexOf(" ");
     }
     if (lastSpace > 0) {
@@ -148,6 +148,22 @@ function splitMessage(text, limit = 4096) {
       messages.push(chunk);
       text = text.slice(limit);
     }
+  }
+  return messages;
+}
+
+
+function splitMessageByLines(text, limit = 40) {
+  let lines = text.split('\n');
+  if (lines.length <= limit) {
+    return [text];
+  }
+
+  let messages = [];
+  while (lines.length > 0) {
+    let chunk = lines.slice(0, limit);
+    messages.push(chunk);
+    lines = lines.slice(limit);
   }
   return messages;
 }
