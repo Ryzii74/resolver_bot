@@ -9,13 +9,13 @@ function isUserAllowed(msg) {
 }
 
 const userMessages = new Map();
-const baseMessageOptions = {parse_mode: 'MarkdownV2'};
+const baseMessageOptions = { parse_mode: 'MarkdownV2' };
 
 const getPaginationKeyboard = (messages, currentIndex) => ({
   inline_keyboard: [
-    currentIndex > 0 ? [{ text: "⬅️ Назад", callback_data: "prev" }] : [],
-    currentIndex < messages.length - 1 ? [{ text: "Вперед ➡️", callback_data: "next" }] : []
-  ].filter(row => row.length > 0),
+    currentIndex > 0 ? [{ text: "⬅️", callback_data: "prev" }] : [],
+    currentIndex < messages.length - 1 ? [{ text: "➡️", callback_data: "next" }] : []
+  ].filter(row => row.length > 0).flat(),
 });
 
 bot.on('message', (data) => {
@@ -67,6 +67,7 @@ bot.on("callback_query", async (data) => {
   await bot.editMessageText(messages[currentIndex], {
     chat_id: data.message.chat.id,
     message_id: data.message.message_id,
+    ...baseMessageOptions,
     reply_markup: getPaginationKeyboard(messages, currentIndex),
   });
 });
