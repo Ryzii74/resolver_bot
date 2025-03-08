@@ -129,6 +129,10 @@ async function sendPaginatedMessage(chatId, index) {
 }
 
 function splitMessage(text, limit = 4096) {
+  if (text.length < limit) {
+    return [text];
+  }
+
   let messages = [];
   while (text.length > 0) {
     let chunk = text.slice(0, limit);
