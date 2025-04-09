@@ -82,7 +82,7 @@ const brailEn = {
 module.exports = function (msg) {
     const {text} = msg;
     const words = text.split(' ');
-    if (words.some(word => word.length !== 6)) {
+    if (words.some(word => word.length !== 6 && word !== '?')) {
         return;
     }
 
