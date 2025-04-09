@@ -2,11 +2,17 @@ const dictionary = require("../libs/dictionary");
 
 module.exports = async (msg) => {
     const {text} = msg;
+    const wordsObject = dictionary.getObject(text);
+
     let {lines, numbers} = getLines(text);
     if (lines.length === 1 && numbers.length > 1) {
         lines = numbers.map(_ => lines[0]);
+        msg.addTextResponse([`\`${getByNumbers(lines, numbers)}\``]
+            .map(highlightWords(wordsObject))
+            .join('\n')
+        );
+        return;
     }
-    const wordsObject = dictionary.getObject(text);
 
     msg.addTextResponse([
         `Лесенка: \`${getLadder(lines)}\``,
