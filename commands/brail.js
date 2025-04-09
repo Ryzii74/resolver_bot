@@ -1,4 +1,5 @@
-const isValidAnswer = require('../utils/isValidAnswer');
+const {isValidAnswer, getInvalidSymbol} = require('../utils/isValidAnswer');
+const {getWordsFromLine} = require('../utils/getWords');
 
 const brailDigits = {
     '100000': '1',
@@ -96,18 +97,18 @@ module.exports = function (msg) {
             .replaceAll('1', '2')
             .replaceAll('0', '1')
             .replaceAll('2', '0');
-        ru += brailRu[word] || '?';
-        ruBack += brailRu[wordBack] || '?';
-        en += brailEn[word] || '?';
-        enBack += brailEn[wordBack] || '?';
-        digits += brailDigits[word] || '?';
-        digitsBack += brailDigits[wordBack] || '?';
+        ru += brailRu[word] || getInvalidSymbol(word);
+        ruBack += brailRu[wordBack] || getInvalidSymbol(word);
+        en += brailEn[word] || getInvalidSymbol(word);
+        enBack += brailEn[wordBack] || getInvalidSymbol(word);
+        digits += brailDigits[word] || getInvalidSymbol(word);
+        digitsBack += brailDigits[wordBack] || getInvalidSymbol(word);
     });
 
-    isValidAnswer(ru) && msg.addTextResponse(`Brail RU 1: \`${ru}\``);
-    isValidAnswer(ruBack) && msg.addTextResponse(`Brail RU 2: \`${ruBack}\``);
-    isValidAnswer(en) && msg.addTextResponse(`Brail EN 1: \`${en}\``);
-    isValidAnswer(enBack) && msg.addTextResponse(`Brail EN 2: \`${enBack}\``);
+    isValidAnswer(ru) && msg.addTextResponse(`Brail RU 1: ${getWordsFromLine(ru)}`);
+    isValidAnswer(ruBack) && msg.addTextResponse(`Brail RU 2: ${getWordsFromLine(ruBack)}`);
+    isValidAnswer(en) && msg.addTextResponse(`Brail EN 1: ${getWordsFromLine(en)}`);
+    isValidAnswer(enBack) && msg.addTextResponse(`Brail EN 2: ${getWordsFromLine(enBack)}`);
     isValidAnswer(digits) && msg.addTextResponse(`Brail Digits 1: \`${digits}\``);
     isValidAnswer(digitsBack) && msg.addTextResponse(`Brail Digits 2: \`${digitsBack}\``);
 };

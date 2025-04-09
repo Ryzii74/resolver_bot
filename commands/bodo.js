@@ -1,33 +1,34 @@
-const isValidAnswer = require('../utils/isValidAnswer');
+const {isValidAnswer, getInvalidSymbol} = require('../utils/isValidAnswer');
+const {getWordsFromLine} = require('../utils/getWords');
 
 const bodo = {
-    '00100': 'A',
-    '00110': 'É',
-    '00010': 'E',
-    '00011': 'I',
-    '00111': 'O',
-    '00101': 'U',
-    '00001': 'Y',
-    '01001': 'B',
-    '01101': 'C',
-    '01111': 'D',
-    '01011': 'F',
-    '01010': 'G',
-    '01110': 'H',
-    '01100': 'J',
-    '11100': 'K',
-    '11110': 'L',
-    '11010': 'M',
-    '11011': 'N',
-    '11111': 'P',
-    '11101': 'Q',
-    '11001': 'R',
-    '10001': 'S',
-    '10101': 'T',
-    '10111': 'V',
-    '10011': 'W',
-    '10010': 'X',
-    '10110': 'Z',
+    '00100': 'a',
+    '00110': 'e',
+    '00010': 'e',
+    '00011': 'i',
+    '00111': 'o',
+    '00101': 'u',
+    '00001': 'y',
+    '01001': 'b',
+    '01101': 'c',
+    '01111': 'd',
+    '01011': 'f',
+    '01010': 'g',
+    '01110': 'h',
+    '01100': 'j',
+    '11100': 'k',
+    '11110': 'l',
+    '11010': 'm',
+    '11011': 'n',
+    '11111': 'p',
+    '11101': 'q',
+    '11001': 'r',
+    '10001': 's',
+    '10101': 't',
+    '10111': 'v',
+    '10011': 'w',
+    '10010': 'x',
+    '10110': 'z',
     '10100': '-',
     '10000': ' ',
     '01000': ' ',
@@ -70,12 +71,12 @@ module.exports = function (msg) {
     const {text} = msg;
     const words = text.split(' ').map(word => word.length >= 5 ? word : word.padStart(5, '0'));
     const backwardWords = words.map(word => word.replaceAll('1', '2').replaceAll('0', '1').replaceAll('2', '0'));
-    const phrase1 = words.map(word => bodo[word] || '?').join('');
-    const phrase2 = backwardWords.map(word => bodo[word] || '?').join('');
-    const digits1 = words.map(word => bodoDigits[word] || '?').join('');
-    const digits2 = backwardWords.map(word => bodoDigits[word] || '?').join('');
-    isValidAnswer(phrase1) && msg.addTextResponse(`Bodo1: \`${phrase1}\``);
-    isValidAnswer(phrase2) && msg.addTextResponse(`Bodo2: \`${phrase2}\``);
+    const phrase1 = words.map(word => bodo[word] || getInvalidSymbol(word)).join('');
+    const phrase2 = backwardWords.map(word => bodo[word] || getInvalidSymbol(word)).join('');
+    const digits1 = words.map(word => bodoDigits[word] || getInvalidSymbol(word)).join('');
+    const digits2 = backwardWords.map(word => bodoDigits[word] || getInvalidSymbol(word)).join('');
+    isValidAnswer(phrase1) && msg.addTextResponse(`Bodo1: ${getWordsFromLine(phrase1)}`);
+    isValidAnswer(phrase2) && msg.addTextResponse(`Bodo2: ${getWordsFromLine(phrase2)}`);
     isValidAnswer(digits1) && msg.addTextResponse(`Bodo digits1: \`${digits1}\``);
     isValidAnswer(digits2) && msg.addTextResponse(`Bodo digits2: \`${digits2}\``);
 };
