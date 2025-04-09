@@ -1,5 +1,5 @@
 const {getByNumbers} = require('./sborka');
-const dictionary = require("../libs/dictionary");
+const {getWordsFromLine} = require('../utils/getWords');
 
 module.exports = (msg) => {
     const {text} = msg;
@@ -11,9 +11,6 @@ module.exports = (msg) => {
     const lines = numbers.map(_ => letters);
 
     const result = getByNumbers(lines, numbers);
-    const arrayWords = dictionary.getArray(letters);
-    const resultRegExp = new RegExp(`^${result.replaceAll('?', '\\S')}$`);
-    const words = arrayWords.filter(word => resultRegExp.test(word));
 
-    msg.addTextResponse([`\`${result}\` ${words.length ? `(${words.join(' ')})` : ''}`].join('\n'));
+    msg.addTextResponse(getWordsFromLine(result));
 };
