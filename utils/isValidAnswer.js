@@ -1,5 +1,5 @@
 module.exports.isValidAnswer = (answer) => {
-    return answer.split('').some(s => s !== invalidSymbol);
+    return answer.split('').some(s => s !== invalidSymbol && s !== '?');
 };
 
 const invalidSymbol = '&';
