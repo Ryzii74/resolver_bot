@@ -1,4 +1,5 @@
 const {isRomanNumerals} = require("../commands/romeNumerals");
+const {isNotes} = require("../commands/notes");
 const userModes = {};
 const userDisableAutos = {};
 
@@ -39,6 +40,7 @@ const MODES = {
   roman: { exec: require('../commands/romeNumerals'), name: 'Римские числа' },
   sborka: { exec: require('../commands/sborka'), name: 'Сборка' },
   ss: { exec: require('../commands/ss'), name: 'Системы счисления' },
+  notes: { exec: require('../commands/notes'), name: 'Ноты' },
 };
 const defaultMode = MODES.noize;
 
@@ -80,6 +82,7 @@ const ALIASES = {
   roman: MODES.roman,
   sborka: MODES.sborka,
   ss: MODES.ss,
+  notes: MODES.notes,
 };
 
 // не запускаем для них auto проверку
@@ -137,6 +140,10 @@ module.exports = {
 
     if (isRomanNumerals(text)) {
       return [MODES.roman];
+    }
+
+    if (isNotes(text)) {
+      return [MODES.notes];
     }
 
     return null;
