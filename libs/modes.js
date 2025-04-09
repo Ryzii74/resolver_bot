@@ -39,6 +39,7 @@ const MODES = {
   brail: { exec: require('../commands/brail'), name: 'Азбука брайля' },
   roman: { exec: require('../commands/romeNumerals'), name: 'Римские числа' },
   sborka: { exec: require('../commands/sborka'), name: 'Сборка' },
+  sborkaline: { exec: require('../commands/sborkaLine'), name: 'Сборка 1 строки' },
   ss: { exec: require('../commands/ss'), name: 'Системы счисления' },
   notes: { exec: require('../commands/notes'), name: 'Ноты' },
 };
@@ -83,6 +84,7 @@ const ALIASES = {
   sborka: MODES.sborka,
   ss: MODES.ss,
   notes: MODES.notes,
+  sborkaline: MODES.sborkaline,
 };
 
 // не запускаем для них auto проверку

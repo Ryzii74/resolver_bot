@@ -1,5 +1,16 @@
 const dictionary = require("../libs/dictionary");
 
+module.exports.sborkaLine = (msg) => {
+    const {text} = msg;
+    const rawLines = text.split('\n');
+
+    const numbers = rawLines[rawLines.length - 1].split(' ').map(Number);
+
+    const letters = rawLines.slice(0, rawLines.length - 1).join('').replaceAll(' ', '');
+    const lines = numbers.map(_ => letters);
+    msg.addTextResponse([`\`${getByNumbers(lines, numbers)}\``].join('\n'));
+};
+
 module.exports = async (msg) => {
     const {text} = msg;
     const wordsObject = dictionary.getObject(text);
@@ -7,10 +18,7 @@ module.exports = async (msg) => {
     let {lines, numbers} = getLines(text);
     if (lines.length === 1 && numbers.length > 1) {
         lines = numbers.map(_ => lines[0]);
-        msg.addTextResponse([`\`${getByNumbers(lines, numbers)}\``]
-            .map(highlightWords(wordsObject))
-            .join('\n')
-        );
+        msg.addTextResponse([`\`${getByNumbers(lines, numbers)}\``].join('\n'));
         return;
     }
 
@@ -130,3 +138,5 @@ function highlightWords(wordsObject) {
         return answer;
     };
 }
+
+module.exports.getByNumbers = getByNumbers;
