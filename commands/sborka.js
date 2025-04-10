@@ -90,7 +90,15 @@ function getByLineNumbersLadderBack(lines, numbers) {
 }
 
 function getByNumbers(lines, numbers) {
-    return lines.map((line, index) => line[[numbers[index] - 1]] || '?').join('');
+    return lines
+        .map((line, index) => {
+            const number = numbers[index];
+            if (number === 0) return;
+
+            return line[[number - 1]] || '?';
+        })
+        .filter(Boolean)
+        .join('');
 }
 
 function getLines(text) {
