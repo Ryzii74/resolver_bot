@@ -23,5 +23,5 @@ module.exports = (msg) => {
         answers.push(`По позиции цифры: ${getWordsFromLine(word)}`);
     }
 
-    msg.addAnswersResponse(answers);
+    msg.addTextResponse(answers.join('\n'));
 };
