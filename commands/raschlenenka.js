@@ -7,10 +7,6 @@ const getCombinations = require('../utils/getCombinations');
 const slovoformsObject = require('../actions/sources/slovoformsObject');
 const {RESPONSES: {NO_RESULT}} = require("../constants");
 
-module.exports.isRaschlenenka = (text) => {
-    return /^([а-яА-Яa-zA-Z]+\d+\s?)+$/.test(text);
-};
-
 module.exports = function (msg) {
     const {text} = msg;
     const dictionaryObject = dictionary.getObject(text);
@@ -48,8 +44,8 @@ module.exports = function (msg) {
         return;
     }
 
-    msg.addAnswersResponse(correctWords, '\n', 'ЦЕЛЫЕ СЛОВА');
     msg.addAnswersResponse(correctWords2, '\n', 'НЕСКОЛЬКО СЛОВ');
+    msg.addAnswersResponse(correctWords, '\n', 'ЦЕЛЫЕ СЛОВА');
 };
 
 function findTwoWords(slovoformsObject, words) {
@@ -66,3 +62,7 @@ function findTwoWords(slovoformsObject, words) {
         })
         .filter(Boolean);
 }
+
+module.exports.isRaschlenenka = (text) => {
+    return /^([а-яА-Яa-zA-Z]+\d+\s?)+$/.test(text);
+};

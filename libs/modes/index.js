@@ -1,6 +1,6 @@
-const {isRomanNumerals} = require("../commands/romeNumerals");
-const {isNotes} = require("../commands/notes");
-const {isRaschlenenka} = require('../commands/raschlenenka')
+const {isRomanNumerals} = require("../../commands/romeNumerals");
+const {isNotes} = require("../../commands/notes");
+const {isRaschlenenka} = require('../../commands/raschlenenka')
 const userModes = {};
 const userDisableAutos = {};
 const {Index, ALIASES} = require('./constants');
