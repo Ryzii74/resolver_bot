@@ -1,6 +1,7 @@
 const {isRomanNumerals} = require("../../commands/romeNumerals");
 const {isNotes} = require("../../commands/notes");
 const {isRaschlenenka} = require('../../commands/raschlenenka')
+const {isTM} = require('../../commands/mendeleev');
 const userModes = {};
 const userDisableAutos = {};
 const {Index, ALIASES} = require('./constants');
@@ -74,6 +75,10 @@ module.exports = {
 
     if (isNotes(text)) {
       return [Index.notes];
+    }
+
+    if (isTM(text)) {
+      return [Index.tm];
     }
 
     return null;
