@@ -19,6 +19,10 @@ function isInForceModes(mode) {
 }
 
 module.exports = {
+  getUserMode: (userId) => {
+    return userModes[userId];
+  },
+
   changeModeForUser: (userId, alias) => {
     if (!ALIASES[alias]) {
       return `Неизвестный режим: ${alias}`;

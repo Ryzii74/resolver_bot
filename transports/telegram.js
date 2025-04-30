@@ -3,6 +3,7 @@ const config = require("../config");
 const {emitter, EVENTS} = require("./utils/eventEmitter");
 const bot = new TelegramBot(config.bot.token, {polling: true});
 const {Message, RESPONSE_TYPES} = require('./utils/message');
+const {getUserMode} = require('../libs/modes');
 
 function isUserAllowed(msg) {
   return config.bot.accepted_users_list.includes(msg.userId);
@@ -109,8 +110,9 @@ async function sendTextMessage(userId, text, isRepeated) {
       return;
     }
 
-    userMessages.set(userId, { messages, currentIndex: 0 });
-    await sendPaginatedMessage(userId, 0);
+    const pageToShow = getPageToShow(userId, messages.length - 1);
+    userMessages.set(userId, { messages, currentIndex: pageToShow });
+    await sendPaginatedMessage(userId, pageToShow);
   } catch (err) {
     console.log(err.code, err.response.body);
     if (!isRepeated) await sendTextMessage(userId, err.response.body.description, true);
@@ -165,4 +167,13 @@ function splitMessageByLines(text, limit = 40) {
     lines = lines.slice(limit);
   }
   return messages;
+}
+
+function getPageToShow(userId, pagesCount) {
+  const mode = getUserMode(userId);
+  if (mode.name === 'Ассоциации') {
+    return 0;
+  } else {
+    return pagesCount;
+  }
 }
