@@ -109,9 +109,8 @@ async function sendTextMessage(userId, text, isRepeated) {
       return;
     }
 
-    const lastIndex = messages.length - 1;
-    userMessages.set(userId, { messages, currentIndex: lastIndex });
-    await sendPaginatedMessage(userId, lastIndex);
+    userMessages.set(userId, { messages, currentIndex: 0 });
+    await sendPaginatedMessage(userId, 0);
   } catch (err) {
     console.log(err.code, err.response.body);
     if (!isRepeated) await sendTextMessage(userId, err.response.body.description, true);
