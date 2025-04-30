@@ -7,6 +7,10 @@ const getCombinations = require('../utils/getCombinations');
 const slovoformsObject = require('../actions/sources/slovoformsObject');
 const {RESPONSES: {NO_RESULT}} = require("../constants");
 
+module.exports.isRaschlenenka = (text) => {
+    return /^([а-яА-Яa-zA-Z]+\d+\s?)+$/.test(text);
+};
+
 module.exports = function (msg) {
     const {text} = msg;
     const dictionaryObject = dictionary.getObject(text);

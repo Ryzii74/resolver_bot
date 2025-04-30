@@ -1,5 +1,6 @@
 const {isRomanNumerals} = require("../commands/romeNumerals");
 const {isNotes} = require("../commands/notes");
+const {isRaschlenenka} = require('../commands/raschlenenka')
 const userModes = {};
 const userDisableAutos = {};
 const {Index, ALIASES} = require('./constants');
@@ -57,6 +58,10 @@ module.exports = {
 
     if (symbols.every(symbol => ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ...specialSymbols].includes(symbol))) {
       return [Index.alphabet, Index.tm];
+    }
+
+    if (isRaschlenenka(text)) {
+      return [Index.dick];
     }
 
     if (isRomanNumerals(text)) {
