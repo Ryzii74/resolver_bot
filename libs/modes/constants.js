@@ -1,5 +1,6 @@
 const Index = {
     anagramma: { exec: require('../../commands/anagramma'), name: 'Анаграмма' },
+    anagramma2: { exec: require('../../commands/anagramma2'), name: 'Анаграмма из 2 слов' },
     association: { exec: require('../../commands/association'), name: 'Ассоциации' },
     associationlogic: { exec: require('../../commands/associationLogic'), name: 'Ассоциации + Логика' },
     azimut: { exec: require('../../commands/azimut'), name: 'Азимут' },
@@ -41,6 +42,7 @@ const Index = {
 
 const ALIASES = {
     anagramma: Index.anagramma,
+    anagramma2: Index.anagramma2,
     ass: Index.association,
     association: Index.association,
     associationlogic: Index.associationlogic,
