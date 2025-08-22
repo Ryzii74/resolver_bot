@@ -1,9 +1,9 @@
 const {getWordsFromLine} = require("../utils/getWords");
-const alphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-const ALPHABET_SIZE = alphabet.length;
+const {lettersRu} = require('../data/letters');
+const ALPHABET_SIZE = lettersRu.length;
 
 function charIndex(ch) {
-  return alphabet.indexOf(ch.toUpperCase());
+  return lettersRu.indexOf(ch.toLowerCase());
 }
 
 function vigenereEncrypt(plaintext, key) {
@@ -23,8 +23,8 @@ function vigenereEncrypt(plaintext, key) {
     const ei = (ci + ki) % ALPHABET_SIZE;
 
     const encChar = c === c.toLowerCase()
-      ? alphabet[ei].toLowerCase()
-      : alphabet[ei];
+      ? lettersRu[ei].toLowerCase()
+      : lettersRu[ei];
 
     result += encChar;
     keyIndex++;
@@ -50,8 +50,8 @@ function vigenereDecrypt(ciphertext, key) {
     const pi = (ci - ki + ALPHABET_SIZE) % ALPHABET_SIZE;
 
     const decChar = c === c.toLowerCase()
-      ? alphabet[pi].toLowerCase()
-      : alphabet[pi];
+      ? lettersRu[pi].toLowerCase()
+      : lettersRu[pi];
 
     result += decChar;
     keyIndex++;
@@ -74,6 +74,6 @@ module.exports = async (msg) => {
   const encrypted = vigenereEncrypt(input, key);
   const decrypted = vigenereDecrypt(input, key);
 
-  msg.addTextResponse(`Encode: ${getWordsFromLine(encrypted)}`);
-  msg.addTextResponse(`Decode: ${getWordsFromLine(decrypted)}`);
+  msg.addTextResponse(`Encode: ${getWordsFromLine(encrypted)}\nDecode: ${getWordsFromLine(decrypted)}`);
 };
+module.exports.vigenereDecrypt = vigenereDecrypt;
