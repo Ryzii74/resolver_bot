@@ -39,6 +39,7 @@ const Index = {
     sborkaline: { exec: require('../../commands/sborkaLine'), name: 'Сборка 1 строки' },
     ss: { exec: require('../../commands/ss'), name: 'Системы счисления' },
     notes: { exec: require('../../commands/notes'), name: 'Ноты' },
+    vigenere: { exec: require('../../commands/vigenere'), name: 'Шифр виженера' },
 };
 
 const ALIASES = {
@@ -83,6 +84,7 @@ const ALIASES = {
     ss: Index.ss,
     notes: Index.notes,
     sborkaline: Index.sborkaline,
+    vigenere: Index.vigenere,
 };
 
 module.exports = {Index, ALIASES};
