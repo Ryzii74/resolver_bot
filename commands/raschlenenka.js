@@ -20,6 +20,10 @@ module.exports = function (msg) {
         };
     });
     const combinations = getCombinations(baseData.map(el => el.options));
+    if (combinations > 1000000) {
+        msg.addTextResponse('Слишком много вариантов для перебора');
+        return;
+    }
 
     const wordsToFind = [];
     combinations.forEach(combination => {
