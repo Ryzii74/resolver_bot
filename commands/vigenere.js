@@ -7,6 +7,10 @@ function charIndex(ch) {
 }
 
 function vigenereEncrypt(plaintext, key) {
+  if (!key) {
+    return plaintext;
+  }
+
   let result = "";
   let keyIndex = 0;
 
@@ -34,6 +38,10 @@ function vigenereEncrypt(plaintext, key) {
 }
 
 function vigenereDecrypt(ciphertext, key) {
+  if (!key) {
+    return ciphertext;
+  }
+
   let result = "";
   let keyIndex = 0;
 

@@ -1,6 +1,7 @@
 [
   {
     "name": "Hydrogen",
+    "nameRu": "Водород",
     "appearance": "colorless gas",
     "atomic_mass": 1.008,
     "boil": 20.271,
@@ -44,6 +45,7 @@
   },
   {
     "name": "Helium",
+    "nameRu": "Гелий",
     "appearance": "colorless gas, exhibiting a red-orange glow when placed in a high-voltage electric field",
     "atomic_mass": 4.0026022,
     "boil": 4.222,
@@ -88,6 +90,7 @@
   },
   {
     "name": "Lithium",
+    "nameRu": "Литий",
     "appearance": "silvery-white",
     "atomic_mass": 6.94,
     "boil": 1603,
@@ -134,6 +137,7 @@
   },
   {
     "name": "Beryllium",
+    "nameRu": "Бериллий",
     "appearance": "white-gray metallic",
     "atomic_mass": 9.01218315,
     "boil": 2742,
@@ -181,6 +185,7 @@
   },
   {
     "name": "Boron",
+    "nameRu": "Бор",
     "appearance": "black-brown",
     "atomic_mass": 10.81,
     "boil": 4200,
@@ -229,6 +234,7 @@
   },
   {
     "name": "Carbon",
+    "nameRu": "Углерод",
     "appearance": null,
     "atomic_mass": 12.011,
     "boil": null,
@@ -278,6 +284,7 @@
   },
   {
     "name": "Nitrogen",
+    "nameRu": "Азот",
     "appearance": "colorless gas, liquid or solid",
     "atomic_mass": 14.007,
     "boil": 77.355,
@@ -328,6 +335,7 @@
   },
   {
     "name": "Oxygen",
+    "nameRu": "Кислород",
     "appearance": null,
     "atomic_mass": 15.999,
     "boil": 90.188,
@@ -379,6 +387,7 @@
   },
   {
     "name": "Fluorine",
+    "nameRu": "Фтор",
     "appearance": null,
     "atomic_mass": 18.9984031636,
     "boil": 85.03,
@@ -431,6 +440,7 @@
   },
   {
     "name": "Neon",
+    "nameRu": "Неон",
     "appearance": "colorless gas exhibiting an orange-red glow when placed in a high voltage electric field",
     "atomic_mass": 20.17976,
     "boil": 27.104,
@@ -484,6 +494,7 @@
   },
   {
     "name": "Sodium",
+    "nameRu": "Натрий",
     "appearance": "silvery white metallic",
     "atomic_mass": 22.989769282,
     "boil": 1156.09,
@@ -539,6 +550,7 @@
   },
   {
     "name": "Magnesium",
+    "nameRu": "Магний",
     "appearance": "shiny grey solid",
     "atomic_mass": 24.305,
     "boil": 1363,
@@ -595,6 +607,7 @@
   },
   {
     "name": "Aluminium",
+    "nameRu": "Алюминий",
     "appearance": "silvery gray metallic",
     "atomic_mass": 26.98153857,
     "boil": 2743,
@@ -652,6 +665,7 @@
   },
   {
     "name": "Silicon",
+    "nameRu": "Кремний",
     "appearance": "crystalline, reflective with bluish-tinged faces",
     "atomic_mass": 28.085,
     "boil": 3538,
@@ -710,6 +724,7 @@
   },
   {
     "name": "Phosphorus",
+    "nameRu": "Фосфор",
     "appearance": "colourless, waxy white, yellow, scarlet, red, violet, black",
     "atomic_mass": 30.9737619985,
     "boil": null,
@@ -769,6 +784,7 @@
   },
   {
     "name": "Sulfur",
+    "nameRu": "Сера",
     "appearance": "lemon yellow sintered microcrystals",
     "atomic_mass": 32.06,
     "boil": 717.8,
@@ -829,6 +845,7 @@
   },
   {
     "name": "Chlorine",
+    "nameRu": "Хлор",
     "appearance": "pale yellow-green gas",
     "atomic_mass": 35.45,
     "boil": 239.11,
@@ -890,6 +907,7 @@
   },
   {
     "name": "Argon",
+    "nameRu": "Аргон",
     "appearance": "colorless gas exhibiting a lilac/violet glow when placed in a high voltage electric field",
     "atomic_mass": 39.9481,
     "boil": 87.302,
@@ -952,6 +970,7 @@
   },
   {
     "name": "Potassium",
+    "nameRu": "Калий",
     "appearance": "silvery gray",
     "atomic_mass": 39.09831,
     "boil": 1032,
@@ -1016,6 +1035,7 @@
   },
   {
     "name": "Calcium",
+    "nameRu": "Кальций",
     "appearance": null,
     "atomic_mass": 40.0784,
     "boil": 1757,
@@ -1081,6 +1101,7 @@
   },
   {
     "name": "Scandium",
+    "nameRu": "Скандий",
     "appearance": "silvery white",
     "atomic_mass": 44.9559085,
     "boil": 3109,
@@ -1147,6 +1168,7 @@
   },
   {
     "name": "Titanium",
+    "nameRu": "Титан",
     "appearance": "silvery grey-white metallic",
     "atomic_mass": 47.8671,
     "boil": 3560,
@@ -1214,6 +1236,7 @@
   },
   {
     "name": "Vanadium",
+    "nameRu": "Ванадий",
     "appearance": "blue-silver-grey metal",
     "atomic_mass": 50.94151,
     "boil": 3680,
@@ -1282,6 +1305,7 @@
   },
   {
     "name": "Chromium",
+    "nameRu": "Хром",
     "appearance": "silvery metallic",
     "atomic_mass": 51.99616,
     "boil": 2944,
@@ -1351,6 +1375,7 @@
   },
   {
     "name": "Manganese",
+    "nameRu": "Марганец",
     "appearance": "silvery metallic",
     "atomic_mass": 54.9380443,
     "boil": 2334,
@@ -1421,6 +1446,7 @@
   },
   {
     "name": "Iron",
+    "nameRu": "Железо",
     "appearance": "lustrous metallic with a grayish tinge",
     "atomic_mass": 55.8452,
     "boil": 3134,
@@ -1492,6 +1518,7 @@
   },
   {
     "name": "Cobalt",
+    "nameRu": "Кобальт",
     "appearance": "hard lustrous gray metal",
     "atomic_mass": 58.9331944,
     "boil": 3200,
@@ -1564,6 +1591,7 @@
   },
   {
     "name": "Nickel",
+    "nameRu": "Никель",
     "appearance": "lustrous, metallic, and silver with a gold tinge",
     "atomic_mass": 58.69344,
     "boil": 3003,
@@ -1637,6 +1665,7 @@
   },
   {
     "name": "Copper",
+    "nameRu": "Медь",
     "appearance": "red-orange metallic luster",
     "atomic_mass": 63.5463,
     "boil": 2835,
@@ -1711,6 +1740,7 @@
   },
   {
     "name": "Zinc",
+    "nameRu": "Цинк",
     "appearance": "silver-gray",
     "atomic_mass": 65.382,
     "boil": 1180,
@@ -1777,6 +1807,7 @@
   },
   {
     "name": "Gallium",
+    "nameRu": "Галлий",
     "appearance": "silver-white",
     "atomic_mass": 69.7231,
     "boil": 2673,
@@ -1826,6 +1857,7 @@
   },
   {
     "name": "Germanium",
+    "nameRu": "Германий",
     "appearance": "grayish-white",
     "atomic_mass": 72.6308,
     "boil": 3106,
@@ -1876,6 +1908,7 @@
   },
   {
     "name": "Arsenic",
+    "nameRu": "Мышьяк",
     "appearance": "metallic grey",
     "atomic_mass": 74.9215956,
     "boil": null,
@@ -1927,6 +1960,7 @@
   },
   {
     "name": "Selenium",
+    "nameRu": "Селен",
     "appearance": "black, red, and gray (not pictured) allotropes",
     "atomic_mass": 78.9718,
     "boil": 958,
@@ -1979,6 +2013,7 @@
   },
   {
     "name": "Bromine",
+    "nameRu": "Бром",
     "appearance": null,
     "atomic_mass": 79.904,
     "boil": 332,
@@ -2032,6 +2067,7 @@
   },
   {
     "name": "Krypton",
+    "nameRu": "Криптон",
     "appearance": "colorless gas, exhibiting a whitish glow in a high electric field",
     "atomic_mass": 83.7982,
     "boil": 119.93,
@@ -2107,6 +2143,7 @@
   },
   {
     "name": "Rubidium",
+    "nameRu": "Рубидий",
     "appearance": "grey white",
     "atomic_mass": 85.46783,
     "boil": 961,
@@ -2163,6 +2200,7 @@
   },
   {
     "name": "Strontium",
+    "nameRu": "Стронций",
     "appearance": null,
     "atomic_mass": 87.621,
     "boil": 1650,
@@ -2220,6 +2258,7 @@
   },
   {
     "name": "Yttrium",
+    "nameRu": "Иттрий",
     "appearance": "silvery white",
     "atomic_mass": 88.905842,
     "boil": 3203,
@@ -2278,6 +2317,7 @@
   },
   {
     "name": "Zirconium",
+    "nameRu": "Цирконий",
     "appearance": "silvery white",
     "atomic_mass": 91.2242,
     "boil": 4650,
@@ -2330,6 +2370,7 @@
   },
   {
     "name": "Niobium",
+    "nameRu": "Ниобий",
     "appearance": "gray metallic, bluish when oxidized",
     "atomic_mass": 92.906372,
     "boil": 5017,
@@ -2383,6 +2424,7 @@
   },
   {
     "name": "Molybdenum",
+    "nameRu": "Молибден",
     "appearance": "gray metallic",
     "atomic_mass": 95.951,
     "boil": 4912,
@@ -2459,6 +2501,7 @@
   },
   {
     "name": "Technetium",
+    "nameRu": "Технеций",
     "appearance": "shiny gray metal",
     "atomic_mass": 98,
     "boil": 4538,
@@ -2508,6 +2551,7 @@
   },
   {
     "name": "Ruthenium",
+    "nameRu": "Рутений",
     "appearance": "silvery white metallic",
     "atomic_mass": 101.072,
     "boil": 4423,
@@ -2557,6 +2601,7 @@
   },
   {
     "name": "Rhodium",
+    "nameRu": "Родий",
     "appearance": "silvery white metallic",
     "atomic_mass": 102.905502,
     "boil": 3968,
@@ -2606,6 +2651,7 @@
   },
   {
     "name": "Palladium",
+    "nameRu": "Палладий",
     "appearance": "silvery white",
     "atomic_mass": 106.421,
     "boil": 3236,
@@ -2654,6 +2700,7 @@
   },
   {
     "name": "Silver",
+    "nameRu": "Серебро",
     "appearance": "lustrous white metal",
     "atomic_mass": 107.86822,
     "boil": 2435,
@@ -2703,6 +2750,7 @@
   },
   {
     "name": "Cadmium",
+    "nameRu": "Кадмий",
     "appearance": "silvery bluish-gray metallic",
     "atomic_mass": 112.4144,
     "boil": 1040,
@@ -2752,6 +2800,7 @@
   },
   {
     "name": "Indium",
+    "nameRu": "Индий",
     "appearance": "silvery lustrous gray",
     "atomic_mass": 114.8181,
     "boil": 2345,
@@ -2802,6 +2851,7 @@
   },
   {
     "name": "Tin",
+    "nameRu": "Олово",
     "appearance": "silvery-white (beta, β) or gray (alpha, α)",
     "atomic_mass": 118.7107,
     "boil": 2875,
@@ -2853,6 +2903,7 @@
   },
   {
     "name": "Antimony",
+    "nameRu": "Сурьма",
     "appearance": "silvery lustrous gray",
     "atomic_mass": 121.7601,
     "boil": 1908,
@@ -2905,6 +2956,7 @@
   },
   {
     "name": "Tellurium",
+    "nameRu": "Теллур",
     "appearance": null,
     "atomic_mass": 127.603,
     "boil": 1261,
@@ -2958,6 +3010,7 @@
   },
   {
     "name": "Iodine",
+    "nameRu": "Йод",
     "appearance": "lustrous metallic gray, violet as a gas",
     "atomic_mass": 126.904473,
     "boil": 457.4,
@@ -3007,6 +3060,7 @@
   },
   {
     "name": "Xenon",
+    "nameRu": "Ксенон",
     "appearance": "colorless gas, exhibiting a blue glow when placed in a high voltage electric field",
     "atomic_mass": 131.2936,
     "boil": 165.051,
@@ -3056,6 +3110,7 @@
   },
   {
     "name": "Cesium",
+    "nameRu": "Цезий",
     "appearance": "silvery gold",
     "atomic_mass": 132.905451966,
     "boil": 944,
@@ -3106,6 +3161,7 @@
   },
   {
     "name": "Barium",
+    "nameRu": "Барий",
     "appearance": null,
     "atomic_mass": 137.3277,
     "boil": 2118,
@@ -3156,6 +3212,7 @@
   },
   {
     "name": "Lanthanum",
+    "nameRu": "Лантан",
     "appearance": "silvery white",
     "atomic_mass": 138.905477,
     "boil": 3737,
@@ -3208,6 +3265,7 @@
   },
   {
     "name": "Cerium",
+    "nameRu": "Церий",
     "appearance": "silvery white",
     "atomic_mass": 140.1161,
     "boil": 3716,
@@ -3261,6 +3319,7 @@
   },
   {
     "name": "Praseodymium",
+    "nameRu": "Празеодим",
     "appearance": "grayish white",
     "atomic_mass": 140.907662,
     "boil": 3403,
@@ -3313,6 +3372,7 @@
   },
   {
     "name": "Neodymium",
+    "nameRu": "Неодим",
     "appearance": "silvery white",
     "atomic_mass": 144.2423,
     "boil": 3347,
@@ -3364,6 +3424,7 @@
   },
   {
     "name": "Promethium",
+    "nameRu": "Прометий",
     "appearance": "metallic",
     "atomic_mass": 145,
     "boil": 3273,
@@ -3415,6 +3476,7 @@
   },
   {
     "name": "Samarium",
+    "nameRu": "Самарий",
     "appearance": "silvery white",
     "atomic_mass": 150.362,
     "boil": 2173,
@@ -3466,6 +3528,7 @@
   },
   {
     "name": "Europium",
+    "nameRu": "Европий",
     "appearance": null,
     "atomic_mass": 151.9641,
     "boil": 1802,
@@ -3517,6 +3580,7 @@
   },
   {
     "name": "Gadolinium",
+    "nameRu": "Гадолиний",
     "appearance": "silvery white",
     "atomic_mass": 157.253,
     "boil": 3273,
@@ -3568,6 +3632,7 @@
   },
   {
     "name": "Terbium",
+    "nameRu": "Тербий",
     "appearance": "silvery white",
     "atomic_mass": 158.925352,
     "boil": 3396,
@@ -3619,6 +3684,7 @@
   },
   {
     "name": "Dysprosium",
+    "nameRu": "Диспрозий",
     "appearance": "silvery white",
     "atomic_mass": 162.5001,
     "boil": 2840,
@@ -3670,6 +3736,7 @@
   },
   {
     "name": "Holmium",
+    "nameRu": "Гольмий",
     "appearance": "silvery white",
     "atomic_mass": 164.930332,
     "boil": 2873,
@@ -3721,6 +3788,7 @@
   },
   {
     "name": "Erbium",
+    "nameRu": "Эрбий",
     "appearance": "silvery white",
     "atomic_mass": 167.2593,
     "boil": 3141,
@@ -3772,6 +3840,7 @@
   },
   {
     "name": "Thulium",
+    "nameRu": "Тулий",
     "appearance": "silvery gray",
     "atomic_mass": 168.934222,
     "boil": 2223,
@@ -3823,6 +3892,7 @@
   },
   {
     "name": "Ytterbium",
+    "nameRu": "Иттербий",
     "appearance": null,
     "atomic_mass": 173.0451,
     "boil": 1469,
@@ -3874,6 +3944,7 @@
   },
   {
     "name": "Lutetium",
+    "nameRu": "Лютеций",
     "appearance": "silvery white",
     "atomic_mass": 174.96681,
     "boil": 3675,
@@ -3926,6 +3997,7 @@
   },
   {
     "name": "Hafnium",
+    "nameRu": "Гафний",
     "appearance": "steel gray",
     "atomic_mass": 178.492,
     "boil": 4876,
@@ -3977,6 +4049,7 @@
   },
   {
     "name": "Tantalum",
+    "nameRu": "Тантал",
     "appearance": "gray blue",
     "atomic_mass": 180.947882,
     "boil": 5731,
@@ -4026,6 +4099,7 @@
   },
   {
     "name": "Tungsten",
+    "nameRu": "Вольфрам",
     "appearance": "grayish white, lustrous",
     "atomic_mass": 183.841,
     "boil": 6203,
@@ -4075,6 +4149,7 @@
   },
   {
     "name": "Rhenium",
+    "nameRu": "Рений",
     "appearance": "silvery-grayish",
     "atomic_mass": 186.2071,
     "boil": 5869,
@@ -4126,6 +4201,7 @@
   },
   {
     "name": "Osmium",
+    "nameRu": "Осмий",
     "appearance": "silvery, blue cast",
     "atomic_mass": 190.233,
     "boil": 5285,
@@ -4175,6 +4251,7 @@
   },
   {
     "name": "Iridium",
+    "nameRu": "Иридий",
     "appearance": "silvery white",
     "atomic_mass": 192.2173,
     "boil": 4403,
@@ -4224,6 +4301,7 @@
   },
   {
     "name": "Platinum",
+    "nameRu": "Платина",
     "appearance": "silvery white",
     "atomic_mass": 195.0849,
     "boil": 4098,
@@ -4273,6 +4351,7 @@
   },
   {
     "name": "Gold",
+    "nameRu": "Золото",
     "appearance": "metallic yellow",
     "atomic_mass": 196.9665695,
     "boil": 3243,
@@ -4322,6 +4401,7 @@
   },
   {
     "name": "Mercury",
+    "nameRu": "Ртуть",
     "appearance": "silvery",
     "atomic_mass": 200.5923,
     "boil": 629.88,
@@ -4372,6 +4452,7 @@
   },
   {
     "name": "Thallium",
+    "nameRu": "Таллий",
     "appearance": "silvery white",
     "atomic_mass": 204.38,
     "boil": 1746,
@@ -4422,6 +4503,7 @@
   },
   {
     "name": "Lead",
+    "nameRu": "Свинец",
     "appearance": "metallic gray",
     "atomic_mass": 207.21,
     "boil": 2022,
@@ -4474,6 +4556,7 @@
   },
   {
     "name": "Bismuth",
+    "nameRu": "Висмут",
     "appearance": "lustrous silver",
     "atomic_mass": 208.980401,
     "boil": 1837,
@@ -4527,6 +4610,7 @@
   },
   {
     "name": "Polonium",
+    "nameRu": "Полоний",
     "appearance": "silvery",
     "atomic_mass": 209,
     "boil": 1235,
@@ -4575,6 +4659,7 @@
   },
   {
     "name": "Astatine",
+    "nameRu": "Астат",
     "appearance": "unknown, probably metallic",
     "atomic_mass": 210,
     "boil": 610,
@@ -4623,6 +4708,7 @@
   },
   {
     "name": "Radon",
+    "nameRu": "Радон",
     "appearance": "colorless gas, occasionally glows green or red in discharge tubes",
     "atomic_mass": 222,
     "boil": 211.5,
@@ -4671,6 +4757,7 @@
   },
   {
     "name": "Francium",
+    "nameRu": "Франций",
     "appearance": null,
     "atomic_mass": 223,
     "boil": 950,
@@ -4720,6 +4807,7 @@
   },
   {
     "name": "Radium",
+    "nameRu": "Радий",
     "appearance": "silvery white metallic",
     "atomic_mass": 226,
     "boil": 2010,
@@ -4770,6 +4858,7 @@
   },
   {
     "name": "Actinium",
+    "nameRu": "Актиний",
     "appearance": null,
     "atomic_mass": 227,
     "boil": 3500,
@@ -4820,6 +4909,7 @@
   },
   {
     "name": "Thorium",
+    "nameRu": "Торий",
     "appearance": "silvery, often with black tarnish",
     "atomic_mass": 232.03774,
     "boil": 5061,
@@ -4872,6 +4962,7 @@
   },
   {
     "name": "Protactinium",
+    "nameRu": "Протактиний",
     "appearance": "bright, silvery metallic luster",
     "atomic_mass": 231.035882,
     "boil": 4300,
@@ -4921,6 +5012,7 @@
   },
   {
     "name": "Uranium",
+    "nameRu": "Уран",
     "appearance": null,
     "atomic_mass": 238.028913,
     "boil": 4404,
@@ -4971,6 +5063,7 @@
   },
   {
     "name": "Neptunium",
+    "nameRu": "Нептуний",
     "appearance": "silvery metallic",
     "atomic_mass": 237,
     "boil": 4447,
@@ -5020,6 +5113,7 @@
   },
   {
     "name": "Plutonium",
+    "nameRu": "Плутоний",
     "appearance": "silvery white, tarnishing to dark gray in air",
     "atomic_mass": 244,
     "boil": 3505,
@@ -5069,6 +5163,7 @@
   },
   {
     "name": "Americium",
+    "nameRu": "Америций",
     "appearance": "silvery white",
     "atomic_mass": 243,
     "boil": 2880,
@@ -5118,6 +5213,7 @@
   },
   {
     "name": "Curium",
+    "nameRu": "Кюрий",
     "appearance": "silvery metallic, glows purple in the dark",
     "atomic_mass": 247,
     "boil": 3383,
@@ -5167,6 +5263,7 @@
   },
   {
     "name": "Berkelium",
+    "nameRu": "Берклий",
     "appearance": "silvery",
     "atomic_mass": 247,
     "boil": 2900,
@@ -5216,6 +5313,7 @@
   },
   {
     "name": "Californium",
+    "nameRu": "Калифорний",
     "appearance": "silvery",
     "atomic_mass": 251,
     "boil": 1743,
@@ -5265,6 +5363,7 @@
   },
   {
     "name": "Einsteinium",
+    "nameRu": "Эйнштейний",
     "appearance": "silver-colored",
     "atomic_mass": 252,
     "boil": 1269,
@@ -5314,6 +5413,7 @@
   },
   {
     "name": "Fermium",
+    "nameRu": "Фермий",
     "appearance": null,
     "atomic_mass": 257,
     "boil": null,
@@ -5363,6 +5463,7 @@
   },
   {
     "name": "Mendelevium",
+    "nameRu": "Менделевий",
     "appearance": null,
     "atomic_mass": 258,
     "boil": null,
@@ -5412,6 +5513,7 @@
   },
   {
     "name": "Nobelium",
+    "nameRu": "Нобелий",
     "appearance": null,
     "atomic_mass": 259,
     "boil": null,
@@ -5461,6 +5563,7 @@
   },
   {
     "name": "Lawrencium",
+    "nameRu": "Лоуренсий",
     "appearance": null,
     "atomic_mass": 266,
     "boil": null,
@@ -5510,6 +5613,7 @@
   },
   {
     "name": "Rutherfordium",
+    "nameRu": "Резерфордий",
     "appearance": null,
     "atomic_mass": 267,
     "boil": 5800,
@@ -5559,6 +5663,7 @@
   },
   {
     "name": "Dubnium",
+    "nameRu": "Дубний",
     "appearance": null,
     "atomic_mass": 268,
     "boil": null,
@@ -5606,6 +5711,7 @@
   },
   {
     "name": "Seaborgium",
+    "nameRu": "Сиборгий",
     "appearance": null,
     "atomic_mass": 269,
     "boil": null,
@@ -5653,6 +5759,7 @@
   },
   {
     "name": "Bohrium",
+    "nameRu": "Борий",
     "appearance": null,
     "atomic_mass": 270,
     "boil": null,
@@ -5700,6 +5807,7 @@
   },
   {
     "name": "Hassium",
+    "nameRu": "Хассий",
     "appearance": null,
     "atomic_mass": 269,
     "boil": null,
@@ -5747,6 +5855,7 @@
   },
   {
     "name": "Meitnerium",
+    "nameRu": "Мейтнерий",
     "appearance": null,
     "atomic_mass": 278,
     "boil": null,
@@ -5794,6 +5903,7 @@
   },
   {
     "name": "Darmstadtium",
+    "nameRu": "Дармштадтий",
     "appearance": null,
     "atomic_mass": 281,
     "boil": null,
@@ -5841,6 +5951,7 @@
   },
   {
     "name": "Roentgenium",
+    "nameRu": "Рентгений",
     "appearance": null,
     "atomic_mass": 282,
     "boil": null,
@@ -5888,6 +5999,7 @@
   },
   {
     "name": "Copernicium",
+    "nameRu": "Коперниций",
     "appearance": null,
     "atomic_mass": 285,
     "boil": 3570,
@@ -5935,6 +6047,7 @@
   },
   {
     "name": "Nihonium",
+    "nameRu": "Нихоний",
     "appearance": null,
     "atomic_mass": 286,
     "boil": 1430,
@@ -5982,6 +6095,7 @@
   },
   {
     "name": "Flerovium",
+    "nameRu": "Флеровий",
     "appearance": null,
     "atomic_mass": 289,
     "boil": 420,
@@ -6029,6 +6143,7 @@
   },
   {
     "name": "Moscovium",
+    "nameRu": "Московий",
     "appearance": null,
     "atomic_mass": 289,
     "boil": 1400,
@@ -6076,6 +6191,7 @@
   },
   {
     "name": "Livermorium",
+    "nameRu": "Ливерморий",
     "appearance": null,
     "atomic_mass": 293,
     "boil": 1085,
@@ -6123,6 +6239,7 @@
   },
   {
     "name": "Tennessine",
+    "nameRu": "Теннессин",
     "appearance": null,
     "atomic_mass": 294,
     "boil": 883,
@@ -6170,6 +6287,7 @@
   },
   {
     "name": "Oganesson",
+    "nameRu": "Оганесон",
     "appearance": null,
     "atomic_mass": 294,
     "boil": 350,
@@ -6217,6 +6335,7 @@
   },
   {
     "name": "Ununennium",
+    "nameRu": "Унунений",
     "appearance": null,
     "atomic_mass": 315,
     "boil": 630,
