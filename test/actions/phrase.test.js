@@ -71,4 +71,13 @@ describe('phrase', () => {
         expect(res[4]).toHaveLength(4);
         expect(res[4][0]).toBe('*ПОГОВОРКИ*');
     });
+
+    test('проверка количества слов', async () => {
+        const res = await sendCommand('5 курицу');
+        expect(res).toHaveLength(1);
+        expect(res[0]).toEqual([
+            '*ПОЛНЫЕ СОВПАДЕНИЯ СЛОВ*',
+            'резать курицу несущую золотые яйца',
+        ]);
+    });
 });
