@@ -10,7 +10,7 @@ describe('auto', () => {
             const res = await sendCommand('10 3 1');
             expect(res).toHaveLength(3);
             expect(res[0]).toEqual(["EN: jca"]);
-            expect(res[1]).toEqual(["RU: ива"]);
+            expect(res[1]).toEqual(["RU: ива (!!!)"]);
             expect(res[2]).toEqual(["TM: NeLiH"]);
         });
     });
@@ -56,15 +56,15 @@ describe('auto', () => {
             const res = await sendCommand('110 1010 1 11');
             expect(res).toHaveLength(10);
             expect(res[0]).toEqual(["Bacon1: glbd"]);
-            expect(res[1]).toEqual(["Bacon2: ?x??"]);
-            expect(res[2]).toEqual(["Bodo1: ÉGYI"]);
-            expect(res[3]).toEqual(["Bodo2: RTLK"]);
+            expect(res[1]).toEqual(["Bacon2: &x&&"]);
+            expect(res[2]).toEqual(["Bodo1: egyi"]);
+            expect(res[3]).toEqual(["Bodo2: rtlk"]);
             expect(res[4]).toEqual(["Bodo digits1: 1/733/"]);
             expect(res[5]).toEqual(["Bodo digits2: -2/=("]);
-            expect(res[6]).toEqual(["Binary RU1: ЕИАВ"]);
-            expect(res[7]).toEqual(["Binary RU2: ЧУЬЪ"]);
-            expect(res[8]).toEqual(["Binary EN1: FJAC"]);
-            expect(res[9]).toEqual(["Binary EN2: YU??"]);
+            expect(res[6]).toEqual(["Binary RU1: еиав"]);
+            expect(res[7]).toEqual(["Binary RU2: чуьъ"]);
+            expect(res[8]).toEqual(["Binary EN1: fjac"]);
+            expect(res[9]).toEqual(["Binary EN2: yu&&"]);
         });
     });
 

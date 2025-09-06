@@ -7,13 +7,13 @@ require('../toBeEmptyResponse');
 function checkResult(res, wordsArray, severalWordsArray) {
     expect(res).toHaveLength(2);
 
-    const [wordsHeader, ...words] = res[0];
-    expect(wordsHeader).toBe('*ЦЕЛЫЕ СЛОВА*')
-    expect(words).toEqual(wordsArray);
-
-    const [severalWordsHeader, ...severalWords] = res[1];
+    const [severalWordsHeader, ...severalWords] = res[0];
     expect(severalWordsHeader).toBe('*НЕСКОЛЬКО СЛОВ*')
-    expect(severalWords).toEqual(severalWordsArray);
+    expect(severalWords).toEqual(wordsArray);
+
+    const [wordsHeader, ...words] = res[1];
+    expect(wordsHeader).toBe('*ЦЕЛЫЕ СЛОВА*');
+    expect(words).toEqual(severalWordsArray);
 }
 
 
@@ -33,9 +33,6 @@ describe('raschlen', () => {
         checkResult(
             res,
             [
-                NO_RESULT,
-            ],
-            [
                 "вап хв",
                 "апр хв",
                 "пр охв",
@@ -49,20 +46,24 @@ describe('raschlen', () => {
                 "апр ст",
                 "п рост",
             ],
+            [
+                NO_RESULT,
+            ],
         );
     });
 
     test('нашлись только целые слова', async () => {
         const res = await sendCommand('сдом3 баы2');
+        console.log(res);
         checkResult(
             res,
-            [
-                'сдоба',
-            ],
             [
                 'сд оба',
                 'дом ба',
                 'дома ы',
+            ],
+            [
+                'сдоба',
             ],
         );
     });
@@ -71,9 +72,6 @@ describe('raschlen', () => {
         const res = await sendCommand('картуз3 слом2');
         checkResult(
             res,
-            [
-                'карло',
-            ],
             [
                 "кар сл",
                 "арт сл",
@@ -87,6 +85,9 @@ describe('raschlen', () => {
                 "а ртом",
                 "рту ом",
                 "туз ом",
+            ],
+            [
+                'карло',
             ],
         );
     });

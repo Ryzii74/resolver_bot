@@ -13,5 +13,5 @@ module.exports.getWordsFromLine = (text) => {
         return `\`${text}\` (!!!)`;
     }
 
-    return `\`${text}\` ${words.length ? `(${words.join(' ')})` : ''}`
+    return `\`${text}\`${words.length ? ` (${words.join(' ')})` : ''}`
 };
