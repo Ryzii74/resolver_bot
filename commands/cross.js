@@ -13,6 +13,7 @@ module.exports = async (msg) => {
     const wordsArray = dictionary.getArray(text);
     const wordsObject = dictionary.getObject(text);
     const result = [];
+    const resultAll = [];
     wordsArray.forEach(word => {
         const index = word.indexOf(firstWord);
         const diff = word.length - firstWord.length;
@@ -37,10 +38,17 @@ module.exports = async (msg) => {
             });
             if (wordsFound.length) {
                 const updatedWord = word.replace(subword, subword.toUpperCase());
-                result.push(`${subword} - ${updatedWord} ${wordsFound.join(' ')}`);
+                if (wordsFound.length + 1 === words.length && words.length > 2) {
+                    resultAll.push(`${subword} - ${updatedWord} ${wordsFound.join(' ')}`);
+                } else {
+                    result.push(`${subword} - ${updatedWord} ${wordsFound.join(' ')}`);
+                }
             }
         }
     });
 
     msg.addAnswersResponse(result.sort((b, a) => b.length - a.length));
+    if (words.length > 2) {
+        msg.addAnswersResponse(resultAll.sort((b, a) => b.length - a.length), undefined, 'СОВПАДЕНИЯ ВСЕХ СЛОВ');
+    }
 };
