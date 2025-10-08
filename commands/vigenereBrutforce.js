@@ -8,7 +8,6 @@ const brutforce = async (msg) => {
   const words = dictionary.getObject(text);
 
   const all = generateAll(16, true);
-  console.log('Всего вариантов', all.length);
   const response = [];
   for (let i = 0; i < all.length; i++) {
     const key = all[i];
@@ -41,7 +40,7 @@ function generateAll(maxLength, checkWords = true) {
   }
 
   backtrack("");
-  return results;c
+  return results;
 }
 
 module.exports = brutforce;
