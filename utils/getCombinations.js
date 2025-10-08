@@ -1,5 +1,8 @@
-function getCombinations(optionsArray) {
+function getCombinations(optionsArray, msg) {
     const optionsSum = optionsArray.reduce((sum, el) => sum * el, 1);
+    if (optionsSum > 250000) {
+        throw new Error('Слишком много вариантов для перебора');
+    }
 
     let start = 1;
     const dividers = optionsArray

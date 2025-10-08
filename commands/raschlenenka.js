@@ -19,9 +19,12 @@ module.exports = function (msg) {
             options: word.length - count + 1,
         };
     });
-    const combinations = getCombinations(baseData.map(el => el.options));
-    if (combinations.length > 1000000) {
-        msg.addTextResponse('Слишком много вариантов для перебора');
+
+    let combinations;
+    try {
+        combinations = getCombinations(baseData.map(el => el.options), msg);
+    } catch (e) {
+        msg.addTextResponse(e.message);
         return;
     }
 
