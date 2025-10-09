@@ -130,29 +130,6 @@ async function sendPaginatedMessage(chatId, index) {
   await bot.sendMessage(chatId, text, { ...baseMessageOptions, reply_markup: keyboard });
 }
 
-function splitMessage(text, limit = 4096) {
-  if (text.length < limit) {
-    return [text];
-  }
-
-  let messages = [];
-  while (text.length > 0) {
-    let chunk = text.slice(0, limit);
-    let lastSpace = chunk.lastIndexOf("\n");
-    if (lastSpace === -1 || lastSpace  < limit - 500) {
-      lastSpace = chunk.lastIndexOf(" ");
-    }
-    if (lastSpace > 0) {
-      messages.push(chunk.slice(0, lastSpace));
-      text = text.slice(lastSpace + 1);
-    } else {
-      messages.push(chunk);
-      text = text.slice(limit);
-    }
-  }
-  return messages;
-}
-
 
 function splitMessageByLines(text, limit = 40) {
   let lines = text.split('\n');
@@ -162,9 +139,8 @@ function splitMessageByLines(text, limit = 40) {
 
   let messages = [];
   while (lines.length > 0) {
-    let chunk = lines.slice(0, limit).join('\n');
-    messages.push(chunk);
-    lines = lines.slice(limit);
+    let chunk = lines.splice(-limit).join('\n');
+    messages.unshift(chunk);
   }
   return messages;
 }
