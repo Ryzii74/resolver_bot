@@ -8,6 +8,6 @@ const words = fs.readFileSync(path.join(__dirname, '../../data/enwords.txt')).to
 const wordsSet = new Set();
 sanstv.forEach(word => wordsSet.add(word));
 words.forEach(word => wordsSet.add(word));
-const result = [...wordsSet];
+const result = [...wordsSet].sort((a, b) => b.length - a.length);
 
 module.exports = () => result;
