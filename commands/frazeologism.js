@@ -30,9 +30,9 @@ module.exports = async (msg) => {
     allPhrases.length && msg.addAnswersResponse(allPhrases, '\n', 'ЧАСТИЧНЫЕ СОВПАДЕНИЯ СЛОВ');
     directPhrases.length && msg.addAnswersResponse(directPhrases, '\n', 'ПОЛНЫЕ СОВПАДЕНИЯ СЛОВ');
     dslovPhrases.length && msg.addAnswersResponse(dslovPhrases, '\n', 'ЕЩЕ КАКИЕ-ТО');
+    pogovorkiPhrases.length && msg.addAnswersResponse(pogovorkiPhrases, '\n', 'ПОГОВОРКИ');
     wikiPaires.length && msg.addAnswersResponse(wikiPaires, '\n', 'ВИКИСЛОВАРЬ (УСТОЙЧИВЫЕ ВЫРАЖЕНИЯ)');
     wikiPhrases.length && msg.addAnswersResponse(wikiPhrases, '\n', 'ВИКИСЛОВАРЬ (ФРАЗЕОЛОГИЗМЫ)');
-    pogovorkiPhrases.length && msg.addAnswersResponse(pogovorkiPhrases, '\n', 'ПОГОВОРКИ');
 };
 
 function isPhraseMatchWordsCount(phrase, isWordsCount, number) {
