@@ -41,6 +41,7 @@ const Index = {
     notes: { exec: require('../../commands/notes'), name: 'Ноты' },
     vigenere: { exec: require('../../commands/vigenere'), name: 'Шифр виженера' },
     caesar: { exec: require('../../commands/caesar'), name: 'Шифр цезаря' },
+    slovogen: { exec: require('../../commands/slovogen'), name: 'Слова из букв' },
 };
 
 const ALIASES = {
@@ -87,6 +88,7 @@ const ALIASES = {
     sborkaline: Index.sborkaline,
     vigenere: Index.vigenere,
     caesar: Index.caesar,
+    slovogen: Index.slovogen,
 };
 
 module.exports = {Index, ALIASES};
