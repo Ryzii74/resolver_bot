@@ -54,7 +54,7 @@ describe('phrase', () => {
 
     test('нашлось во всех словарях', async () => {
         const res = await sendCommand('деньги');
-        expect(res).toHaveLength(5);
+        expect(res).toHaveLength(6);
 
         expect(res[0]).toHaveLength(4);
         expect(res[0][0]).toBe('*ЧАСТИЧНЫЕ СОВПАДЕНИЯ СЛОВ*');
@@ -65,11 +65,14 @@ describe('phrase', () => {
         expect(res[2]).toHaveLength(3);
         expect(res[2][0]).toBe('*ЕЩЕ КАКИЕ-ТО*');
 
-        expect(res[3]).toHaveLength(7);
-        expect(res[3][0]).toBe('*ВИКИСЛОВАРЬ*');
+        expect(res[3]).toHaveLength(8);
+        expect(res[3][0]).toBe('*ВИКИСЛОВАРЬ (УСТОЙЧИВЫЕ ВЫРАЖЕНИЯ)*');
 
-        expect(res[4]).toHaveLength(4);
-        expect(res[4][0]).toBe('*ПОГОВОРКИ*');
+        expect(res[4]).toHaveLength(7);
+        expect(res[4][0]).toBe('*ВИКИСЛОВАРЬ (ФРАЗЕОЛОГИЗМЫ)*');
+
+        expect(res[5]).toHaveLength(4);
+        expect(res[5][0]).toBe('*ПОГОВОРКИ*');
     });
 
     test('проверка количества слов', async () => {
