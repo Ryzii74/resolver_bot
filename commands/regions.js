@@ -1,3 +1,5 @@
+const {getWordsFromLine} = require('../utils/getWords');
+
 const regions = {
     1: 'адыгея Р',
     2: 'башкортостан Р',
@@ -159,8 +161,8 @@ module.exports = function (msg) {
     const words = text.split(' ');
 
     const regionsFromWords = words.map(word => regions[word] || '??????????????');
-    const resFirst = `Регионы арбуз: \`${regionsFromWords.map(region => region[0]).join('')}\``;
-    const resLadder = `Регионы лестн: \`${regionsFromWords.map(getCorrectName).map((region,index) => region[index]).join('')}\``;
+    const resFirst = `Регионы арбуз: ${getWordsFromLine(regionsFromWords.map(region => region[0]).join(''))}`;
+    const resLadder = `Регионы лестн: ${getWordsFromLine(regionsFromWords.map(getCorrectName).map((region,index) => region[index]).join(''))}`;
     const resList = `Регионы список:\n${regionsFromWords.map(region => `\`${region}\``).join('\n')}`;
     msg.addTextResponse(`${resFirst}\n${resLadder}\n${resList}`);
 };
