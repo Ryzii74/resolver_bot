@@ -34,7 +34,7 @@ describe('anagramma', () => {
     test('анаграмма с *', async () => {
         const res = await sendCommand('ывопрыи*зй');
         expect(res).toHaveLength(1);
-        expect(res[0]).toEqual(['высокопроизводительный','допризывный','сымпровизированный']);
+        expect(res[0]).toEqual(['высокопроизводительный','сымпровизированный','допризывный']);
     });
 
     test('большая сложная анаграмма', async () => {
