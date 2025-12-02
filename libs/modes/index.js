@@ -62,7 +62,7 @@ module.exports = {
     }
 
     if (symbols.every(symbol => ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ...specialSymbols].includes(symbol))) {
-      return [Index.alphabet, Index.tm];
+      return [Index.alphabet, Index.tm, Index.regions];
     }
 
     if (isRaschlenenka(text)) {

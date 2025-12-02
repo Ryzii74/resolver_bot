@@ -8,10 +8,11 @@ describe('auto', () => {
     describe('числа', () => {
         test('перевод чисел', async () => {
             const res = await sendCommand('10 3 1');
-            expect(res).toHaveLength(3);
+            expect(res).toHaveLength(4);
             expect(res[0]).toEqual(["EN: jca"]);
             expect(res[1]).toEqual(["RU: ива (!!!)"]);
             expect(res[2]).toEqual(["TM: NeLiH"]);
+            expect(res[3]).toEqual(["Регионы арбуз: кба", "Регионы лестн: куы", "Регионы список:", "карелия Р", "бурятия Р", "адыгея Р"]);
         });
     });
 
